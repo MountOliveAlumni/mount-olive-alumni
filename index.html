@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Mount Olive Alumni</title>
 
-<!-- GOOGLE FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -21,20 +20,19 @@ body {
   color: white;
 }
 
-/* NAVIGATION */
+/* NAV */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 25px;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.45);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-/* LOGO */
 .logo {
   display: flex;
   align-items: center;
@@ -65,7 +63,6 @@ nav ul li a {
   font-weight: 500;
   padding: 8px 12px;
   border-radius: 8px;
-  transition: 0.3s;
 }
 
 nav ul li a:hover {
@@ -73,11 +70,36 @@ nav ul li a:hover {
   color: black;
 }
 
+/* MOVING TEXT */
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(0,0,0,0.35);
+  padding: 12px 0;
+}
+
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 12s linear infinite;
+}
+
+.ticker-track span {
+  display: inline-block;
+  margin: 0 50px;
+  color: #facc15;
+  font-weight: 600;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* HERO */
 .hero {
   text-align: center;
   padding: 70px 20px;
-  animation: fadeIn 1.2s ease;
 }
 
 .hero h1 {
@@ -87,52 +109,11 @@ nav ul li a:hover {
   color: transparent;
 }
 
-/* FLOATING TEXT */
-.glow {
-  animation: floatText 3s ease-in-out infinite;
+.hero p {
+  color: #cbd5e1;
 }
 
-@keyframes floatText {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* SEARCH */
-input {
-  padding: 12px;
-  width: 60%;
-  border-radius: 10px;
-  border: none;
-  margin-top: 15px;
-  outline: none;
-  transition: 0.3s;
-}
-
-input:focus {
-  box-shadow: 0 0 15px #facc15;
-}
-
-/* SCROLLING TEXT */
-.marquee {
-  overflow: hidden;
-  white-space: nowrap;
-  margin-top: 20px;
-}
-
-.marquee p {
-  display: inline-block;
-  padding-left: 100%;
-  animation: scrollText 12s linear infinite;
-  color: #facc15;
-  font-weight: bold;
-}
-
-@keyframes scrollText {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-
-/* SLIDESHOW */
+/* SLIDESHOW (RESTORED) */
 .slideshow {
   display: flex;
   justify-content: center;
@@ -141,11 +122,12 @@ input:focus {
 
 .slideshow img {
   width: 80%;
-  max-width: 800px;
+  max-width: 850px;
   height: 380px;
   object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: opacity 0.5s ease-in-out;
 }
 
 /* SECTION */
@@ -156,11 +138,6 @@ input:focus {
   border-radius: 15px;
   backdrop-filter: blur(12px);
   line-height: 1.7;
-  transition: 0.3s;
-}
-
-.section:hover {
-  transform: translateY(-5px);
 }
 
 /* GALLERY */
@@ -175,7 +152,6 @@ input:focus {
   height: 130px;
   object-fit: cover;
   border-radius: 10px;
-  transition: 0.3s;
 }
 
 .gallery img:hover {
@@ -195,61 +171,33 @@ input:focus {
   padding: 18px;
   border-radius: 12px;
   cursor: pointer;
-  transition: 0.3s;
-  font-weight: 600;
 }
 
 .year:hover {
   background: linear-gradient(135deg, #facc15, #f97316);
   color: black;
-  transform: scale(1.1);
 }
 
-/* BLINK TEXT */
-.blink {
-  animation: blink 1s infinite;
-  color: #22c55e;
-  font-weight: bold;
+/* TEACHERS */
+.teachers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
 }
 
-@keyframes blink {
-  0%, 100% {opacity: 1;}
-  50% {opacity: 0;}
+.teacher {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
 }
 
-/* FOOTER */
+/* FOOTER (UNCHANGED) */
 footer {
   text-align: center;
   padding: 20px;
   background: rgba(0,0,0,0.4);
   margin-top: 20px;
-  font-size: 14px;
-}
-
-/* ANIMATIONS */
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  nav {
-    flex-direction: column;
-  }
-
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  input {
-    width: 90%;
-  }
-
-  .slideshow img {
-    height: 220px;
-  }
 }
 
 </style>
@@ -265,43 +213,84 @@ footer {
   </div>
 
   <ul>
-    <li><a href="#">Home</a></li>
+    <li><a href="index.html" style="background:#facc15; color:black;">Home</a></li>
+    <li><a href="2013.html">2013</a></li>
+    <li><a href="2014.html">2014</a></li>
     <li><a href="2015.html">2015</a></li>
     <li><a href="2016.html">2016</a></li>
     <li><a href="2017.html">2017</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <h1 class="glow">Mount Olive Good Shepherd</h1>
-  
-  <!-- TYPING TEXT -->
-  <p id="typing"></p>
+<!-- MOVING TEXT -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>🎓 Welcome to Mount Olive Alumni Portal</span>
+    <span>📚 Excellence • Discipline • Legacy</span>
+    <span>🏆 Celebrating Classes of 2013 - 2017</span>
+    <span>🌍 Proud Alumni Across the World</span>
 
-  <input type="text" placeholder="Search school memories...">
-
-  <!-- SCROLLING TEXT -->
-  <div class="marquee">
-    <p>Welcome to Mount Olive Alumni • Stay Connected • Celebrate Memories • Class of 2015, 2016, 2017</p>
+    <span>🎓 Welcome to Mount Olive Alumni Portal</span>
+    <span>📚 Excellence • Discipline • Legacy</span>
+    <span>🏆 Celebrating Classes of 2013 - 2017</span>
+    <span>🌍 Proud Alumni Across the World</span>
   </div>
-
-  <!-- BLINK TEXT -->
-  <p class="blink">Alumni Registration Coming Soon!</p>
 </div>
 
-<!-- SLIDESHOW -->
+<!-- HERO -->
+<div class="hero">
+  <h1>Mount Olive Good Shepherd</h1>
+  <p>Memories • Excellence • Legacy</p>
+</div>
+
+<!-- SLIDESHOW (BACK AGAIN) -->
 <div class="slideshow">
   <img id="slide" src="images/school1.jpeg">
 </div>
 
-<!-- ABOUT -->
+<!-- ABOUT (ENHANCED) -->
 <div class="section">
   <h2>About Our School</h2>
   <p>
-    Mount Olive Good Shepherd Primary School in Gulu, Uganda has shaped disciplined,
-    successful and respected students across generations.
+    Mount Olive Good Shepherd Primary School is a center of excellence known for discipline,
+    strong academics, and producing leaders across different fields including law, business,
+    technology, and education.
   </p>
+</div>
+
+<!-- MISSION -->
+<div class="section">
+  <h2>Mission & Vision</h2>
+  <p><b>Mission:</b> To educate disciplined and responsible leaders.</p>
+  <p><b>Vision:</b> To be a top academic institution in the region.</p>
+</div>
+
+<!-- TEACHERS -->
+<div class="section">
+  <h2>Teachers</h2>
+  <div class="teachers">
+
+    <div class="teacher">
+      <h3>Tr. Paul</h3>
+      <p>Mathematics & Discipline</p>
+    </div>
+
+    <div class="teacher">
+      <h3>Tr. Anthony</h3>
+      <p>English & Communication</p>
+    </div>
+
+    <div class="teacher">
+      <h3>Tr. Charles</h3>
+      <p>Science & Innovation</p>
+    </div>
+
+    <div class="teacher">
+      <h3>Tr. Robert</h3>
+      <p>Leadership & Social Studies</p>
+    </div>
+
+  </div>
 </div>
 
 <!-- GALLERY -->
@@ -321,26 +310,27 @@ footer {
 <div class="section">
   <h2>Explore Alumni Years</h2>
   <div class="years">
+    <div class="year" onclick="go('2013.html')">Class of 2013</div>
+    <div class="year" onclick="go('2014.html')">Class of 2014</div>
     <div class="year" onclick="go('2015.html')">Class of 2015</div>
     <div class="year" onclick="go('2016.html')">Class of 2016</div>
     <div class="year" onclick="go('2017.html')">Class of 2017</div>
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER (UNCHANGED) -->
 <footer>
-  © 2026 Mount Olive Alumni <br>
-  <b style="color:#facc15;">Designed & Powered by Moses Monday MALITH</b>
+  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+  Developed with ❤️ by Moses Monday MALITH <br>
+  Class Archives: 2013 • 2014 • 2015 • 2016 • 2017
 </footer>
 
 <script>
-
-// NAVIGATION
 function go(page){
   window.location.href = page;
 }
 
-// SLIDESHOW
+/* SLIDESHOW FIX */
 const images = [
   "images/school1.jpeg",
   "images/school2.jpeg",
@@ -351,27 +341,18 @@ const images = [
 ];
 
 let i = 0;
-setInterval(()=>{
+setInterval(() => {
   i = (i + 1) % images.length;
-  document.getElementById("slide").src = images[i];
+  const img = document.getElementById("slide");
+  img.style.opacity = 0;
+
+  setTimeout(() => {
+    img.src = images[i];
+    img.style.opacity = 1;
+  }, 300);
+
 }, 3000);
-
-// TYPING EFFECT
-const text = "Memories • Excellence • Legacy";
-let index = 0;
-
-function typeEffect() {
-  if (index < text.length) {
-    document.getElementById("typing").innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeEffect, 60);
-  }
-}
-
-typeEffect();
-
 </script>
 
 </body>
 </html>
-```
