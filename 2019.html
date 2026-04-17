@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Class of 2019 - Mount Olive Alumni</title>
+
+<style>
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #0f172a, #1e3a8a, #4c1d95);
+  color: white;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  padding: 15px 20px;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav h2 {
+  margin: 0;
+  color: #facc15;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #facc15;
+}
+
+/* MOVING TEXT */
+.marquee {
+  background: rgba(0,0,0,0.3);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: move 12s linear infinite;
+  color: #facc15;
+  font-weight: bold;
+}
+
+@keyframes move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero p {
+  color: #cbd5e1;
+}
+
+/* SECTION */
+.section {
+  background: rgba(255,255,255,0.08);
+  margin: 20px;
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  line-height: 1.7;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* TEXT */
+.card h3 {
+  color: #facc15;
+  margin: 10px 0 5px;
+}
+
+.card p {
+  font-size: 13px;
+  padding: 0 10px 15px;
+  color: #e2e8f0;
+}
+
+/* TEACHER BOX */
+.teacher-box {
+  width: 60px;
+  height: 60px;
+  margin: 10px auto;
+  border-radius: 50%;
+  background: #facc15;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.5);
+  margin-top: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h2>Mount Olive Alumni</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="2013.html">2013</a></li>
+    <li><a href="2014.html">2014</a></li>
+    <li><a href="2015.html">2015</a></li>
+    <li><a href="2016.html">2016</a></li>
+    <li><a href="2017.html">2017</a></li>
+    <li><a href="2018.html">2018</a></li>
+    <li><a href="2019.html" style="color:#facc15;">2019</a></li>
+     <li><a href="associates.html">Associates</a></li>
+  <li><a href="executives.html">Executives</a></li>
+  </ul>
+</nav>
+
+<!-- MOVING TEXT -->
+<div class="marquee">
+  <span>Class of 2019 • Excellence • Progress • Innovation • Future Leaders</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Class of 2019</h1>
+  <p>Excellence • Progress • Innovation • Future Leaders</p>
+</div>
+
+<!-- ABOUT -->
+<div class="section">
+  <h2>About the Class of 2019</h2>
+  <p>
+The Class of 2019 is a dynamic and forward-thinking group known for their commitment to excellence, innovation, and teamwork. Throughout their time at Mount Olive Good Shepherd, they demonstrated strong academic performance and leadership qualities. Today, members of this class are pursuing various career paths including business, technology, healthcare, education, and more, contributing positively to society and inspiring future generations.
+  </p>
+</div>
+
+<!-- STUDENTS -->
+<div class="section">
+  <h2>Students of 2019</h2>
+    <ul>
+    <li>Thomas Thon Tiera</li>
+    <li>Okello Innocent</li>
+    <li>Opira Ronald</li>
+    <li>Benson Bith</li>
+    <li>Soloma Malek</li>
+    <li>Aballo Prossy</li>
+    <li>Ssegawa Treasure</li>
+    <li>Piloya Korina</li>
+    <li>Atimango Sunday</li>
+    <li>Okello Jacob</li>
+    <li>Okello Andrew</li>
+    <li>Ocora Daniel</li>
+    <li>James Ifforo</li>
+    <li>Stephen Inyani</li>
+    <li>Paul Ocen</li>
+    <li>Peter Opiyo</li>
+    <li>Mawa Betty</li>
+  </ul>
+
+</div>
+
+<!-- STUDENT GALLERY -->
+<div class="section">
+  <h2>Student Gallery</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="images/thomas.jpeg">
+      <h3>Thomas Thon Tiera</h3>
+      <p>Currently pursuing Chemical Engineering. A focused and determined student with strong interest in science and innovation.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/innocent.jpeg">
+      <h3>Okello Innocent</h3>
+      <p>A disciplined and focused learner.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/ronald.jpeg">
+      <h3>Opira Ronald</h3>
+      <p>A hardworking and determined student.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/benson.jpeg">
+      <h3>Benson Bith</h3>
+      <p>A goal-oriented and ambitious learner.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/malek.jpeg">
+      <h3>Soloma Malek</h3>
+      <p>A creative and consistent performer.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/prossy.jpeg">
+      <h3>Aballo Prossy</h3>
+      <p>A dedicated and intelligent student.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/treasurer.jpeg">
+      <h3>Ssegawa Treasure</h3>
+      <p>A responsible and organized individual.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/korina.jpeg">
+      <h3>Piloya Korina</h3>
+      <p>A bright and focused student.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/sunday.jpeg">
+      <h3>Atimango Sunday</h3>
+      <p>A hardworking and disciplined learner.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/jacob.jpeg">
+      <h3>Okello Jacob</h3>
+      <p>A determined and goal-driven student.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/andrew.jpeg">
+      <h3>Okello Andrew</h3>
+      <p>A focused and ambitious learner.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/daniel.jpeg">
+      <h3>Ocora Daniel</h3>
+      <p>A committed and hardworking student.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/ifforo.jpeg">
+      <h3>James Ifforo</h3>
+      <p>A creative and disciplined learner.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/stephen.jpeg">
+      <h3>Stephen Inyani</h3>
+      <p>A strong and consistent performer.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/paul.jpeg">
+      <h3>Paul Ocen</h3>
+      <p>A focused and determined student.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/peter.jpeg">
+      <h3>Peter Opiyo</h3>
+      <p>A hardworking and disciplined learner.</p>
+    </div>
+
+    <div class="card">
+      <img src="images/betty.jpeg">
+      <h3>Mawa Betty</h3>
+      <p>A bright and ambitious student.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- TEACHERS -->
+<div class="section">
+  <h2>Our Teachers</h2>
+  <p>Teachers who shaped discipline, excellence, and academic success.</p>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="teacher-box">C</div>
+    <h3>Tr. Charles</h3>
+    <p>English Language</p>
+  </div>
+
+  <div class="card">
+    <div class="teacher-box">J</div>
+    <h3>Tr. Jolly</h3>
+    <p>Social Studies</p>
+  </div>
+
+  <div class="card">
+    <div class="teacher-box">C</div>
+    <h3>Tr. Christopher</h3>
+    <p>Science</p>
+  </div>
+
+  <div class="card">
+    <div class="teacher-box">G</div>
+    <h3>Tr. Geoffrey</h3>
+    <p>Mathematics</p>
+  </div>
+
+</div>
+
+
+<footer>
+
+  <div style="margin-bottom:10px;">
+    <strong>Reach Me</strong>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📞 WhatsApp:
+    <a href="https://wa.me/254793904683" target="_blank" style="color:#facc15; text-decoration:none;">
+      Chat with Moses
+    </a>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📧 Email:
+    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
+      mosesmondaymalith50@gmail.com
+    </a>
+  </div>
+
+  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+
+  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+  Developed with ❤️ by Moses Monday MALITH
+
+</footer>
+</body>
+</html>

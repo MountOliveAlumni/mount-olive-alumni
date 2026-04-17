@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Class of 2018 - Mount Olive Alumni</title>
+
+<style>
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #0f172a, #1e3a8a, #4c1d95);
+  color: white;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  padding: 15px 20px;
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav h2 {
+  margin: 0;
+  color: #facc15;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #facc15;
+}
+
+/* MOVING TEXT */
+.marquee {
+  background: rgba(0,0,0,0.3);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: move 12s linear infinite;
+  color: #facc15;
+  font-weight: bold;
+}
+
+@keyframes move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero p {
+  color: #cbd5e1;
+}
+
+/* SECTION */
+.section {
+  background: rgba(255,255,255,0.08);
+  margin: 20px;
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  line-height: 1.7;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* IMAGE FIX */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* TEXT */
+.card h3 {
+  color: #facc15;
+  margin: 10px 0 5px;
+}
+
+.card p {
+  font-size: 13px;
+  padding: 0 10px 15px;
+  color: #e2e8f0;
+}
+
+/* TEACHER BOX */
+.teacher-box {
+  width: 60px;
+  height: 60px;
+  margin: 10px auto;
+  border-radius: 50%;
+  background: #facc15;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(0,0,0,0.5);
+  margin-top: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h2>Mount Olive Alumni</h2>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="2013.html">2013</a></li>
+    <li><a href="2014.html">2014</a></li>
+    <li><a href="2015.html">2015</a></li>
+    <li><a href="2016.html">2016</a></li>
+    <li><a href="2017.html">2017</a></li>
+    <li><a href="2018.html" style="color:#facc15;">2018</a></li>
+       <li><a href="2019.html">2019</a></li>
+    <li><a href="associates.html">Associates</a></li>
+    <li><a href="executives.html">Executives</a></li>
+  </ul>
+</nav>
+
+<!-- MOVING TEXT -->
+<div class="marquee">
+  <span>Class of 2018 • Growth • Ambition • Unity • Rising Leaders</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Class of 2018</h1>
+  <p>Growth • Ambition • Unity • Future Leaders</p>
+</div>
+
+<!-- ABOUT -->
+<div class="section">
+  <h2>About the Class of 2018</h2>
+  <p>
+The Class of 2018 is a remarkable group of students who demonstrated resilience, teamwork, and academic dedication throughout their school journey. They carried forward the strong values of Mount Olive Good Shepherd, excelling both in academics and character development. Today, many members of this class are pursuing careers in fields such as medicine, law, business, science, and technology, while others are continuing their higher education with determination and focus.
+  </p>
+</div>
+
+<!-- STUDENTS -->
+<div class="section">
+  <h2>Students of 2018</h2>
+  <ul>
+   <li>Andrua Stephen</li>
+<li>Newton Genesis</li>
+<li>Atim Cynthia</li>
+<li>Aber Lucky Faith</li>
+<li>Maluong Mabor</li>
+<li>Barach Amol</li>
+<li>Masidiu Bridget</li>
+<li>Ogenrwot Peter</li>
+<li>Ogenrwot Ceasure</li>
+<li>Lakota Ruth Immaculate</li>
+<li>Olok Deogracious</li>
+<li>Lubangakene Albert Lamex</li>
+<li>Alum Daphine</li>
+
+  </ul>
+</div>
+
+<!-- STUDENT GALLERY -->
+<div class="section">
+  <h2>Student Gallery</h2>
+
+  <div class="grid">
+
+  <div class="card">
+  <img src="images/andrua.jpeg">
+  <h3>Andrua Stephen</h3>
+  <p>Andrua Stephen is pursuing a career in Law. She is a determined and focused individual with strong leadership potential and a passion for justice and advocacy.</p>
+</div>
+  <div class="card">
+  <img src="images/zowen.jpeg">
+  <h3>Ogenrwot Peter</h3>
+  <p>Ogenrwot Peter is currently pursuing his higher education at university, where he is continuing to build his academic and professional future.</p>
+</div>
+  <div class="card">
+  <img src="images/alum.jpeg">
+  <h3>Alum Daphine</h3>
+  Alum Daphine is continuing her academic journey at university, where she is pursuing her studies in her chosen field.
+</div>
+<div class="card">
+  <img src="images/newton.jpeg">
+  <h3>Newton Genesis</h3>
+  <p>A creative thinker passionate about innovation.</p>
+</div>
+
+<div class="card">
+  <img src="images/cynthia.jpeg">
+  <h3>Atim Cynthia</h3>
+  <p>A hardworking and dedicated individual.</p>
+</div>
+
+<div class="card">
+  <img src="images/lucky.jpeg">
+  <h3>Aber Lucky Faith</h3>
+  <p>A consistent and resilient learner.</p>
+</div>
+
+<div class="card">
+  <img src="images/maluong.jpeg">
+  <h3>Maluong Mabor</h3>
+  <p>Maluong Mabor is currently pursuing Laboratory Science at the University of Juba. He is a focused and ambitious individual striving for growth and future success in the medical and scientific field.</p>
+</div>
+
+<div class="card">
+  <img src="images/barach.jpeg">
+  <h3>Barach Amol</h3>
+  <p>A disciplined and goal-oriented individual.</p>
+</div>
+
+<div class="card">
+  <img src="images/bridget.jpeg">
+  <h3>Masidiu Bridget</h3>
+  <p>A passionate and hardworking individual.</p>
+</div>
+
+<div class="card">
+  <img src="images/ceasure.jpeg">
+  <h3>Ogenrwot Ceasure</h3>
+  <p>A disciplined and ambitious student with strong academic focus and leadership potential.</p>
+</div>
+
+<div class="card">
+  <img src="images/ruth.jpeg">
+  <h3>Lakota Ruth Immaculate</h3>
+  <p>A bright and determined student with a passion for academic excellence and personal growth.</p>
+</div>
+
+<div class="card">
+  <img src="images/deogracious.jpeg">
+  <h3>Olok Deogracious</h3>
+  <p>A hardworking learner dedicated to achieving academic and personal success.</p>
+</div>
+
+<div class="card">
+  <img src="images/lamex.jpeg">
+  <h3>Lubangakene Albert Lamex</h3>
+  <p>A focused and motivated student with strong potential for future leadership.</p>
+</div>
+  </div>
+</div>
+
+<!-- TEACHERS -->
+<div class="section">
+  <h2>Our Teachers</h2>
+  <p>Teachers who shaped discipline, excellence, and academic success.</p>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="teacher-box">C</div>
+    <h3>Tr. Charles</h3>
+    <p>English Language</p>
+  </div>
+
+  <div class="card">
+    <div class="teacher-box">J</div>
+    <h3>Tr. Jolly</h3>
+    <p>Social Studies</p>
+  </div>
+
+  <div class="card">
+    <div class="teacher-box">C</div>
+    <h3>Tr. Christopher</h3>
+    <p>Science</p>
+  </div>
+
+  <div class="card">
+    <div class="teacher-box">G</div>
+    <h3>Tr. Geoffrey</h3>
+    <p>Mathematics</p>
+  </div>
+
+</div>
+<footer>
+
+  <div style="margin-bottom:10px;">
+    <strong>Reach Me</strong>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📞 WhatsApp:
+    <a href="https://wa.me/254793904683" target="_blank" style="color:#facc15; text-decoration:none;">
+      Chat with Moses
+    </a>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📧 Email:
+    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
+      mosesmondaymalith50@gmail.com
+    </a>
+  </div>
+
+  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+
+  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+  Developed with ❤️ by Moses Monday MALITH
+
+</footer>
+</body>
+</html>
