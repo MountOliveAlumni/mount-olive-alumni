@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <title>Mount Olive Alumni - Students & Associates</title>
-  <meta name="description" content="Official Mount Olive Alumni website featuring students from 2013 to 2017 and beyond. Discover alumni profiles, achievements, and stay connected.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Mount Olive Alumni - Students & Associates</title>
+
+<meta name="description" content="Official Mount Olive Alumni website featuring students from 2013 to 2017 and beyond. Discover alumni profiles, achievements, and stay connected.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,17 +21,17 @@ body {
   color: white;
 }
 
+
 /* NAV */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 25px;
-  background: rgba(0,0,0,0.45);
-  backdrop-filter: blur(12px);
+  padding: 15px 30px;
+  background: rgba(15, 23, 42, 0.95);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .logo {
@@ -45,20 +47,27 @@ nav {
   border: 2px solid #facc15;
 }
 
-.logo h3 { color: #facc15; }
+.logo h3 {
+  color: #facc15;
+}
 
+/* MENU */
 nav ul {
-  display: flex;
   list-style: none;
-  gap: 20px;
+  display: flex;
+  gap: 15px;
+  margin-left: auto;
+}
+
+nav ul li {
+  position: relative;
 }
 
 nav ul li a {
   text-decoration: none;
   color: white;
-  font-weight: 500;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 nav ul li a:hover {
@@ -66,36 +75,40 @@ nav ul li a:hover {
   color: black;
 }
 
-/* TICKER */
-.ticker {
+.active {
+  background: #facc15;
+  color: black;
+}
+
+/* DROPDOWN */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  background: white;
+  min-width: 140px;
+  border-radius: 8px;
   overflow: hidden;
-  white-space: nowrap;
-  background: rgba(0,0,0,0.35);
-  padding: 12px 0;
 }
 
-.ticker-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scroll 12s linear infinite;
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  color: black;
 }
 
-.ticker-track span {
-  display: inline-block;
-  margin: 0 50px;
-  color: #facc15;
-  font-weight: 600;
+.dropdown-content a:hover {
+  background: #facc15;
 }
 
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.dropdown-content.show {
+  display: block;
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  padding: 70px 20px;
+  padding: 60px 20px;
 }
 
 .hero h1 {
@@ -105,71 +118,70 @@ nav ul li a:hover {
   color: transparent;
 }
 
-.hero p { color: #cbd5e1; }
-
 /* SLIDESHOW */
 .slideshow {
   display: flex;
   justify-content: center;
-  margin-top: 25px;
 }
 
 .slideshow img {
   width: 80%;
-  max-width: 850px;
+  max-width: 900px;
   height: 380px;
-  object-fit: contain;        /* ✅ shows full image */
-  object-position: center;    /* ✅ keeps face centered */
-  background: rgba(0,0,0,0.4); /* fills empty space nicely */
+  object-fit: contain;
+  background: rgba(0,0,0,0.4);
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* SECTION */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+/* SECTIONS */
 .section {
   background: rgba(255,255,255,0.08);
   margin: 20px;
   padding: 25px;
   border-radius: 15px;
-  backdrop-filter: blur(12px);
-  line-height: 1.7;
 }
 
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 10px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  object-position: 50% 20%; /* 🔥 focuses slightly upward (face area) */
-  border-radius: 10px;
-}
 /* YEARS */
 .years {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
+  justify-content: center;
 }
 
 .year {
   background: rgba(255,255,255,0.15);
-  padding: 18px;
-  border-radius: 12px;
+  padding: 15px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
 .year:hover {
-  background: linear-gradient(135deg, #facc15, #f97316);
+  background: #facc15;
   color: black;
 }
 
-/* TEACHERS FIXED FOR FACES */
+/* TEACHERS */
 .teachers {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -183,22 +195,66 @@ nav ul li a:hover {
   text-align: center;
 }
 
-/* FIX: FACE FOCUS */
 .teacher img {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  object-position: top; /* 🔥 IMPORTANT FIX (shows face) */
+  object-position: top;
   border-radius: 10px;
-  margin-bottom: 10px;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
-  background: rgba(0,0,0,0.4);
-  margin-top: 20px;
+  background: rgba(0,0,0,0.5);
+}
+
+/* WHATSAPP */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-float img {
+  width: 30px;
+}
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  background: rgba(0,0,0,0.35);
+  padding: 12px 0;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 18s linear infinite;
+}
+
+.ticker-track span {
+  display: inline-block;
+  margin: 0 60px;
+  color: #facc15;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 </style>
@@ -206,7 +262,7 @@ footer {
 
 <body>
 
-<!-- NAV (UNCHANGED) -->
+<!-- NAV -->
 <nav>
   <div class="logo">
     <img src="images/logo.jpg">
@@ -214,45 +270,57 @@ footer {
   </div>
 
   <ul>
-    <li><a href="index.html" style="background:#facc15; color:black;">Home</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="2013.html">2013</a></li>
-    <li><a href="2014.html">2014</a></li>
-    <li><a href="2015.html">2015</a></li>
-    <li><a href="2016.html">2016</a></li>
-    <li><a href="2017.html">2017</a></li>
-      <li><a href="2018.html">2018</a></li>
-    <li><a href="2019.html">2019</a></li>
+
+    <li class="dropdown">
+      <a href="#" onclick="toggleDropdown(event)">Classes ▼</a>
+     <div class="dropdown-content">
+  <a href="2013.html">2013</a>
+  <a href="2014.html">2014</a>
+  <a href="2015.html">2015</a>
+  <a href="2016.html">2016</a>
+  <a href="2017.html">2017</a>
+  <a href="2018.html">2018</a>
+  <a href="2019.html">2019</a>
+</div>
+    </li>
+
     <li><a href="associates.html">Associates</a></li>
-      <li><a href="executives.html">Executives</a></li>
-       <li><a href="contacts.html">Contacts</a></li>
+    <li><a href="executives.html">Executives</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
-
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
+
     <span>🎓 Welcome to Mount Olive Alumni Portal</span>
     <span>📚 Excellence • Discipline • Legacy</span>
-    <span>🏆 Celebrating Classes of 2013 - 2017</span>
+    <span>🏆 Celebrating Classes of 2013 - 2019</span>
     <span>🌍 Proud Alumni Across the World</span>
+
+    <!-- duplicate for smooth loop -->
+    <span>🎓 Welcome to Mount Olive Alumni Portal</span>
+    <span>📚 Excellence • Discipline • Legacy</span>
+    <span>🏆 Celebrating Classes of 2013 - 2019</span>
+    <span>🌍 Proud Alumni Across the World</span>
+
   </div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-  <h1>Mount Olive Good Shepherd</h1>
-  <p>Memories • Excellence • Legacy</p>
+  <h1>Mount Olive Good Shepherd Alumni</h1>
 </div>
 
-<!-- SLIDESHOW -->
+<!-- SLIDESHOW (FULL IMAGES RESTORED) -->
 <div class="slideshow">
   <img id="slide" src="images/school1.jpeg">
 </div>
 
-<!-- ASSOCIATION -->
+<!-- ABOUT -->
 
-<!-- TEACHERS FIXED + DESCRIPTIONS -->
+<!-- TEACHERS -->
 <div class="section">
   <h2>Teachers - The Generals</h2>
 
@@ -261,25 +329,25 @@ footer {
     <div class="teacher">
       <img src="images/luap.jpeg">
       <h3>Tr. Paul</h3>
-      <p>Mathematics, Music, Dance & Drama (MDD). Known for strict discipline and excellence in shaping performance and confidence.</p>
+      <p>Mathematics, MDD teacher known for discipline.</p>
     </div>
 
     <div class="teacher">
       <img src="images/anthony.jpeg">
       <h3>Tr. Anthony</h3>
-      <p>English Language teacher. Known for strong grammar foundation and communication skills training.</p>
+      <p>English teacher focused on communication skills.</p>
     </div>
 
     <div class="teacher">
       <img src="images/anyama.jpeg">
       <h3>Tr. Charles</h3>
-      <p>Science teacher. Known for experiments, curiosity building, and making science fun and practical.</p>
+      <p>Science teacher making experiments fun.</p>
     </div>
 
     <div class="teacher">
       <img src="images/robert.jpeg">
       <h3>Tr. Robert</h3>
-      <p>Social Studies teacher. Known for leadership training, history knowledge, and civic education.</p>
+      <p>Social Studies teacher and leadership mentor.</p>
     </div>
 
   </div>
@@ -290,41 +358,45 @@ footer {
     They were famously called <b>"The Generals"</b> because of their unity, discipline, and strong influence on students.
   </p>
 </div>
-
-<!-- GALLERY -->
 <div class="section">
-  <h2>School Gallery</h2>
+  <h2>Student Gallery</h2>
+  <p>Memories of students across different classes and years.</p>
+
   <div class="gallery">
-    <img src="images/school1.jpeg">
-    <img src="images/school2.jpeg">
-    <img src="images/school3.jpeg">
-    <img src="images/school4.jpeg">
-    <img src="images/school5.jpeg">
-    <img src="images/school6.jpeg">
-    <img src="images/school7.jpeg">
-    <img src="images/school8.jpeg">
-    <img src="images/school9.jpeg">
+    <img src="images/school1.jpeg" alt="School image 1">
+    <img src="images/school2.jpeg" alt="School image 2">
+    <img src="images/school3.jpeg" alt="School image 3">
+    <img src="images/school4.jpeg" alt="School image 4">
+    <img src="images/school5.jpeg" alt="School image 5">
+    <img src="images/school6.jpeg" alt="School image 6">
+    <img src="images/school7.jpeg" alt="School image 7">
+    <img src="images/school8.jpeg" alt="School image 8">
+    <img src="images/school9.jpeg" alt="School image 9">
   </div>
 </div>
-
 <!-- YEARS -->
 <div class="section">
   <h2>Explore Alumni Years</h2>
+
   <div class="years">
     <div onclick="go('2013.html')" class="year">Class of 2013</div>
     <div onclick="go('2014.html')" class="year">Class of 2014</div>
     <div onclick="go('2015.html')" class="year">Class of 2015</div>
     <div onclick="go('2016.html')" class="year">Class of 2016</div>
     <div onclick="go('2017.html')" class="year">Class of 2017</div>
+    <div onclick="go('2018.html')" class="year">Class of 2018</div>
+    <div onclick="go('2019.html')" class="year">Class of 2019</div>
+
     <div onclick="go('associates.html')" class="year">Associates</div>
-         <div onclick="go('about.html')" class="year">About</div>
-   <div onclick="go('contacts.html')" class="year">Contacts</div>
-   <div onclick="go('executives.html')" class="year">Executives</div>
-
-
+    <div onclick="go('about.html')" class="year">About</div>
+    <div onclick="go('contact.html')" class="year">Contacts</div>
+    <div onclick="go('executives.html')" class="year">Executives</div>
   </div>
 </div>
-<footer>
+
+
+<!-- FOOTER -->
+<footer style="text-align:center; padding:25px; background:rgba(0,0,0,0.5); margin-top:20px;">
 
   <div style="margin-bottom:10px;">
     <strong>Reach Me</strong>
@@ -344,15 +416,26 @@ footer {
     </a>
   </div>
 
-  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px auto; width:80%;">
 
   © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
   Developed with ❤️ by Moses Monday MALITH
 
 </footer>
-<script>
-function go(page){ window.location.href = page; }
 
+
+<script>
+function go(page){
+  window.location.href = page;
+}
+
+/* dropdown click fix */
+function toggleDropdown(e){
+  e.preventDefault();
+  document.querySelector(".dropdown-content").classList.toggle("show");
+}
+
+/* slideshow FULL RESTORED */
 const images = [
   "images/school1.jpeg",
   "images/school2.jpeg",
@@ -371,7 +454,7 @@ setInterval(() => {
   document.getElementById("slide").src = images[i];
 }, 3000);
 </script>
- 
+
 <!-- WHATSAPP FLOATING BUTTON -->
 <a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd?mode=gi_t" 
    class="whatsapp-float" target="_blank" title="Join Alumni WhatsApp Group">
@@ -404,6 +487,7 @@ setInterval(() => {
   transform: scale(1.1);
 }
 </style>
+
 
 </body>
 </html>
