@@ -3,31 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Alumni WhatsApp Contacts A–Z</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:linear-gradient(to right,#0f172a,#1e3a8a,#4c1d95);
-  color:white;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #0f172a, #1e3a8a, #4c1d95);
+  color: white;
 }
 
-h1{
-  text-align:center;
-  padding:20px;
-  color:#facc15;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:12px;
-  padding:20px;
-}nav {
+/* NAV - MATCHED TO HOME PAGE */
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.7);
   padding: 15px 20px;
   backdrop-filter: blur(12px);
   position: sticky;
@@ -35,101 +27,110 @@ h1{
   z-index: 100;
 }
 
-nav h2 {
-  margin: 0;
-  color: #facc15;
+nav h2 { margin: 0; color: #facc15; font-size: 20px; }
+nav ul { list-style: none; display: flex; gap: 15px; padding: 0; margin: 0; flex-wrap: wrap; }
+nav ul li a { color: white; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; }
+nav ul li a:hover { color: #facc15; }
+
+h1 { text-align: center; padding: 30px 20px 10px 20px; color: #facc15; margin: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 20px;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   transition: 0.3s;
 }
 
-nav ul li a:hover {
-  color: #facc15;
+.card:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.15); }
+.card h3 { color: #facc15; font-size: 15px; margin: 0 0 10px 0; }
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
 }
-/* FOOTER */
+
+.btn:hover { background: #1ebe57; }
+
+#searchInput {
+  width: 85%;
+  max-width: 400px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  display: block;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.9);
+}
+
 footer {
   text-align: center;
-  padding: 20px;
-  background: rgba(0,0,0,0.5);
-  margin-top: 20px;
+  padding: 30px 20px;
+  background: rgba(0,0,0,0.8);
+  margin-top: 40px;
 }
 
-
-.card{
-  background:rgba(255,255,255,0.08);
-  padding:15px;
-  border-radius:12px;
-  text-align:center;
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  z-index: 1000;
+  transition: 0.3s;
 }
-
-.card h3{
-  color:#facc15;
-  font-size:15px;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:8px;
-  padding:8px 12px;
-  background:#25D366;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-  font-weight:bold;
-}
+.whatsapp-float img { width: 30px; }
+.whatsapp-float:hover { transform: scale(1.1); }
 </style>
 </head>
 
 <body>
-    <nav>
+<nav>
   <h2>Alumni Portal</h2>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
-
-    <li><a href="2013.html">2013</a></li>
-    <li><a href="2014.html">2014</a></li>
-    <li><a href="2015.html">2015</a></li>
-    <li><a href="2016.html">2016</a></li>
-    <li><a href="2017.html">2017</a></li>
-    <li><a href="2018.html">2018</a></li>
-    <li><a href="2019.html">2019</a></li>
-
+       <li><a href="classes.html">Classes</a></li>
     <li><a href="associates.html">Associates</a></li>
-    <li><a href="contacts.html">Contacts</a></li>
+    <li><a href="contacts.html" style="color:#facc15;">Contacts</a></li>
     <li><a href="executives.html">Executives</a></li>
-     <li><a href="news.html">News</a></li>
+    <li><a href="news.html">News</a></li>
+     <li><a href="jobs.html">Jobs</a></li>
   </ul>
 </nav>
 
 <h1>Alumni WhatsApp Contacts (A–Z)</h1>
-<p style="text-align:center; padding:10px; color:#e5e7eb;">
-Connect with alumni, associates, and executives directly via WhatsApp. Stay linked, share opportunities, and grow your network.
+<p style="text-align:center; padding:10px; color:#e5e7eb; font-size: 14px;">
+Connect with alumni, associates, and executives directly via WhatsApp.
 </p>
-<div style="text-align:center; margin:20px;">
-  <input 
-    type="text" 
-    id="searchInput" 
-    placeholder="🔍 Search a name..." 
-    onkeyup="searchNames()"
-    style="width:80%; max-width:400px; padding:10px; border-radius:8px; border:none; outline:none; font-size:16px;"
-  />
+
+<div style="margin:20px 0;">
+  <input type="text" id="searchInput" placeholder="🔍 Search a name..." onkeyup="searchNames()">
 </div>
 
 <div class="grid">
-
-<!-- A -->
-<!-- A -->
 <div class="card"><h3>Aballo Prossy</h3><a class="btn" href="https://wa.me/">WhatsApp</a></div>
 <div class="card"><h3>Aber Fortunate</h3><a class="btn" href="https://wa.me/+256773253496">WhatsApp</a></div>
 <div class="card"><h3>Aber Prossy</h3><a class="btn" href="https://wa.me/+256765378837">WhatsApp</a></div>
@@ -137,7 +138,7 @@ Connect with alumni, associates, and executives directly via WhatsApp. Stay link
 <div class="card"><h3>Aber Tracy Tereza</h3><a class="btn" href="https://wa.me/+256780116712">WhatsApp</a></div>
 <div class="card"><h3>Achok Monica</h3><a class="btn" href="https://wa.me/+25490342093">WhatsApp</a></div>
 <div class="card"><h3>Achol</h3><a class="btn" href="https://wa.me/">WhatsApp</a></div>
-  <div class="card"><h3>Achok Monica</h3><a class="btn" href="https://wa.me/">WhatsApp</a></div>
+<div class="card"><h3>Achok Monica</h3><a class="btn" href="https://wa.me/">WhatsApp</a></div>
 <div class="card"><h3>Adoch Cindrella</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Adut Nancy</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Adyero Faith</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
@@ -167,25 +168,20 @@ Connect with alumni, associates, and executives directly via WhatsApp. Stay link
 <div class="card"><h3>Awanga Winnie</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Ayee Deborah</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- B -->
 <div class="card"><h3>Benson Bith</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Bol Thomas</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- D -->
 <div class="card"><h3>Deris</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- G -->
 <div class="card"><h3>Gabriel Yai</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Garang Aleu Kon</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Gofulu Irene</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Guem Nhial Matet</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- H -->
 <div class="card"><h3>Hanna Sitty</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Hayati Nyutayo</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Honest Fidema</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- J -->
 <div class="card"><h3>James Ifforo</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Jameson Makuei Nhial</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Jean Baptist Olara</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
@@ -194,13 +190,11 @@ Connect with alumni, associates, and executives directly via WhatsApp. Stay link
 <div class="card"><h3>John Kaman</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Juma Bosco</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- K -->
 <div class="card"><h3>Kakanyero Oscar Olit</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Kinya Sarah</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Kur Deng James</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Kur Marial</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- L -->
 <div class="card"><h3>Lakaraber Winniefred</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Lagum Tabitha</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Laker Brandy</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
@@ -212,7 +206,6 @@ Connect with alumni, associates, and executives directly via WhatsApp. Stay link
 <div class="card"><h3>Latwe Lucky</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Lakica Juliet</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- M -->
 <div class="card"><h3>Mabior Rengdit</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Malong Khon</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Mariak</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
@@ -225,14 +218,12 @@ Connect with alumni, associates, and executives directly via WhatsApp. Stay link
 <div class="card"><h3>Moses Monday MALITH</h3><a class="btn" href="https://wa.me/+250793904683">WhatsApp</a></div>
 <div class="card"><h3>Muna Sheeler Awad</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- N -->
 <div class="card"><h3>Nakayenze Winnie</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Niyee Lydia</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Niyabo Mary Nicholas</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Nyakiria Christine</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Nyankiir Amol Barach</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- O -->
 <div class="card"><h3>Ocora Daniel</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Odokonyero Bairon</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Odong Justine</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
@@ -246,107 +237,52 @@ Connect with alumni, associates, and executives directly via WhatsApp. Stay link
 <div class="card"><h3>Ogenrwot Patrick</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Ogenrwot Rodgers</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- P -->
 <div class="card"><h3>Phoebe Adyero Faith</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Paul Ocen</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Peter Opiyo</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Peter Maker</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- S -->
 <div class="card"><h3>Ssegawa Treasure</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Soloma Malek</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Stephen Inyani</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- T -->
 <div class="card"><h3>Thomas Thon Tiera</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Twinamasiko Lyndon</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Tr. Paul</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Tr. Charles</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- W -->
 <div class="card"><h3>Watmon Benjamin</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 <div class="card"><h3>Wek Majok</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
 
-<!-- Y -->
 <div class="card"><h3>Yaki David</h3><a class="btn" href="https://wa.me/XXXXXXXXXXX">WhatsApp</a></div>
-
 </div>
- 
+
 <footer>
-
+  <div style="margin-bottom:10px;"><strong>Reach Me</strong></div>
   <div style="margin-bottom:10px;">
-    <strong>Reach Me</strong>
+    📞 WhatsApp: <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">Chat with Moses</a>
   </div>
-
   <div style="margin-bottom:10px;">
-    📞 WhatsApp:
-    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
-      Chat with Moses
-    </a>
+    📧 Email: <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">mosesmondaymalith50@gmail.com</a>
   </div>
-
-  <div style="margin-bottom:10px;">
-    📧 Email:
-    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
-      mosesmondaymalith50@gmail.com
-    </a>
-  </div>
-
-  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
-
+  <hr style="border:1px solid rgba(255,255,255,0.1); margin:15px auto; width: 60%;">
   © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
   Developed with ❤️ by Moses Monday MALITH
-
 </footer>
+
 <script>
 function searchNames() {
   let input = document.getElementById("searchInput").value.toLowerCase();
   let cards = document.getElementsByClassName("card");
-
   for (let i = 0; i < cards.length; i++) {
     let name = cards[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
-
-    if (name.includes(input)) {
-      cards[i].style.display = "block";
-    } else {
-      cards[i].style.display = "none";
-    }
+    cards[i].style.display = name.includes(input) ? "block" : "none";
   }
 }
 </script>
-  
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd?mode=gi_t" 
-   class="whatsapp-float" target="_blank" title="Join Alumni WhatsApp Group">
-   
+
+<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank" title="Join Alumni WhatsApp Group">
    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp">
 </a>
-
-<style>
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 1000;
-  transition: transform 0.3s ease;
-}
-
-.whatsapp-float img {
-  width: 30px;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
-</style>
-
 </body>
 </html>
