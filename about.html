@@ -7,52 +7,84 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --primary: #facc15;
+  --bg-dark: #0f172a;
+  --nav-bg: #020617;
+  --text-main: #ffffff;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #0f172a;
-  color: white;
+  background: var(--bg-dark);
+  color: var(--text-main);
   overflow-x: hidden;
   line-height: 1.6;
 }
 
-/* --- NAVIGATION (SAME AS HOME PAGE) --- */
+/* --- NAVIGATION --- */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background: #020617;
+  padding: 15px 5%;
+  background: var(--nav-bg);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.logo { display: flex; align-items: center; gap: 10px; }
+.logo { display: flex; align-items: center; gap: 10px; z-index: 1001; }
 .logo img { width: 40px; border-radius: 50%; }
-.logo h3 { color: #facc15; margin: 0; }
+.logo h3 { color: var(--primary); margin: 0; font-size: 1.1rem; }
+
+/* Hamburger Menu Icon */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+#menu-checkbox { display: none; }
 
 nav ul { list-style: none; display: flex; gap: 10px; padding: 0; margin: 0; }
-nav a { text-decoration: none; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; }
-nav a:hover { background: #facc15; color: black; }
+nav a { 
+  text-decoration: none; 
+  color: white; 
+  padding: 8px 14px; 
+  border-radius: 8px; 
+  font-size: 14px; 
+  font-weight: 600; 
+  transition: 0.3s;
+}
+nav a:hover { background: var(--primary); color: black; }
 
-/* TICKER */
+/* --- TICKER --- */
 .ticker { background: #111827; overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 1px solid rgba(250, 204, 21, 0.2); }
-.ticker p { display: inline-block; padding-left: 100%; animation: move 18s linear infinite; color: #facc15; font-weight: 600; margin: 0; }
+.ticker p { display: inline-block; padding-left: 100%; animation: move 18s linear infinite; color: var(--primary); font-weight: 600; margin: 0; }
 @keyframes move { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-/* PAGE HEADER */
+/* --- PAGE HEADER --- */
 .page-header {
   text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('images/school1.jpeg');
+  padding: 80px 20px;
+  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/school1.jpeg');
   background-size: cover;
   background-position: center;
 }
+.page-header h1 { font-size: clamp(30px, 8vw, 48px); color: var(--primary); margin-bottom: 10px; }
 
-.page-header h1 { font-size: 42px; color: #facc15; margin-bottom: 10px; }
-
-/* CONTENT SECTIONS */
+/* --- CONTENT SECTIONS --- */
 .container { max-width: 900px; margin: auto; padding: 40px 20px; }
 
 .section-box {
@@ -60,19 +92,18 @@ nav a:hover { background: #facc15; color: black; }
   padding: 30px;
   border-radius: 15px;
   margin-bottom: 30px;
-  border-left: 5px solid #facc15;
+  border-left: 5px solid var(--primary);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
+.section-box h2 { color: var(--primary); margin-top: 0; }
 
-.section-box h2 { color: #facc15; margin-top: 0; }
-
-/* STATS GRID */
+/* --- STATS GRID --- */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
   margin: 40px 0;
 }
-
 .stat-box {
   background: rgba(255,255,255,0.05);
   padding: 20px;
@@ -80,46 +111,89 @@ nav a:hover { background: #facc15; color: black; }
   border-radius: 12px;
   border: 1px solid rgba(250, 204, 21, 0.2);
 }
+.stat-box h2 { color: var(--primary); margin: 0; font-size: 28px; }
 
-.stat-box h2 { color: #facc15; margin: 0; font-size: 28px; }
-
-/* BUTTONS */
+/* --- BUTTONS --- */
 .btn {
   display: inline-block;
   padding: 12px 25px;
-  background: #facc15;
+  background: var(--primary);
   color: black;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
   transition: 0.3s;
 }
+.btn:hover { transform: translateY(-3px); background: white; }
 
-.btn:hover { transform: scale(1.05); background: white; }
+/* --- MOBILE RESPONSIVE NAV --- */
+@media(max-width: 900px) {
+  .menu-toggle { display: flex; }
+  
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 15px;
+    display: none; /* Hidden by default */
+    border-bottom: 3px solid var(--primary);
+  }
 
-footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 40px; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
-footer a { color: #facc15; text-decoration: none; }
-
-@media(max-width: 600px){
-  nav ul { display: none; } /* On mobile, the nav items might crowd, usually solved with a burger menu, but kept simple here */
-  .page-header h1 { font-size: 30px; }
+  #menu-checkbox:checked ~ ul { display: flex; }
+  
+  nav a { width: 80%; text-align: center; }
 }
+
+/* --- FOOTER & WHATSAPP --- */
+footer { text-align: center; padding: 40px 20px; background: var(--nav-bg); margin-top: 40px; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+footer a { color: var(--primary); text-decoration: none; }
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float img { width: 30px; }
 </style>
 </head>
 
 <body>
 
 <nav>
-  <div class="logo"><img src="images/logo.jpg"><h3>Mount Olive Alumni</h3></div>
+  <div class="logo"><img src="images/logo.jpg" alt="Logo"><h3>Mount Olive Alumni</h3></div>
+  
+  <input type="checkbox" id="menu-checkbox">
+  <label for="menu-checkbox" class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html" style="background:#facc15; color:black;">About</a></li>
     <li><a href="classes.html">Classes</a></li>
-      <a href="associates.html">Associates</a>
+    <li><a href="associates.html">Associates</a></li>
     <li><a href="executives.html">Executives</a></li>
     <li><a href="news.html">News</a></li>
     <li><a href="contact.html">Contacts</a></li>
-      <li><a href="jobs.html">Jobs</a></li>
+    <li><a href="jobs.html">Jobs</a></li>
   </ul>
 </nav>
 
@@ -131,7 +205,6 @@ footer a { color: #facc15; text-decoration: none; }
 </div>
 
 <div class="container">
-
   <div class="stats">
     <div class="stat-box"><h2>7+</h2><p>Years of History</p></div>
     <div class="stat-box"><h2>100+</h2><p>Active Alumni</p></div>
@@ -155,59 +228,33 @@ footer a { color: #facc15; text-decoration: none; }
     <p>This portal was designed and developed by <strong>Moses Monday MALITH</strong>, a dedicated Computer Science student passionate about web development, cybersecurity, and community building.</p>
     <a href="https://wa.me/250793904683" target="_blank" class="btn">Connect with the Developer</a>
   </div>
-
 </div>
 
 <footer>
+    <div style="margin-bottom:20px;">
+        <strong style="color:var(--primary); font-size: 1.2rem;">Reach Me</strong>
+    </div>
 
-  <div style="margin-bottom:10px;">
-    <strong>Reach Me</strong>
-  </div>
+    <div style="margin-bottom:10px;">
+        📞 WhatsApp:
+        <a href="https://wa.me/250793904683" target="_blank">Chat with Moses</a>
+    </div>
 
-  <div style="margin-bottom:10px;">
-    📞 WhatsApp:
-    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
-      Chat with Moses
-    </a>
-  </div>
+    <div style="margin-bottom:10px;">
+        📧 Email:
+        <a href="mailto:mosesmondaymalith50@gmail.com">mosesmondaymalith50@gmail.com</a>
+    </div>
 
-  <div style="margin-bottom:10px;">
-    📧 Email:
-    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
-      mosesmondaymalith50@gmail.com
-    </a>
-  </div>
+    <hr style="border:0; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px auto; max-width: 500px;">
 
-  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
-
-  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
-  Developed with ❤️ by Moses Monday MALITH
-
-</footer>
+    <p style="font-size: 13px; opacity: 0.7;">
+        © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+        Developed with ❤️ by Moses Monday MALITH
+    </p>
 
 <a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp">
 </a>
-
-<style>
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 1000;
-  transition: 0.3s;
-}
-.whatsapp-float:hover { transform: scale(1.1); }
-.whatsapp-float img { width: 30px; }
-</style>
 
 </body>
 </html>
