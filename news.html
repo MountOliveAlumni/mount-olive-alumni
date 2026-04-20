@@ -10,7 +10,8 @@
 :root {
   --primary: #facc15;
   --accent: #22c55e;
-  --glass: rgba(15, 23, 42, 0.9);
+  --glass: rgba(15, 23, 42, 0.95);
+  --bg-dark: #0f172a;
 }
 
 body {
@@ -19,6 +20,7 @@ body {
   background: linear-gradient(135deg, #0f172a, #1e3a8a, #4c1d95);
   background-attachment: fixed;
   color: white;
+  line-height: 1.6;
 }
 
 /* --- NAVIGATION --- */
@@ -28,33 +30,43 @@ nav {
   align-items: center;
   padding: 15px 5%;
   background: var(--glass);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-nav h2 { color: var(--primary); margin: 0; font-size: 1.2rem; }
+.logo-text { color: var(--primary); margin: 0; font-size: 1.2rem; font-weight: 700; z-index: 1001; }
 
-nav ul { 
-  list-style: none; 
-  display: flex; 
-  gap: 20px; 
-  margin: 0; 
-  padding: 0; 
-  align-items: center;
+/* Hamburger Menu Icon */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 5px;
 }
 
-nav ul li a { 
+#menu-checkbox { display: none; }
+
+nav ul { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0; }
+nav a { 
   text-decoration: none; 
   color: white; 
-  font-size: 14px; 
-  font-weight: 500;
+  padding: 8px 14px; 
+  border-radius: 8px; 
+  font-size: 13px; 
+  font-weight: 500; 
   transition: 0.3s; 
 }
-
-nav ul li a:hover { color: var(--primary); }
+nav a:hover, nav a.active { background: var(--primary); color: #000; font-weight: 700; }
 
 /* --- TICKER --- */
 .news-sub { 
@@ -63,7 +75,6 @@ nav ul li a:hover { color: var(--primary); }
   overflow: hidden; 
   border-bottom: 1px solid rgba(34, 197, 94, 0.3); 
 }
-
 .sub-track { 
   white-space: nowrap; 
   display: inline-block; 
@@ -71,7 +82,6 @@ nav ul li a:hover { color: var(--primary); }
   font-weight: 600; 
   animation: subMove 25s linear infinite; 
 }
-
 @keyframes subMove { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
 /* --- SECTIONS --- */
@@ -80,79 +90,99 @@ nav ul li a:hover { color: var(--primary); }
 .section { 
   background: rgba(255,255,255,0.06); 
   padding: 30px; 
-  border-radius: 15px; 
-  margin-bottom: 30px; 
+  border-radius: 20px; 
+  margin-bottom: 40px; 
   border: 1px solid rgba(255,255,255,0.1); 
   backdrop-filter: blur(5px);
 }
-
 h1, h2 { color: var(--primary); }
+.section h2 { border-left: 4px solid var(--accent); padding-left: 15px; }
 
 .grid { 
   display: grid; 
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
   gap: 15px; 
+  margin-top: 20px;
 }
 
 .card { 
   background: rgba(255,255,255,0.05); 
   padding: 20px; 
   border-radius: 12px; 
-  border-left: 4px solid var(--accent); 
+  border-bottom: 3px solid var(--accent); 
   transition: 0.3s ease; 
 }
-
 .card:hover { 
   transform: translateY(-5px); 
   background: rgba(255,255,255,0.1); 
   border-color: var(--primary);
 }
-
 .card h3 { color: var(--accent); margin: 0 0 5px 0; font-size: 1.1rem; }
 .card p { font-size: 13px; color: #cbd5e1; margin: 0; }
+
+/* --- MOBILE RESPONSIVE NAV --- */
+@media(max-width: 900px) {
+  .menu-toggle { display: flex; }
+  
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #020617;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 15px;
+    display: none;
+    border-bottom: 3px solid var(--primary);
+  }
+
+  #menu-checkbox:checked ~ ul { display: flex; }
+  nav a { width: 80%; text-align: center; font-size: 16px; }
+}
 
 /* --- FOOTER --- */
 footer { 
   text-align: center; 
-  padding: 40px; 
+  padding: 60px 20px; 
   background: rgba(0,0,0,0.5); 
   margin-top: 40px; 
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
-
-footer a { color: var(--primary); text-decoration: none; }
+footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
 
 .whatsapp-float { 
-  position: fixed; 
-  bottom: 25px; 
-  right: 25px; 
-  width: 60px; 
-  height: 60px; 
-  background: #25D366; 
-  border-radius: 50%; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  z-index: 1000; 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+  position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; 
+  background: #25D366; border-radius: 50%; display: flex; 
+  align-items: center; justify-content: center; z-index: 1000; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s;
 }
+.whatsapp-float:hover { transform: scale(1.1); }
 
-@media(max-width: 900px) { nav ul { display: none; } }
 </style>
 </head>
 <body>
 
 <nav>
-  <h2>Mount Olive Alumni</h2>
+  <div class="logo-text">Mount Olive Alumni</div>
+  
+  <input type="checkbox" id="menu-checkbox">
+  <label for="menu-checkbox" class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="classes.html">Classes</a></li> 
-    <a href="associates.html">Associates</a>
+    <li><a href="associates.html">Associates</a></li>
     <li><a href="executives.html">Executives</a></li>
-    <li><a href="news.html">News</a></li>
+    <li><a href="news.html" class="active">News</a></li>
     <li><a href="contacts.html">Contacts</a></li>
     <li><a href="jobs.html">Jobs</a></li>
-
   </ul>
 </nav>
 
@@ -162,7 +192,7 @@ footer a { color: var(--primary); text-decoration: none; }
   </div>
 </div>
 
-<header style="text-align:center; padding: 50px 20px;">
+<header style="text-align:center; padding: 60px 20px;">
   <h1>🏛️ Alumni News Directory</h1>
   <p>Complete record of alumni grouped by professional domain</p>
 </header>
@@ -173,7 +203,7 @@ footer a { color: var(--primary); text-decoration: none; }
     <h2>⚖️ Law & Legal Studies</h2>
     <div class="grid">
       <div class="card"><h3>Achok Monica</h3><p>LLB Student</p></div>
-      <div class="card"><h3>Andrua Stephen</h3><p>Law student, determined and focused with strong leadership potential and passion for justice and advocacy</p></div>
+      <div class="card"><h3>Andrua Stephen</h3><p>Law student with strong leadership potential and passion for advocacy.</p></div>
       <div class="card"><h3>Opiyo Emmy</h3><p>Law Student</p></div>
       <div class="card"><h3>Akot Millie Grace</h3><p>Law Student</p></div>
       <div class="card"><h3>Pegene</h3><p>Law Student</p></div>
@@ -188,8 +218,8 @@ footer a { color: var(--primary); text-decoration: none; }
   <div class="section">
     <h2>🏥 Health & Medicine</h2>
     <div class="grid">
-      <div class="card"><h3>Akol Joseph</h3><p>Bachelor of Medicine and Bachelor of Surgery (MBBS) Student</p></div>
-      <div class="card"><h3>Peter Maker</h3><p>Bachelor of Medicine and Bachelor of Surgery (MBBS) Student & Entrepreneur</p></div>
+      <div class="card"><h3>Akol Joseph</h3><p>MBBS Student</p></div>
+      <div class="card"><h3>Peter Maker</h3><p>MBBS Student & Entrepreneur</p></div>
       <div class="card"><h3>Oyaka Isaac Wilson Olara</h3><p>Medical Clinical Officer</p></div>
       <div class="card"><h3>Mercy Francisca</h3><p>Nurse</p></div>
       <div class="card"><h3>Akello Immaculate</h3><p>Nurse</p></div>
@@ -200,7 +230,7 @@ footer a { color: var(--primary); text-decoration: none; }
       <div class="card"><h3>Twinamasiko Lyndon</h3><p>Clinical Officer</p></div>
       <div class="card"><h3>Joan Adyero</h3><p>Nurse</p></div>
       <div class="card"><h3>Nyakiria Christen</h3><p>Qualified Nurse</p></div>
-      <div class="card"><h3>Maluong Mabor</h3><p>Laboratory Science student at University of Juba, focused and ambitious</p></div>
+      <div class="card"><h3>Maluong Mabor</h3><p>Laboratory Science Student (University of Juba)</p></div>
     </div>
   </div>
 
@@ -208,8 +238,8 @@ footer a { color: var(--primary); text-decoration: none; }
     <h2>💼 Business & Entrepreneurship</h2>
     <div class="grid">
       <div class="card"><h3>Ojok Junior</h3><p>Transport Business Owner</p></div>
-      <div class="card"><h3>Agot Maketh</h3><p>Clearing agent operating a company at Nimule border</p></div>
-      <div class="card"><h3>Odong Justine</h3><p>Graduate in Science of Finance (Strong in Mathematics & Finance)</p></div>
+      <div class="card"><h3>Agot Maketh</h3><p>Clearing Agent at Nimule Border</p></div>
+      <div class="card"><h3>Odong Justine</h3><p>Finance Specialist</p></div>
       <div class="card"><h3>Ojara Alex</h3><p>Furniture Business</p></div>
       <div class="card"><h3>Kica Francis</h3><p>Furniture Entrepreneur</p></div>
       <div class="card"><h3>Rubangakene Jordan</h3><p>Lodge Owner & Trade</p></div>
@@ -217,22 +247,22 @@ footer a { color: var(--primary); text-decoration: none; }
       <div class="card"><h3>Akuol Mary</h3><p>Entrepreneur</p></div>
       <div class="card"><h3>Akera Moses</h3><p>Businessman</p></div>
       <div class="card"><h3>Okello Philip</h3><p>Businessman</p></div>
-      <div class="card"><h3>Ajak</h3><p>Graduate in the petroleum domain</p></div>
-      <div class="card"><h3>Aber Sofi</h3><p>Salon business based in Gulu specializing in beauty and hair services</p></div>
-      <div class="card"><h3>Atimango Cenderalla</h3><p>Business Lady in Gulu (Entrepreneur)</p></div>
+      <div class="card"><h3>Ajak</h3><p>Petroleum Graduate</p></div>
+      <div class="card"><h3>Aber Sofi</h3><p>Beauty & Hair Specialist</p></div>
+      <div class="card"><h3>Atimango Cenderalla</h3><p>Entrepreneur in Gulu</p></div>
       <div class="card"><h3>Kakanyero Oscar Olit</h3><p>Electronics & Agriculture</p></div>
-      <div class="card"><h3>Anying Grace</h3><p>Businesswoman operating in Gulu Main Market</p></div>
+      <div class="card"><h3>Anying Grace</h3><p>Businesswoman</p></div>
       <div class="card"><h3>Aloyo Esther Otim</h3><p>Entrepreneur</p></div>
       <div class="card"><h3>Mathew Madut</h3><p>Businessman</p></div>
       <div class="card"><h3>Wek Majok</h3><p>Business & Government</p></div>
       <div class="card"><h3>Lagum Tabitha</h3><p>Qualified Accountant</p></div>
-      <div class="card"><h3>Aber Fortunate</h3><p>Procurement & Supply Chain Management Student</p></div>
+      <div class="card"><h3>Aber Fortunate</h3><p>Procurement Student</p></div>
       <div class="card"><h3>Guem Nhial Matet</h3><p>Business & Government</p></div>
       <div class="card"><h3>Oroma Sunday</h3><p>YouTuber & Businessman</p></div>
-      <div class="card"><h3>Ogenrwot Joshua Oyoo</h3><p>Procurement student at Gulu University. Focused on logistics.</p></div>
-      <div class="card"><h3>Arek Harriet Deng</h3><p>Real Estate Business Management Student</p></div>
-      <div class="card"><h3>Achol Gift Deng</h3><p>International Business and International Relations student</p></div>
-      <div class="card"><h3>Mabior Rengdit</h3><p>Businessman operating in Dubai</p></div>
+      <div class="card"><h3>Ogenrwot Joshua Oyoo</h3><p>Logistics & Procurement</p></div>
+      <div class="card"><h3>Arek Harriet Deng</h3><p>Real Estate Student</p></div>
+      <div class="card"><h3>Achol Gift Deng</h3><p>International Business Student</p></div>
+      <div class="card"><h3>Mabior Rengdit</h3><p>Businessman (Dubai)</p></div>
     </div>
   </div>
 
@@ -240,11 +270,11 @@ footer a { color: var(--primary); text-decoration: none; }
     <h2>🏛️ Government & Public Service</h2>
     <div class="grid">
       <div class="card"><h3>Simon Peter Aguer Deng</h3><p>Government Official</p></div>
-      <div class="card"><h3>Bol Thomas</h3><p>Journalist & Government Practitioner</p></div>
+      <div class="card"><h3>Bol Thomas</h3><p>Journalist & Practitioner</p></div>
       <div class="card"><h3>Okwera Fredrick Michael</h3><p>Land Surveyor</p></div>
       <div class="card"><h3>Kur Marial</h3><p>Traffic Officer</p></div>
       <div class="card"><h3>Alex Manguen</h3><p>Immigration Officer</p></div>
-      <div class="card"><h3>Monyping Manguen</h3><p>Immigration Officer & Footballer</p></div>
+      <div class="card"><h3>Monyping Manguen</h3><p>Immigration & Athlete</p></div>
       <div class="card"><h3>Malong</h3><p>IT & Diplomat</p></div>
       <div class="card"><h3>Mariak Wek</h3><p>Immigration Officer</p></div>
     </div>
@@ -253,37 +283,16 @@ footer a { color: var(--primary); text-decoration: none; }
   <div class="section">
     <h2>🎓 Education & Academic Studies</h2>
     <div class="grid">
-      <div class="card"><h3>Juma Bosco</h3><p>Science Teacher (Physics, Mathematics, Biology & Chemistry)</p></div>
-      <div class="card"><h3>Lanyero Mercy Natalia</h3><p>Public Administrator, debater, and author</p></div>
+      <div class="card"><h3>Juma Bosco</h3><p>Science Teacher (Phy/Math/Bio/Chem)</p></div>
+      <div class="card"><h3>Lanyero Mercy Natalia</h3><p>Public Administrator & Author</p></div>
       <div class="card"><h3>Jennifer Charles</h3><p>Business Management</p></div>
-      <div class="card"><h3>Lakica Juliet</h3><p>Education</p></div>
+      <div class="card"><h3>Lakica Juliet</h3><p>Education Specialist</p></div>
       <div class="card"><h3>Jean Baptist Olara</h3><p>Public Administration</p></div>
       <div class="card"><h3>Ogenrwot Peter</h3><p>University Student</p></div>
       <div class="card"><h3>Lamaro Tracy</h3><p>HRM Specialist</p></div>
       <div class="card"><h3>Aber Tracy</h3><p>Business Administration</p></div>
-      <div class="card"><h3>Agot Monica</h3><p>Student pursuing her studies</p></div>
-      <div class="card"><h3>Watmon Benjamin</h3><p>University Student</p></div>
-      <div class="card"><h3>Wade Meen Mathiang</h3><p>Social and Economics Statistics Student</p></div>
-      <div class="card"><h3>Amito Mercy Clara</h3><p>International Relations & Peace and Security Student</p></div>
-      <div class="card"><h3>Lagen Shiela</h3><p>Student pursuing her studies</p></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>📊 General Development & Sports</h2>
-    <div class="grid">
-      <div class="card"><h3>Opiyo</h3><p>Science Leader</p></div>
-      <div class="card"><h3>Albert Aoli</h3><p>Disciplined Student</p></div>
-      <div class="card"><h3>Anyidi Emmanuel</h3><p>Consistent Performer</p></div>
-      <div class="card"><h3>Okello Innocent</h3><p>Disciplined Learner</p></div>
-      <div class="card"><h3>Okello Jacob</h3><p>Goal Driven</p></div>
-      <div class="card"><h3>Okello Andrew</h3><p>Ambitious Learner</p></div>
-      <div class="card"><h3>Ocora Daniel</h3><p>Hardworking Student</p></div>
-      <div class="card"><h3>Paul Ocen</h3><p>Focused Student</p></div>
-      <div class="card"><h3>Piloya Korina</h3><p>Bright Student</p></div>
-      <div class="card"><h3>Ssegawa Treasure</h3><p>Organized Individual</p></div>
-      <div class="card"><h3>Atto</h3><p>Active Student</p></div>
-      <div class="card"><h3>Yaki David</h3><p>Hardworking Student</p></div>
+      <div class="card"><h3>Amito Mercy Clara</h3><p>International Relations Student</p></div>
+      <div class="card"><h3>Wade Meen Mathiang</h3><p>Statistics Student</p></div>
     </div>
   </div>
 
@@ -298,7 +307,7 @@ footer a { color: var(--primary); text-decoration: none; }
   </div>
 </footer>
 
-<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank" title="Join Alumni WhatsApp Group">
+<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp" width="30">
 </a>
 
