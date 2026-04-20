@@ -7,122 +7,124 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --primary: #facc15;
+  --bg-dark: #0f172a;
+  --glass: rgba(2, 6, 23, 0.95);
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #0f172a;
+  background: var(--bg-dark);
   color: white;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* --- NAVIGATION (CONSISTENT) --- */
+/* --- NAVIGATION --- */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background: #020617;
+  padding: 12px 5%;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.logo { display: flex; align-items: center; gap: 10px; }
-.logo img { width: 40px; border-radius: 50%; }
-.logo h3 { color: #facc15; margin: 0; }
+.logo { display: flex; align-items: center; gap: 10px; z-index: 1001; }
+.logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary); }
+.logo h3 { color: var(--primary); margin: 0; font-size: 1.1rem; }
 
-nav ul { list-style: none; display: flex; gap: 10px; padding: 0; margin: 0; }
-nav a { text-decoration: none; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; }
-nav a:hover { background: #facc15; color: black; }
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.menu-toggle span { width: 25px; height: 3px; background: var(--primary); border-radius: 5px; }
+#menu-checkbox { display: none; }
+
+nav ul { list-style: none; display: flex; gap: 5px; margin: 0; padding: 0; }
+nav a { 
+  text-decoration: none; 
+  color: white; 
+  padding: 8px 14px; 
+  border-radius: 8px; 
+  font-size: 13px; 
+  font-weight: 600; 
+  transition: 0.3s; 
+}
+nav a:hover, nav a.active { background: var(--primary); color: #000; }
 
 /* TICKER */
-.ticker { background: #111827; overflow: hidden; white-space: nowrap; padding: 10px 0; border-bottom: 1px solid rgba(250, 204, 21, 0.2); }
-.ticker p { display: inline-block; padding-left: 100%; animation: move 18s linear infinite; color: #facc15; font-weight: 600; margin: 0; }
+.ticker { background: #111827; overflow: hidden; white-space: nowrap; padding: 12px 0; border-bottom: 1px solid rgba(250, 204, 21, 0.2); }
+.ticker p { display: inline-block; padding-left: 100%; animation: move 20s linear infinite; color: var(--primary); font-weight: 600; margin: 0; }
 @keyframes move { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
   text-align: center;
   padding: 80px 20px;
-  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/school1.jpeg');
+  background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('images/school1.jpeg');
   background-size: cover;
   background-position: center;
 }
+.hero h1 { font-size: clamp(2rem, 8vw, 3.5rem); color: var(--primary); margin: 10px 0; }
+.batch-badge { background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 12px; text-transform: uppercase; }
 
-.hero h1 { font-size: 45px; color: #facc15; margin-bottom: 10px; }
-.hero .batch-badge { background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+/* CONTENT */
+.container { max-width: 1200px; margin: auto; padding: 20px; }
+.section { background: #1e293b; padding: 25px; border-radius: 20px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.05); }
+.section h2 { color: var(--primary); border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 20px; }
 
-/* SECTION STYLES */
-.container { max-width: 1100px; margin: auto; padding: 40px 20px; }
-.section { background: #1e293b; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
-.section h2 { color: #facc15; border-bottom: 2px solid rgba(250, 204, 21, 0.3); padding-bottom: 10px; margin-top: 0; }
+/* GRID */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+.card { background: #0f172a; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); transition: 0.4s ease; }
+.card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.card img { width: 100%; height: 320px; object-fit: cover; object-position: top; background: #020617; }
+.card-content { padding: 20px; text-align: center; }
+.card-content h3 { color: var(--primary); margin: 0 0 10px 0; font-size: 1.2rem; }
+.card-content p { font-size: 13px; color: #cbd5e1; margin: 0; }
 
-/* STUDENT NAME LIST */
-.student-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-}
-.student-list li { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; border-left: 3px solid #3b82f6; }
-
-/* PROFILES GRID */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-.card { background: #1e293b; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; text-align: center; }
-.card:hover { transform: translateY(-10px); border-color: #facc15; }
-
-.card img { 
-  width: 100%; 
-  height: 280px; 
-  object-fit: cover; 
-  object-position: 50% 15%; /* CRITICAL FACE FOCUS */
-  background: #020617;
+/* MOBILE RESPONSIVE NAV */
+@media(max-width: 900px) {
+  .menu-toggle { display: flex; }
+  nav ul {
+    position: absolute; top: 100%; left: 0; width: 100%;
+    background: #020617; flex-direction: column; align-items: center;
+    padding: 20px 0; gap: 15px; display: none; border-bottom: 3px solid var(--primary);
+  }
+  #menu-checkbox:checked ~ ul { display: flex; }
+  nav a { width: 80%; text-align: center; font-size: 16px; }
 }
 
-.card-content { padding: 20px; }
-.card-content h3 { margin: 0 0 10px 0; color: #facc15; }
-.card-content p { font-size: 14px; color: #cbd5e1; line-height: 1.5; margin: 0; }
+footer { text-align: center; padding: 60px 20px; background: #020617; border-top: 1px solid rgba(255,255,255,0.1); }
+footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
 
-/* TEACHER BOXES */
-.teacher-box {
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: bold;
-  background: linear-gradient(135deg, #facc15, #f97316);
-  color: black;
-}
-
-/* FOOTER */
-footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
-footer a { color: #facc15; text-decoration: none; }
-
-/* WHATSAPP FLOATING */
-.whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-
-@media(max-width: 600px){
-  nav ul { display: none; }
-  .hero h1 { font-size: 32px; }
-}
+.whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1000; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo"><img src="images/logo.jpg"><h3>Mount Olive Alumni</h3></div>
+  <div class="logo"><img src="images/logo.jpg" alt="Logo"><h3>Mount Olive Alumni</h3></div>
+  <input type="checkbox" id="menu-checkbox">
+  <label for="menu-checkbox" class="menu-toggle"><span></span><span></span><span></span></label>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="classes.html">Classes</a></li>
-    <a href="associates.html">Associates</a>
+    <li><a href="associates.html">Associates</a></li>
     <li><a href="executives.html">Executives</a></li>
     <li><a href="news.html">News</a></li>
     <li><a href="contact.html">Contacts</a></li>
-     <li><a href="jobs.html">Jobs</a></li>
-         
+    <li><a href="jobs.html">Jobs</a></li>
   </ul>
 </nav>
 
@@ -135,260 +137,50 @@ footer a { color: #facc15; text-decoration: none; }
 </div>
 
 <div class="container">
+  
+  <section class="section">
+    <h2>Academic Profile</h2>
+    <p>The Class of 2015 is remembered for discipline, unity, and academic excellence at Mount Olive Good Shepherd Primary School. Students excelled in academics, sports, and co-curricular activities, building a strong bond that remains today.</p>
+  </section>
 
-  <div class="section">
-    <h2>About the Class of 2015</h2>
-    <p>The Class of 2015 is remembered for discipline, unity, and academic excellence at Mount Olive Good Shepherd Primary School. Students excelled in academics, sports, and co-curricular activities, building a strong bond that remains today. Many are now pursuing professional careers and higher education worldwide.</p>
+  <div class="grid">
+    <div class="card"><img src="./images/Lyndo.jpeg"><div class="card-content"><h3>Twinamasiko Lyndon</h3><p>Qualified Clinical Officer recognized for strong academic discipline.</p></div></div>
+    <div class="card"><img src="./images/jean.jpeg"><div class="card-content"><h3>Jean Baptist Olara</h3><p>Public Administrator and Professional Photographer at Gulu University.</p></div></div>
+    <div class="card"><img src="./images/ojok.jpeg"><div class="card-content"><h3>Ojok Junior</h3><p>Entrepreneur managing a transportation business in Gulu.</p></div></div>
+    <div class="card"><img src="./images/brian.jpeg"><div class="card-content"><h3>Odokonyero Brian</h3><p>Known as a disciplined and hardworking alumnus dedicated to growth.</p></div></div>
+    <div class="card"><img src="./images/gofulu.jpeg"><div class="card-content"><h3>Gofulu Irene</h3><p>Qualified Nursing professional serving with care and medical expertise.</p></div></div>
+    <div class="card"><img src="./images/patricia.jpeg"><div class="card-content"><h3>Lamunu Patricia Eunice</h3><p>A bright and ambitious student continuing her path toward success.</p></div></div>
+    <div class="card"><img src="./images/patric.jpeg"><div class="card-content"><h3>Ogenrwot Patrick</h3><p>Focused alumnus currently advancing his studies in higher education.</p></div></div>
+    <div class="card"><img src="./images/cindy.jpeg"><div class="card-content"><h3>Adoch Cindrella</h3><p>A disciplined and goal-driven professional building a solid career.</p></div></div>
+    <div class="card"><img src="./images/kinya.jpeg"><div class="card-content"><h3>Kinya Sarah</h3><p>Dedicated learner committed to continuous self-improvement.</p></div></div>
+    <div class="card"><img src="images/agot.jpeg"><div class="card-content"><h3>Agot Maketh</h3><p>Professional Clearing Agent at the Nimule border.</p></div></div>
+    <div class="card"><img src="./images/phoebe.jpeg"><div class="card-content"><h3>Phoebe Adyero Faith</h3><p>Pursuing a degree in Biosystems Engineering.</p></div></div>
+    <div class="card"><img src="./images/lamwaka.jpeg"><div class="card-content"><h3>Lamwaka Mirriam</h3><p>A hardworking and dedicated learner building a bright future.</p></div></div>
+    <div class="card"><img src="./images/muna.jpeg"><div class="card-content"><h3>Muna Sheeler</h3><p>Ambitious alumna recognized for her focus on excellence.</p></div></div>
+    <div class="card"><img src="./images/adut.jpeg"><div class="card-content"><h3>Adut Nancy</h3><p>Ambitious former student currently dedicated to university education.</p></div></div>
+    <div class="card"><img src="./images/mathew.jpeg"><div class="card-content"><h3>Mathew Madut</h3><p>Known as 'Aku Andrew', a thriving businessman in Juba.</p></div></div>
+    <div class="card"><img src="./images/Kur.jpeg"><div class="card-content"><h3>Kur Marial</h3><p>Known as 'Lil Cash Da Boss', serving as a Traffic Officer.</p></div></div>
+    <div class="card"><img src="./images/Watmond.jpeg"><div class="card-content"><h3>Ogenrwot Rodgers</h3><p>Professional alumnus working diligently toward his aspirations.</p></div></div>
+    <div class="card"><img src="./images/angel.jpg"><div class="card-content"><h3>Akello Angel</h3><p>Focused and ambitious Law student pursuing justice.</p></div></div>
+    <div class="card"><img src="./images/Wek.jpeg"><div class="card-content"><h3>Mariak Wek</h3><p>Immigration Officer studying at the University of Juba.</p></div></div>
+    <div class="card"><img src="./images/Deng.jpeg"><div class="card-content"><h3>Mariak Deng</h3><p>IT professional in training, studying Information Technology.</p></div></div>
+    <div class="card"><img src="./images/prossy.jpg"><div class="card-content"><h3>Aber Prossy</h3><p>Innovative and focused student pursuing her passions.</p></div></div>
+    <div class="card"><img src="./images/Mercy.jpeg"><div class="card-content"><h3>Mercy</h3><p>Bright and confident alumna known for academic persistence.</p></div></div>
+    <div class="card"><img src="./images/Awanga.jpeg"><div class="card-content"><h3>Awanga Joan</h3><p>Disciplined and respectful student building a strong future.</p></div></div>
   </div>
+</div>
 
-  <div class="section">
-    <h2>Student Directory</h2>
-    <ul class="student-list">
-      <li>Twinamasiko Lyndon</li>
-      <li>Kur Marial</li>
-      <li>Mariak Wel</li>
-      <li>Mariak Deng</li>
-      <li>Mercy</li>
-      <li>Awanga Joan</li>
-      <li>Ogenrwot Rodgers</li>
-      <li>Agot Maketh</li>
-      <li>Akello Angel</li>
-      <li>Aber Prossy</li>
-      <li>Ogenrwot Patrick</li>
-      <li>Mathew Madut</li>
-      <li>Adut Nancy</li>
-      <li>Muna Sheeler Awad</li>
-      <li>Kinya Sarah</li>
-      <li>Gofulu Irene</li>
-      <li>Phoebe Adyero Faith</li>
-      <li>Odokonyero Bairon</li>
-      <li>Adoch Cindrella</li>
-      <li>Lamunu Patricia Eunice</li>
-      <li>Lamwaka Mirriam</li>
-      <li>Jean Baptist Olara</li>
-      <li>Ojok Junior</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Student Profiles</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="./images/Lyndo.jpeg">
-        <div class="card-content">
-          <h3>Twinamasiko Lyndon</h3>
-          <p>Qualified Clinical Officer recognized for strong academic discipline and commitment to healthcare.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/jean.jpeg">
-        <div class="card-content">
-          <h3>Jean Baptist Olara</h3>
-          <p>Public Administrator and Professional Photographer at Gulu University with an interest in governance.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/ojok.jpeg">
-        <div class="card-content">
-          <h3>Ojok Junior</h3>
-          <p>Entrepreneur managing a transportation business in Gulu, providing reliable logistics services.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/brian.jpeg">
-        <div class="card-content">
-          <h3>Odokonyero Brian</h3>
-          <p>Known as a disciplined and hardworking alumnus dedicated to professional growth.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/gofulu.jpeg">
-        <div class="card-content">
-          <h3>Gofulu Irene</h3>
-          <p>Qualified Nursing professional serving with care and medical expertise.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/patricia.jpeg">
-        <div class="card-content">
-          <h3>Lamunu Patricia Eunice</h3>
-          <p>A bright and ambitious student continuing her path toward academic success.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/patric.jpeg">
-        <div class="card-content">
-          <h3>Ogenrwot Patrick</h3>
-          <p>Focused alumnus currently advancing his studies in higher education.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/cindy.jpeg">
-        <div class="card-content">
-          <h3>Adoch Cindrella</h3>
-          <p>A disciplined and goal-driven professional building a solid career foundation.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/kinya.jpeg">
-        <div class="card-content">
-          <h3>Kinya Sarah</h3>
-          <p>Dedicated learner committed to continuous self-improvement and future leadership.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="images/agot.jpeg">
-        <div class="card-content">
-          <h3>Agot Maketh</h3>
-          <p>Professional Clearing Agent operating a successful logistics company at the Nimule border.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/phoebe.jpeg">
-        <div class="card-content">
-          <h3>Phoebe Adyero Faith</h3>
-          <p>Currently pursuing a degree in Biosystems Engineering with a focus on technical innovation.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/lamwaka.jpeg">
-        <div class="card-content">
-          <h3>Lamwaka Mirriam</h3>
-          <p>A hardworking and dedicated learner building a bright future for herself.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/muna.jpeg">
-        <div class="card-content">
-          <h3>Muna Sheeler</h3>
-          <p>Ambitious alumna recognized for her hard work and focus on excellence.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/adut.jpeg">
-        <div class="card-content">
-          <h3>Adut Nancy</h3>
-          <p>Ambitious former student currently dedicated to her university education.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/mathew.jpeg">
-        <div class="card-content">
-          <h3>Mathew Madut</h3>
-          <p>Known as 'Aku Andrew', a thriving businessman operating in Juba.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/Kur.jpeg">
-        <div class="card-content">
-          <h3>Kur Marial</h3>
-          <p>Known as 'Lil Cash Da Boss', currently serving as a dedicated Traffic Officer.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/Watmond.jpeg">
-        <div class="card-content">
-          <h3>Ogenrwot Rodgers</h3>
-          <p>Professional alumnus working diligently toward his career aspirations.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/angel.jpg">
-        <div class="card-content">
-          <h3>Akello Angel</h3>
-          <p>Focused and ambitious Law student pursuing justice and legal excellence.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/Wek.jpeg">
-        <div class="card-content">
-          <h3>Mariak Wek</h3>
-          <p>Immigration Officer currently pursuing studies at the University of Juba.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/Deng.jpeg">
-        <div class="card-content">
-          <h3>Mariak Deng</h3>
-          <p>IT professional in training, studying Information Technology at university.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/prossy.jpg">
-        <div class="card-content">
-          <h3>Aber Prossy</h3>
-          <p>Innovative and focused student pursuing her passions with dedication.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/Mercy.jpeg">
-        <div class="card-content">
-          <h3>Mercy</h3>
-          <p>Bright and confident alumna known for her academic persistence.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="./images/Awanga.jpeg">
-        <div class="card-content">
-          <h3>Awanga Joan</h3>
-          <p>Disciplined and respectful student building a future based on character.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
 <footer>
-
-  <div style="margin-bottom:10px;">
-    <strong>Reach Me</strong>
+  <p>📞 WhatsApp: <a href="https://wa.me/250793904683" target="_blank">Chat with Moses</a></p>
+  <p>📧 Email: <a href="mailto:mosesmondaymalith50@gmail.com">mosesmondaymalith50@gmail.com</a></p>
+  <div style="margin-top:20px; opacity: 0.6; font-size: 13px;">
+    © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+    Developed with ❤️ by Moses Monday MALITH
   </div>
-
-  <div style="margin-bottom:10px;">
-    📞 WhatsApp:
-    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
-      Chat with Moses
-    </a>
-  </div>
-
-  <div style="margin-bottom:10px;">
-    📧 Email:
-    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
-      mosesmondaymalith50@gmail.com
-    </a>
-  </div>
-
-  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
-
-  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
-  Developed with ❤️ by Moses Monday MALITH
-
 </footer>
 
-
 <a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30">
+  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30" alt="WhatsApp">
 </a>
 
 </body>
