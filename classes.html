@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Classes Directory | Mount Olive Alumni</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* --- NAVIGATION (CONSISTENT WITH HOME/ABOUT) --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { width: 40px; border-radius: 50%; }
+.logo h3 { color: #facc15; margin: 0; }
+
+nav ul { list-style: none; display: flex; gap: 10px; padding: 0; margin: 0; }
+nav a { text-decoration: none; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; }
+nav a:hover, .active { background: #facc15; color: black; }
+
+/* HEADER SECTION */
+.header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/school2.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.header h1 { font-size: 40px; color: #facc15; margin-bottom: 10px; }
+.header p { color: #cbd5e1; max-width: 600px; margin: auto; }
+
+/* SEARCH BOX */
+.search-container {
+  max-width: 400px;
+  margin: -25px auto 40px auto;
+  position: relative;
+  z-index: 5;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 30px;
+  border: 2px solid #facc15;
+  background: #1e293b;
+  color: white;
+  font-family: 'Poppins';
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* YEARS GRID */
+.years-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.years-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.year-card {
+  background: #1e293b;
+  padding: 40px 20px;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.year-card::before {
+  content: '🎓';
+  font-size: 50px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  opacity: 0.1;
+  transform: rotate(20deg);
+}
+
+.year-card:hover {
+  background: #facc15;
+  color: black;
+  transform: scale(1.05);
+}
+
+.year-card h2 { margin: 0; font-size: 28px; }
+.year-card p { margin-top: 10px; opacity: 0.8; font-size: 14px; }
+
+/* FOOTER */
+footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 60px; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+footer a { color: #facc15; text-decoration: none; }
+
+@media(max-width: 600px){
+  nav ul { display: none; }
+  .header h1 { font-size: 30px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo"><img src="images/logo.jpg"><h3>Mount Olive Alumni</h3></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html" class="active">Classes</a></li>
+     <a href="associates.html">Associates</a>
+    <li><a href="executives.html">Executives</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html">Contacts</a></li>
+     <li><a href="jobs.html">Jobs</a></li>
+  </ul>
+</nav>
+
+<div class="header">
+  <h1>Graduating Classes</h1>
+  <p>Journey through the years and reconnect with your batchmates from Mount Olive Good Shepherd.</p>
+</div>
+
+<div class="search-container">
+  <input type="text" id="yearSearch" placeholder="Filter by year (e.g. 2015)..." onkeyup="filterYears()">
+</div>
+
+<div class="years-container">
+  <div class="years-grid" id="yearsGrid">
+
+    <div class="year-card" onclick="location.href='2013.html'">
+      <h2>2013</h2>
+      <p>The Pioneers</p>
+    </div>
+
+    <div class="year-card" onclick="location.href='2014.html'">
+      <h2>2014</h2>
+      <p>The Visionaries</p>
+    </div>
+
+    <div class="year-card" onclick="location.href='2015.html'">
+      <h2>2015</h2>
+      <p>The Builders</p>
+    </div>
+
+    <div class="year-card" onclick="location.href='2016.html'">
+      <h2>2016</h2>
+      <p>The Leaders</p>
+    </div>
+
+    <div class="year-card" onclick="location.href='2017.html'">
+      <h2>2017</h2>
+      <p>The Achievers</p>
+    </div>
+
+    <div class="year-card" onclick="location.href='2018.html'">
+      <h2>2018</h2>
+      <p>The Excellence Batch</p>
+    </div>
+
+    <div class="year-card" onclick="location.href='2019.html'">
+      <h2>2019</h2>
+      <p>The Legacy Finishers</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// FILTER FUNCTION
+function filterYears() {
+  let input = document.getElementById('yearSearch').value.toLowerCase();
+  let cards = document.getElementsByClassName('year-card');
+
+  for (let i = 0; i < cards.length; i++) {
+    let yearText = cards[i].getElementsByTagName('h2')[0].innerText;
+    if (yearText.toLowerCase().indexOf(input) > -1) {
+      cards[i].style.display = "";
+    } else {
+      cards[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+<!-- FOOTER -->
+<footer>
+
+  <div style="margin-bottom:10px;">
+    <strong>Reach Me</strong>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📞 WhatsApp:
+    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
+      Chat with Moses
+    </a>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📧 Email:
+    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
+      mosesmondaymalith50@gmail.com
+    </a>
+  </div>
+
+  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+
+  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+  Developed with ❤️ by Moses Monday MALITH
+
+</footer>
+
+<script>
+function toggleAbout() {
+  let section = document.getElementById("aboutSection");
+
+  if (section.style.display === "block") {
+    section.style.display = "none";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    section.style.display = "block";
+    window.scrollTo({ top: 300, behavior: "smooth" });
+  }
+}
+</script>
+  
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd?mode=gi_t" 
+   class="whatsapp-float" target="_blank" title="Join Alumni WhatsApp Group">
+   
+   <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp">
+</a>
+
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 30px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+</body>
+</html>
