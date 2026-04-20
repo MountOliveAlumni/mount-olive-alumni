@@ -2,337 +2,174 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mount Olive Alumni Website</title>
+<title>About Us | Mount Olive Alumni</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: linear-gradient(to right,#0f172a,#1e3a8a,#4c1d95);
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
   color: white;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* NAV */nav {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 20px;
-  background:rgba(0,0,0,0.5);
-  position:sticky;
-  top:0;
-  z-index:1000;
+/* --- NAVIGATION (SAME AS HOME PAGE) --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* LOGO */
-nav h2 {
-  color:#facc15;
-  margin:0;
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { width: 40px; border-radius: 50%; }
+.logo h3 { color: #facc15; margin: 0; }
+
+nav ul { list-style: none; display: flex; gap: 10px; padding: 0; margin: 0; }
+nav a { text-decoration: none; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; }
+nav a:hover { background: #facc15; color: black; }
+
+/* TICKER */
+.ticker { background: #111827; overflow: hidden; white-space: nowrap; padding: 8px 0; border-bottom: 1px solid rgba(250, 204, 21, 0.2); }
+.ticker p { display: inline-block; padding-left: 100%; animation: move 18s linear infinite; color: #facc15; font-weight: 600; margin: 0; }
+@keyframes move { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* PAGE HEADER */
+.page-header {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('images/school1.jpeg');
+  background-size: cover;
+  background-position: center;
 }
 
-/* NAV LINKS (RIGHT SIDE HORIZONTAL) */
-.nav-links {
-  list-style:none;
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
-  margin:0;
-  padding:0;
-  justify-content:flex-end;
+.page-header h1 { font-size: 42px; color: #facc15; margin-bottom: 10px; }
+
+/* CONTENT SECTIONS */
+.container { max-width: 900px; margin: auto; padding: 40px 20px; }
+
+.section-box {
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  border-left: 5px solid #facc15;
 }
 
-.nav-links li a {
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  padding:6px 10px;
-  border-radius:6px;
-  transition:0.3s;
-}
+.section-box h2 { color: #facc15; margin-top: 0; }
 
-.nav-links li a:hover {
-  background:#facc15;
-  color:black;
-}
-/* MARQUEE */
-.marquee {
-  background:rgba(0,0,0,0.3);
-  overflow:hidden;
-  white-space:nowrap;
-  padding:10px;
-}
-
-.marquee span {
-  display:inline-block;
-  padding-left:100%;
-  animation:move 12s linear infinite;
-  color:#facc15;
-  font-weight:bold;
-}
-
-@keyframes move {
-  0% { transform:translateX(0); }
-  100% { transform:translateX(-100%); }
-}
-
-/* HERO */
-.hero {
-  text-align:center;
-  padding:60px 20px;
-}
-
-.hero h1 {
-  font-size:40px;
-}
-
-.hero p {
-  color:#cbd5e1;
-  max-width:700px;
-  margin:auto;
-}
-
-.btn {
-  margin-top:15px;
-  padding:12px 18px;
-  background:#facc15;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* STATS */
+/* STATS GRID */
 .stats {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:15px;
-  margin:20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin: 40px 0;
 }
 
-.box {
-  background:rgba(255,255,255,0.1);
-  padding:20px;
-  text-align:center;
-  border-radius:12px;
-  transition:0.3s;
+.stat-box {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid rgba(250, 204, 21, 0.2);
 }
 
-.box:hover {
-  transform:scale(1.05);
+.stat-box h2 { color: #facc15; margin: 0; font-size: 28px; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #facc15;
+  color: black;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s;
 }
 
-.box h2 {
-  color:#facc15;
-}
+.btn:hover { transform: scale(1.05); background: white; }
 
-/* ABOUT SECTION */
-#aboutSection {
-  display:none;
-  max-width:900px;
-  margin:20px auto;
-  padding:25px;
-  background:rgba(255,255,255,0.06);
-  border-radius:12px;
-  line-height:1.7;
-}
+footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 40px; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+footer a { color: #facc15; text-decoration: none; }
 
-/* CLOSE BUTTON */
-.closeBtn {
-  margin-top:15px;
-  padding:10px 15px;
-  background:#facc15;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-/* FOOTER */
-footer {
-  text-align:center;
-  padding:20px;
-  background:rgba(0,0,0,0.6);
+@media(max-width: 600px){
+  nav ul { display: none; } /* On mobile, the nav items might crowd, usually solved with a burger menu, but kept simple here */
+  .page-header h1 { font-size: 30px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
-  <h2>Mount Olive Alumni</h2>
-
-  <ul class="nav-links">
+  <div class="logo"><img src="images/logo.jpg"><h3>Mount Olive Alumni</h3></div>
+  <ul>
     <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-
-    <li><a href="2013.html">2013</a></li>
-    <li><a href="2014.html">2014</a></li>
-    <li><a href="2015.html">2015</a></li>
-    <li><a href="2016.html">2016</a></li>
-    <li><a href="2017.html">2017</a></li>
-    <li><a href="2018.html">2018</a></li>
-    <li><a href="2019.html">2019</a></li>
-
-    <li><a href="associates.html">Associates</a></li>
+    <li><a href="about.html" style="background:#facc15; color:black;">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+      <a href="associates.html">Associates</a>
     <li><a href="executives.html">Executives</a></li>
-    <li><a href="contacts.html">Contacts</a></li>
-        <li><a href="news.html">News</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html">Contacts</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
   </ul>
 </nav>
 
-<!-- MOVING TEXT -->
-<div class="marquee">
-<span>🎓 Welcome to Mount Olive Alumni Website • Unity • Growth • Leadership • Excellence • Connecting Generations Forever</span>
+<div class="ticker"><p>🎓 About Us • Our Mission • Our Vision • Our History • Mount Olive Good Shepherd 2013–2019</p></div>
+
+<div class="page-header">
+  <h1>Our Legacy</h1>
+  <p>Connecting Generations. Empowering Future Leaders.</p>
 </div>
 
-<!-- HERO -->
-<div class="hero">
+<div class="container">
 
-<h1>Alumni Association Website</h1>
+  <div class="stats">
+    <div class="stat-box"><h2>7+</h2><p>Years of History</p></div>
+    <div class="stat-box"><h2>100+</h2><p>Active Alumni</p></div>
+    <div class="stat-box"><h2>4</h2><p>General Mentors</p></div>
+    <div class="stat-box"><h2>∞</h2><p>Connections</p></div>
+  </div>
 
-<p>
-A digital platform created to connect former students, associates, and executives of Mount Olive Good Shepherd (2013–2019), building a strong alumni network.
-</p>
+  <div class="section-box">
+    <h2>🏫 Our Story</h2>
+    <p>The Mount Olive Alumni Portal was created to bridge the gap between former students, associates, and executives of Mount Olive Good Shepherd. Focusing on the foundational years of 2013–2019, this platform serves as a digital home for those who walked the halls and learned under the guidance of "The Generals."</p>
+  </div>
 
-<button class="btn" onclick="toggleAbout()">Learn More</button>
+  <div class="section-box">
+    <h2>🎯 Mission & Vision</h2>
+    <p><strong>Our Mission:</strong> To build a strong, active community that supports former students academically, socially, and professionally.</p>
+    <p><strong>Our Vision:</strong> To become a global network that enables collaboration, mentorship, and lifelong relationships between all Mount Olive graduates.</p>
+  </div>
 
-</div>
-
-<!-- STATS -->
-<div class="stats">
-
-<div class="box">
-<h2>4+</h2>
-<p>Graduating Years</p>
-</div>
-
-<div class="box">
-<h2>100+</h2>
-<p>Alumni Members</p>
-</div>
-
-<div class="box">
-<h2>5+</h2>
-<p>Executives</p>
-</div>
-
-<div class="box">
-<h2>50+</h2>
-<p>Associates</p>
-</div>
+  <div class="section-box">
+    <h2>👨‍💻 Meet the Developer</h2>
+    <p>This portal was designed and developed by <strong>Moses Monday MALITH</strong>, a dedicated Computer Science student passionate about web development, cybersecurity, and community building.</p>
+    <a href="https://wa.me/250793904683" target="_blank" class="btn">Connect with the Developer</a>
+  </div>
 
 </div>
 
-<!-- 🔥 ABOUT SECTION -->
-<div id="aboutSection">
-
-<h2>🏫 About Mount Olive Alumni Website</h2>
-
-<p>
-This is the official Mount Olive Alumni Website created to connect former students, associates, and executives from different graduating years (2013–2019).
-</p>
-
-<h2>🎯 Purpose of the Website</h2>
-<ul>
-<li>Connect past students from 2013–2019</li>
-<li>Preserve student records and achievements</li>
-<li>Help alumni stay in touch</li>
-<li>Create a digital school community</li>
-</ul>
-
-<!-- MISSION -->
-<h2>🎯 Mission</h2>
-<p>
-To build a strong, connected and active alumni community that supports former students academically, socially, and professionally while preserving their achievements and growth.
-</p>
-
-<!-- VISION -->
-<h2>🌍 Vision</h2>
-<p>
-To become a fully digital alumni network platform that connects all graduates of Mount Olive Good Shepherd worldwide, enabling networking, collaboration, mentorship, and lifelong relationships.
-</p>
-
-<h2>👥 What the Website Contains</h2>
-<ul>
-<li>Home page</li>
-<li>Class of 2013–2019 students</li>
-<li>Associates section</li>
-<li>Executives section</li>
-<li>Student profiles</li>
-<li>Alumni Contacts
-</li>
-</ul>
-
-<h2>💡 Features</h2>
-<ul>
-<li>Search for students</li>
-<li>View alumni by year</li>
-<li>See executive members</li>
-<li>Easy navigation system</li>
-</ul>
-
-<h2>👨‍💻 Developer</h2>
-<p>
-This website was designed and developed by <b>Moses Monday MALITH</b>, a Computer Science student passionate about web development and cybersecurity.
-</p>
-
-<h2>🌍 Future Plan</h2>
-<ul>
-<li>Add login system</li>
-<li>Auto student database system</li>
-<li>Full alumni network platform</li>
-</ul>
-
-<button class="closeBtn" onclick="toggleAbout()">⬅ Close About</button>
-
-</div>
-
-<!-- FOOTER -->
 <footer>
-
+  <div style="margin-bottom:10px;"><strong>Reach Out</strong></div>
   <div style="margin-bottom:10px;">
-    <strong>Reach Me</strong>
+    📧 Email: <a href="mailto:mosesmondaymalith50@gmail.com">mosesmondaymalith50@gmail.com</a>
   </div>
-
-  <div style="margin-bottom:10px;">
-    📞 WhatsApp:
-    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
-      Chat with Moses
-    </a>
+  <div style="margin-top: 20px; opacity: 0.6;">
+    © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+    Developed with ❤️ by Moses Monday MALITH
   </div>
-
-  <div style="margin-bottom:10px;">
-    📧 Email:
-    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
-      mosesmondaymalith50@gmail.com
-    </a>
-  </div>
-
-  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
-
-  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
-  Developed with ❤️ by Moses Monday MALITH
-
 </footer>
 
-<script>
-function toggleAbout() {
-  let section = document.getElementById("aboutSection");
-
-  if (section.style.display === "block") {
-    section.style.display = "none";
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  } else {
-    section.style.display = "block";
-    window.scrollTo({ top: 300, behavior: "smooth" });
-  }
-}
-</script>
-  
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd?mode=gi_t" 
-   class="whatsapp-float" target="_blank" title="Join Alumni WhatsApp Group">
-   
+<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp">
 </a>
 
@@ -350,16 +187,10 @@ function toggleAbout() {
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 1000;
-  transition: transform 0.3s ease;
+  transition: 0.3s;
 }
-
-.whatsapp-float img {
-  width: 30px;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
+.whatsapp-float:hover { transform: scale(1.1); }
+.whatsapp-float img { width: 30px; }
 </style>
 
 </body>
