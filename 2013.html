@@ -15,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-/* --- NAVIGATION (CONSISTENT) --- */
+/* --- NAVIGATION (FIXED FOR MOBILE) --- */
 nav {
   display: flex;
   justify-content: space-between;
@@ -29,10 +29,27 @@ nav {
 
 .logo { display: flex; align-items: center; gap: 10px; }
 .logo img { width: 40px; border-radius: 50%; }
-.logo h3 { color: #facc15; margin: 0; }
+.logo h3 { color: #facc15; margin: 0; font-size: 18px; }
 
-nav ul { list-style: none; display: flex; gap: 10px; padding: 0; margin: 0; }
-nav a { text-decoration: none; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; }
+nav ul { 
+  list-style: none; 
+  display: flex; 
+  gap: 8px; 
+  padding: 0; 
+  margin: 0; 
+}
+
+nav a { 
+  text-decoration: none; 
+  color: white; 
+  padding: 6px 10px; 
+  border-radius: 6px; 
+  font-size: 13px; 
+  font-weight: 600; 
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
 nav a:hover { background: #facc15; color: black; }
 
 /* TICKER */
@@ -43,29 +60,29 @@ nav a:hover { background: #facc15; color: black; }
 /* HERO SECTION */
 .hero {
   text-align: center;
-  padding: 80px 20px;
+  padding: 60px 20px;
   background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/school1.jpeg');
   background-size: cover;
   background-position: center;
 }
 
-.hero h1 { font-size: 45px; color: #facc15; margin-bottom: 10px; }
-.hero .pioneer-badge { background: #facc15; color: black; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+.hero h1 { font-size: 40px; color: #facc15; margin-bottom: 10px; }
+.hero .pioneer-badge { background: #facc15; color: black; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 12px; text-transform: uppercase; }
 
 /* SECTION STYLES */
-.container { max-width: 1100px; margin: auto; padding: 40px 20px; }
-.section { background: #1e293b; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+.container { max-width: 1100px; margin: auto; padding: 30px 20px; }
+.section { background: #1e293b; padding: 25px; border-radius: 15px; margin-bottom: 30px; }
 .section h2 { color: #facc15; border-bottom: 2px solid rgba(250, 204, 21, 0.3); padding-bottom: 10px; margin-top: 0; }
 
 /* STUDENT NAME LIST */
 .student-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px;
   list-style: none;
   padding: 0;
 }
-.student-list li { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; border-left: 3px solid #22c55e; }
+.student-list li { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; border-left: 3px solid #22c55e; font-size: 14px; }
 
 /* PROFILES GRID */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
@@ -74,41 +91,42 @@ nav a:hover { background: #facc15; color: black; }
 
 .card img { 
   width: 100%; 
-  height: 280px; /* Increased height gives the face more "breathing room" */
+  height: 280px; 
   object-fit: cover; 
-  
-  /* THIS IS THE KEY FIX */
-  object-position: 50% 15%; /* Moves the 'camera' up to focus on the head/face area */
-  
+  object-position: 50% 15%; 
   border-radius: 12px 12px 0 0; 
-  background-color: #020617; /* Dark background in case the photo is small */
+  background-color: #020617; 
 }
 .card-content { padding: 20px; }
 .card-content h3 { margin: 0 0 10px 0; color: #facc15; }
 .card-content p { font-size: 14px; color: #cbd5e1; line-height: 1.5; margin: 0; }
 
-/* TEACHER BOXES */
-.teacher-box {
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 50px;
-  font-weight: bold;
-  background: linear-gradient(135deg, #facc15, #f97316);
-  color: black;
-}
-
 /* FOOTER */
-footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; }
 footer a { color: #facc15; text-decoration: none; }
 
-/* WHATSAPP FLOATING */
-.whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+/* --- THE MOBILE FIX --- */
+@media(max-width: 850px){
+  nav {
+    flex-direction: column;
+    padding: 15px 10px;
+  }
+  
+  nav ul { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 6px; 
+    margin-top: 15px;
+  }
 
-@media(max-width: 600px){
-  nav ul { display: none; }
-  .hero h1 { font-size: 32px; }
+  nav a {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .hero h1 { font-size: 30px; }
+  .logo h3 { font-size: 16px; }
 }
 </style>
 </head>
@@ -120,7 +138,7 @@ footer a { color: #facc15; text-decoration: none; }
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="classes.html">Classes</a></li>
-     <a href="associates.html">Associates</a>
+    <li><a href="associates.html">Associates</a></li>
     <li><a href="executives.html">Executives</a></li>
     <li><a href="news.html">News</a></li>
     <li><a href="contact.html">Contacts</a></li>
@@ -140,7 +158,7 @@ footer a { color: #facc15; text-decoration: none; }
 
   <div class="section">
     <h2>Academic Pioneers</h2>
-    <p>The Class of 2013 holds a special place in Mount Olive history as the first-ever candidate class. It marked the beginning of national examinations and established a strong foundation for academic excellence. This pioneering class is remembered for discipline and determination, setting a high standard for all who followed.</p>
+    <p>The Class of 2013 holds a special place in Mount Olive history as the first-ever candidate class. It marked the beginning of national examinations and established a strong foundation for academic excellence.</p>
   </div>
 
   <div class="section">
@@ -276,41 +294,26 @@ footer a { color: #facc15; text-decoration: none; }
           <p>Qualified Lawyer dedicated to justice and legal practice.</p>
         </div>
       </div>
+
     </div>
   </div>
 
-<footer>
+</div>
 
+<footer>
   <div style="margin-bottom:10px;">
     <strong>Reach Me</strong>
   </div>
-
   <div style="margin-bottom:10px;">
-    📞 WhatsApp:
-    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
-      Chat with Moses
-    </a>
+    📞 WhatsApp: <a href="https://wa.me/250793904683" target="_blank">Chat with Moses</a>
   </div>
-
   <div style="margin-bottom:10px;">
-    📧 Email:
-    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
-      mosesmondaymalith50@gmail.com
-    </a>
+    📧 Email: <a href="mailto:mosesmondaymalith50@gmail.com">mosesmondaymalith50@gmail.com</a>
   </div>
-
   <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
-
   © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
   Developed with ❤️ by Moses Monday MALITH
-
 </footer>
-
-
-<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30">
-</a>
-
 
 </body>
 </html>
