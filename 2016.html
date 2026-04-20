@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Class of 2016 | Mount Olive Alumni</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* --- NAVIGATION --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { width: 40px; border-radius: 50%; }
+.logo h3 { color: #facc15; margin: 0; }
+
+nav ul { list-style: none; display: flex; gap: 10px; padding: 0; margin: 0; }
+nav a { text-decoration: none; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; transition: 0.3s; }
+nav a:hover, nav a.active { background: #facc15; color: black; }
+
+/* TICKER */
+.ticker { background: #111827; overflow: hidden; white-space: nowrap; padding: 10px 0; border-bottom: 1px solid rgba(250, 204, 21, 0.2); }
+.ticker p { display: inline-block; padding-left: 100%; animation: move 18s linear infinite; color: #facc15; font-weight: 600; margin: 0; }
+@keyframes move { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/school1.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+.hero h1 { font-size: 45px; color: #facc15; margin-bottom: 10px; }
+.batch-badge { background: #3b82f6; color: white; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+
+/* CONTAINERS */
+.container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+.section { background: #1e293b; padding: 30px; border-radius: 15px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.05); }
+.section h2 { color: #facc15; border-bottom: 2px solid rgba(250, 204, 21, 0.3); padding-bottom: 10px; margin-top: 0; }
+
+/* STUDENT LIST */
+.student-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+.student-list li { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; border-left: 3px solid #3b82f6; font-size: 13px; }
+
+/* PROFILES GRID */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.card { background: #1e293b; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; text-align: center; }
+.card:hover { transform: translateY(-10px); border-color: #facc15; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.card img { width: 100%; height: 280px; object-fit: cover; object-position: center; background: #020617; }
+.card-content { padding: 20px; }
+.card-content h3 { margin: 0 0 10px 0; color: #facc15; }
+.card-content p { font-size: 14px; color: #cbd5e1; line-height: 1.5; margin: 0; }
+
+/* TEACHER CIRCLE */
+.teacher-circle {
+  width: 70px; height: 70px; background: linear-gradient(135deg, #facc15, #f97316);
+  color: black; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 15px; font-weight: 700; font-size: 24px;
+}
+
+/* FOOTER */
+footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+footer a { color: #facc15; text-decoration: none; }
+
+/* WHATSAPP */
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1000; transition: 0.3s; }
+.whatsapp-float:hover { transform: scale(1.1); }
+
+@media(max-width: 768px){
+  nav ul { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><img src="images/logo.jpg"><h3>Mount Olive Alumni</h3></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html" class="active">Classes</a></li>
+     <a href="associates.html">Associates</a>
+    <li><a href="executives.html">Executives</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html">Contacts</a></li>
+     <li><a href="jobs.html">Jobs</a></li>
+  </ul>
+</nav>
+
+<div class="ticker"><p>🎓 Class of 2016 • Discipline • Excellence • Friendship • Academic Growth • Mount Olive Legacy 🎓</p></div>
+
+<div class="hero">
+  <span class="batch-badge">The Leaders</span>
+  <h1>Class of 2016</h1>
+  <p>Excellence, Discipline, Friendship & Academic Growth</p>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <h2>About the Class of 2016</h2>
+    <p>The Class of 2016 at Mount Olive Good Shepherd Primary School was a hardworking and disciplined group. They excelled in academics, sports, and school activities, leaving a legacy of unity and teamwork.</p>
+  </div>
+
+  <div class="section">
+    <h2>Students (2016)</h2>
+    <ul class="student-list">
+      <li>Akol Joseph</li><li>Rubangakene Ivan Kidega</li><li>Aloyo Winnie</li><li>Aber Fortunate</li><li>Achol Gift Deng</li><li>Alanya Mary</li>
+      <li>Agiik Rachael</li><li>Oryem</li><li>Opyio Emmy</li><li>Lamaro Tracy</li><li>Achok Monica</li>
+      <li>Orombi Victor</li><li>Atimango Sherifa</li><li>Deris</li><li>Watmon Benjamin</li><li>Akot Millie Grace</li>
+      <li>Alaroker Deris Tina Okeny</li><li>Niyabo Mary Nicholas</li><li>Akello Immaculate</li><li>Lagum Tabitha</li><li>Lakaraber Winniefred</li>
+      <li>Adyero Faith</li><li>Waneno</li><li>Lakica Juliet</li><li>Oketayot Stephen</li><li>Ayee Deborah</li><li>Peter Maker</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Student Profiles</h2>
+    <div class="grid">
+      <div class="card"><img src="images/jose.jpeg"><div class="card-content"><h3>Akol Joseph</h3><p>Pursuing Medicine and Surgery.</p></div></div>
+      <div class="card"><img src="images/kabila.jpeg"><div class="card-content"><h3>Rubangakene Ivan Kidega</h3><p>Building leadership skills.</p></div></div>
+      <div class="card"><img src="images/achok.jpeg"><div class="card-content"><h3>Achok Monica</h3><p>Pursuing LLB (Bachelor of Laws).</p></div></div>
+      <div class="card"><img src="images/maker.jpeg"><div class="card-content"><h3>Peter Maker</h3><p>Medicine student & Businessman at University of Juba.</p></div></div>
+      <div class="card"><img src="images/sheri.jpeg"><div class="card-content"><h3>Atimango Sherifa</h3><p>Qualified Midwife.</p></div></div>
+      <div class="card"><img src="images/juliete.jpeg"><div class="card-content"><h3>Lakica Juliet</h3><p>Education student at Mbarara University.</p></div></div>
+      <div class="card"><img src="images/oketa.jpeg"><div class="card-content"><h3>Oketayot Stephen</h3><p>Continuing his education.</p></div></div>
+      <div class="card"><img src="images/watmon.jpeg"><div class="card-content"><h3>Watmon Benjamin</h3><p>Pursuing university studies.</p></div></div>
+      <div class="card"><img src="images/waneno.jpeg"><div class="card-content"><h3>Waneno</h3><p>Former student continuing his journey.</p></div></div>
+      <div class="card"><img src="images/Emmy.jpeg"><div class="card-content"><h3>Opiyo Emmy</h3><p>Law student.</p></div></div>
+      <div class="card"><img src="images/Lamaro.jpeg"><div class="card-content"><h3>Lamaro Tracy</h3><p>Studying Human Resource Management.</p></div></div>
+      <div class="card"><img src="images/deris.jpeg"><div class="card-content"><h3>Alaroker Deris Tina Okeny</h3><p>Pursuing university studies.</p></div></div>
+      <div class="card"><img src="images/Adyero.jpeg"><div class="card-content"><h3>Adyero Faith</h3><p>Hardworking student.</p></div></div>
+      <div class="card"><img src="images/Lakaraber.jpeg"><div class="card-content"><h3>Lakaraber Winniefred</h3><p>Focused learner.</p></div></div>
+      <div class="card"><img src="images/immaculate.jpeg"><div class="card-content"><h3>Akello Immaculate</h3><p>Professional nurse.</p></div></div>
+      <div class="card"><img src="images/ayee.jpeg"><div class="card-content"><h3>Ayee Deborah</h3><p>Academic journey.</p></div></div>
+      <div class="card"><img src="images/lagum.jpeg"><div class="card-content"><h3>Lagum Tabitha</h3><p>Qualified accountant.</p></div></div>
+      <div class="card"><img src="images/niyabo.jpeg"><div class="card-content"><h3>Niyabo Mary Nicholas</h3><p>University student.</p></div></div>
+      <div class="card"><img src="images/akot.jpeg"><div class="card-content"><h3>Akot Millie Grace</h3><p>Law student.</p></div></div>
+      <div class="card"><img src="images/tunate.jpeg"><div class="card-content"><h3>Aber Fortunate</h3><p>Procurement student.</p></div></div>
+      <div class="card"><img src="images/gift.jpeg"><div class="card-content"><h3>Achol Gift Deng</h3><p>International Business student.</p></div></div>
+      <div class="card"><img src="images/wini.jpeg"><div class="card-content"><h3>Aloyo Winnie</h3><p>Hardworking scholar.</p></div></div>
+      <div class="card"><img src="images/alanyo.jpeg"><div class="card-content"><h3>Alanyo Mary</h3><p>Hotel Management graduate.</p></div></div>
+      <div class="card"><img src="images/Agiik.jpeg"><div class="card-content"><h3>Agiik Rachael</h3><p>Fashion designer and makeup artist.</p></div></div>
+    </div>
+  </div>
+
+
+
+<footer>
+
+  <div style="margin-bottom:10px;">
+    <strong>Reach Me</strong>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📞 WhatsApp:
+    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
+      Chat with Moses
+    </a>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📧 Email:
+    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
+      mosesmondaymalith50@gmail.com
+    </a>
+  </div>
+
+  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+
+  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+  Developed with ❤️ by Moses Monday MALITH
+
+</footer>
+
+
+<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
+  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30">
+</a>
+
+
+<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
+  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30">
+</a>
+
+</body>
+</html>

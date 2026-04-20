@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Class of 2013 | Mount Olive Alumni</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* --- NAVIGATION (CONSISTENT) --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { width: 40px; border-radius: 50%; }
+.logo h3 { color: #facc15; margin: 0; }
+
+nav ul { list-style: none; display: flex; gap: 10px; padding: 0; margin: 0; }
+nav a { text-decoration: none; color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; }
+nav a:hover { background: #facc15; color: black; }
+
+/* TICKER */
+.ticker { background: #111827; overflow: hidden; white-space: nowrap; padding: 10px 0; border-bottom: 1px solid rgba(250, 204, 21, 0.2); }
+.ticker p { display: inline-block; padding-left: 100%; animation: move 18s linear infinite; color: #facc15; font-weight: 600; margin: 0; }
+@keyframes move { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* HERO SECTION */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('images/school1.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 { font-size: 45px; color: #facc15; margin-bottom: 10px; }
+.hero .pioneer-badge { background: #facc15; color: black; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 14px; text-transform: uppercase; }
+
+/* SECTION STYLES */
+.container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+.section { background: #1e293b; padding: 30px; border-radius: 15px; margin-bottom: 30px; }
+.section h2 { color: #facc15; border-bottom: 2px solid rgba(250, 204, 21, 0.3); padding-bottom: 10px; margin-top: 0; }
+
+/* STUDENT NAME LIST */
+.student-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+.student-list li { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; border-left: 3px solid #22c55e; }
+
+/* PROFILES GRID */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.card { background: #1e293b; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; text-align: center; }
+.card:hover { transform: translateY(-10px); border-color: #facc15; }
+
+.card img { 
+  width: 100%; 
+  height: 280px; /* Increased height gives the face more "breathing room" */
+  object-fit: cover; 
+  
+  /* THIS IS THE KEY FIX */
+  object-position: 50% 15%; /* Moves the 'camera' up to focus on the head/face area */
+  
+  border-radius: 12px 12px 0 0; 
+  background-color: #020617; /* Dark background in case the photo is small */
+}
+.card-content { padding: 20px; }
+.card-content h3 { margin: 0 0 10px 0; color: #facc15; }
+.card-content p { font-size: 14px; color: #cbd5e1; line-height: 1.5; margin: 0; }
+
+/* TEACHER BOXES */
+.teacher-box {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #facc15, #f97316);
+  color: black;
+}
+
+/* FOOTER */
+footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+footer a { color: #facc15; text-decoration: none; }
+
+/* WHATSAPP FLOATING */
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+@media(max-width: 600px){
+  nav ul { display: none; }
+  .hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><img src="images/logo.jpg"><h3>Mount Olive Alumni</h3></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+     <a href="associates.html">Associates</a>
+    <li><a href="executives.html">Executives</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html">Contacts</a></li>
+    <li><a href="jobs.html">Jobs</a></li>
+  </ul>
+</nav>
+
+<div class="ticker"><p>🎓 Class of 2013 • The Pioneers • First Candidate Class • Setting the Foundation for Excellence</p></div>
+
+<div class="hero">
+  <span class="pioneer-badge">Class Pioneers</span>
+  <h1>Class of 2013</h1>
+  <p>Foundation of Excellence, Discipline & Unity</p>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <h2>Academic Pioneers</h2>
+    <p>The Class of 2013 holds a special place in Mount Olive history as the first-ever candidate class. It marked the beginning of national examinations and established a strong foundation for academic excellence. This pioneering class is remembered for discipline and determination, setting a high standard for all who followed.</p>
+  </div>
+
+  <div class="section">
+    <h2>Student Directory</h2>
+    <ul class="student-list">
+      <li>Akera Moses</li>
+      <li>Bol Thomas</li>
+      <li>Kur Deng James</li>
+      <li>Kakanyero Oscar Olit</li>
+      <li>Okwera Fredrick Michael</li>
+      <li>Honest Fidema</li>
+      <li>Garang Aleu Kon</li>
+      <li>Okello Philip</li>
+      <li>Akuol Mary</li>
+      <li>Ahok Monydeng</li>
+      <li>Rubangakene Jordan</li>
+      <li>Mabior Rengdit</li>
+      <li>Ajak Abraham</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Student Profiles</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="./images/garang.jpeg">
+        <div class="card-content">
+          <h3>Garang Aleu Kon</h3>
+          <p>Legal practitioner based in Juba, South Sudan.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/jordan.jpeg">
+        <div class="card-content">
+          <h3>Rubangakene Jordan</h3>
+          <p>Entrepreneur based in Kampala. MD involved in international trade and hospitality.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/mabior.jpeg">
+        <div class="card-content">
+          <h3>Mabior Rengdit</h3>
+          <p>Successful Businessman operating in Dubai.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/ajak.jpeg">
+        <div class="card-content">
+          <h3>Ajak Abraham</h3>
+          <p>Graduate in Petroleum Engineering domain.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/ahok.jpeg">
+        <div class="card-content">
+          <h3>Ahok Monydeng</h3>
+          <p>Entrepreneur dedicated to growing local commerce.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/akuol.jpeg">
+        <div class="card-content">
+          <h3>Akuol Mary</h3>
+          <p>Businesswoman managing entrepreneurial and household milestones.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/akera.jpeg">
+        <div class="card-content">
+          <h3>Akera Moses</h3>
+          <p>Businessman based in Gulu, involved in regional trade.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/aguer.jpeg">
+        <div class="card-content">
+          <h3>Simon Peter Aguer Deng</h3>
+          <p>Businessman and Government Official.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/bol.jpeg">
+        <div class="card-content">
+          <h3>Bol Thomas</h3>
+          <p>Journalist, Media Practitioner and Government Official.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/philip.jpeg">
+        <div class="card-content">
+          <h3>Okello Philip</h3>
+          <p>Entrepreneur and businessman based in Northern Uganda.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/jam.jpeg">
+        <div class="card-content">
+          <h3>Kur Deng James</h3>
+          <p>Qualified Medical Officer serving in healthcare.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/oscar.jpg">
+        <div class="card-content">
+          <h3>Kakanyero Oscar Olit</h3>
+          <p>Specialist in electronics and agricultural enterprise.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/fredrick.jpg">
+        <div class="card-content">
+          <h3>Okwera Fredrick Michael</h3>
+          <p>Government-employed Land Surveyor.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./images/honest.jpeg">
+        <div class="card-content">
+          <h3>Honest Fidema</h3>
+          <p>Qualified Lawyer dedicated to justice and legal practice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<footer>
+
+  <div style="margin-bottom:10px;">
+    <strong>Reach Me</strong>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📞 WhatsApp:
+    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
+      Chat with Moses
+    </a>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    📧 Email:
+    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
+      mosesmondaymalith50@gmail.com
+    </a>
+  </div>
+
+  <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
+
+  © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+  Developed with ❤️ by Moses Monday MALITH
+
+</footer>
+
+
+<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
+  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30">
+</a>
+
+
+</body>
+</html>

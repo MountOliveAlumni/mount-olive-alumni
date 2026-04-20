@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class of 2019 | Mount Olive Alumni Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #facc15;
+            --secondary: #22c55e;
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --glass: rgba(15, 23, 42, 0.85);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--primary); }
+        .logo h3 { color: var(--primary); margin: 0; font-size: 1.1rem; letter-spacing: 1px; }
+
+        nav ul { list-style: none; display: flex; gap: 5px; margin: 0; padding: 0; }
+        nav a { 
+            text-decoration: none; 
+            color: white; 
+            padding: 8px 14px; 
+            border-radius: 8px; 
+            font-size: 13px; 
+            font-weight: 500; 
+            transition: 0.3s ease; 
+        }
+        nav a:hover, nav a.active { background: var(--primary); color: #000; font-weight: 700; }
+
+        /* --- TICKER --- */
+        .ticker { background: rgba(2, 6, 23, 0.5); overflow: hidden; white-space: nowrap; padding: 10px 0; border-bottom: 1px solid rgba(34, 197, 94, 0.2); }
+        .ticker p { 
+            display: inline-block; 
+            padding-left: 100%; 
+            animation: move 22s linear infinite; 
+            color: var(--secondary); 
+            font-weight: 600; 
+            margin: 0; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        @keyframes move { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+        /* --- HERO --- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, rgba(15, 23, 42, 0) 70%);
+        }
+        .innovator-badge {
+            background: linear-gradient(90deg, #22c55e, #10b981);
+            color: #fff;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); color: var(--primary); margin: 0; text-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .hero p { color: #94a3b8; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; margin-top: 10px; font-size: 14px; }
+
+        /* --- SECTIONS --- */
+        .container { max-width: 1200px; margin: auto; padding: 0 5%; }
+        .section { 
+            background: var(--bg-card); 
+            padding: 40px; 
+            border-radius: 24px; 
+            margin-bottom: 40px; 
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+        }
+        .section h2 { color: var(--primary); border-left: 5px solid var(--primary); padding-left: 15px; margin-top: 0; font-size: 1.5rem; }
+
+        /* --- SEARCH --- */
+        .search-container { max-width: 500px; margin: 0 auto 40px; }
+        #searchInput {
+            width: 100%; padding: 15px 25px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05); color: white; outline: none; font-family: 'Poppins';
+        }
+
+        /* --- ROLL CALL --- */
+        .student-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+        }
+        .student-list li { 
+            background: rgba(255,255,255,0.03); 
+            padding: 12px 18px; 
+            border-radius: 12px; 
+            font-size: 13px;
+            border-bottom: 2px solid rgba(34, 197, 94, 0.3);
+            transition: 0.3s;
+        }
+        .student-list li:hover { background: rgba(34, 197, 94, 0.1); transform: translateY(-3px); }
+
+        /* --- GRID & CARDS --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
+
+        .card { 
+            background: #1e293b; 
+            border-radius: 24px; 
+            overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.05); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+        }
+        .card:hover { transform: translateY(-15px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+
+        .card img { width: 100%; height: 340px; object-fit: cover; object-position: top; transition: 0.4s; }
+
+        .card-content { padding: 25px; text-align: center; }
+        .card-content h3 { color: var(--primary); margin: 0 0 12px 0; font-size: 1.25rem; }
+        .card-content p { font-size: 14px; color: #cbd5e1; margin: 0; line-height: 1.6; }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #020617; 
+            padding: 60px 5%; 
+            text-align: center; 
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 80px;
+        }
+        footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
+            background: #25D366; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        @media(max-width: 900px) { nav ul { display: none; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo"><img src="images/logo.jpg" alt="Logo"><h3>Mount Olive Alumni</h3></div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="classes.html" class="active">Classes</a></li>
+         <a href="associates.html">Associates</a>
+        <li><a href="executives.html">Executives</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contacts</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+    </ul>
+</nav>
+
+<div class="ticker">
+    <p>🌟 Class of 2019 • Excellence & Progress • Innovation & Leadership • The Future Makers of Mount Olive 🌟</p>
+</div>
+
+<header class="hero">
+    <div class="innovator-badge">Future Leaders</div>
+    <h1>Class of 2019</h1>
+    <p>Excellence • Progress • Innovation</p>
+</header>
+
+<div class="container">
+    
+    <section class="section">
+        <h2>About the Class of 2019</h2>
+        <p>The Class of 2019 is a dynamic and forward-thinking group known for their commitment to excellence, innovation, and teamwork. Throughout their time at Mount Olive Good Shepherd, they demonstrated strong academic performance and leadership qualities. Today, members of this class are pursuing various career paths, contributing positively to society and inspiring future generations.</p>
+    </section>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="🔍 Search student by name..." onkeyup="searchFunction()">
+    </div>
+
+    <section class="section">
+        <h2>The 2019 Official Roll Call</h2>
+        <ul class="student-list">
+            <li>Thomas Thon Tiera</li>
+            <li>Okello Innocent</li>
+            <li>Opira Ronald</li>
+            <li>Benson Bith</li>
+            <li>Soloma Malek</li>
+            <li>Aballo Prossy</li>
+            <li>Ssegawa Treasure</li>
+            <li>Piloya Korina</li>
+            <li>Atimango Sunday</li>
+            <li>Okello Jacob</li>
+            <li>Okello Andrew</li>
+            <li>Ocora Daniel</li>
+            <li>James Ifforo</li>
+            <li>Stephen Inyani</li>
+            <li>Paul Ocen</li>
+            <li>Peter Opiyo</li>
+            <li>Mawa Betty</li>
+        </ul>
+    </section>
+
+    <section class="section" style="background:transparent; border:none; padding:0;">
+        <h2>Student Gallery</h2>
+        <div class="grid" id="alumniGrid">
+            
+            <div class="card">
+                <img src="images/thomas.jpeg" alt="Thomas Thon Tiera">
+                <div class="card-content">
+                    <h3>Thomas Thon Tiera</h3>
+                    <p>Currently pursuing Chemical Engineering. A focused and determined student with strong interest in science and innovation.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/innocent.jpeg" alt="Okello Innocent">
+                <div class="card-content">
+                    <h3>Okello Innocent</h3>
+                    <p>A disciplined and focused learner building a solid foundation for his future career.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/ronald.jpeg" alt="Opira Ronald">
+                <div class="card-content">
+                    <h3>Opira Ronald</h3>
+                    <p>A hardworking and determined student, always striving for personal and academic growth.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/benson.jpeg" alt="Benson Bith">
+                <div class="card-content">
+                    <h3>Benson Bith</h3>
+                    <p>A goal-oriented and ambitious learner, focused on reaching the highest levels of success.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/malek.jpeg" alt="Soloma Malek">
+                <div class="card-content">
+                    <h3>Soloma Malek</h3>
+                    <p>A creative and consistent performer, known for bringing unique ideas to life.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/prossy.jpeg" alt="Aballo Prossy">
+                <div class="card-content">
+                    <h3>Aballo Prossy</h3>
+                    <p>A dedicated and intelligent student with a deep passion for learning and excellence.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/treasurer.jpeg" alt="Ssegawa Treasure">
+                <div class="card-content">
+                    <h3>Ssegawa Treasure</h3>
+                    <p>A responsible and organized individual with a natural talent for leadership.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/korina.jpeg" alt="Piloya Korina">
+                <div class="card-content">
+                    <h3>Piloya Korina</h3>
+                    <p>A bright and focused student committed to achieving her academic and professional goals.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/sunday.jpeg" alt="Atimango Sunday">
+                <div class="card-content">
+                    <h3>Atimango Sunday</h3>
+                    <p>A hardworking and disciplined learner with a strong vision for the future.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/jacob.jpeg" alt="Okello Jacob">
+                <div class="card-content">
+                    <h3>Okello Jacob</h3>
+                    <p>A determined and goal-driven student, always pushing the boundaries of achievement.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/andrew.jpeg" alt="Okello Andrew">
+                <div class="card-content">
+                    <h3>Okello Andrew</h3>
+                    <p>A focused and ambitious learner building a solid foundation for future professional success.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/daniel.jpeg" alt="Ocora Daniel">
+                <div class="card-content">
+                    <h3>Ocora Daniel</h3>
+                    <p>A committed and hardworking student with a bright and promising future ahead.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/ifforo.jpeg" alt="James Ifforo">
+                <div class="card-content">
+                    <h3>James Ifforo</h3>
+                    <p>A creative and disciplined learner dedicated to excellence and positive contribution.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/stephen.jpeg" alt="Stephen Inyani">
+                <div class="card-content">
+                    <h3>Stephen Inyani</h3>
+                    <p>A strong and consistent performer, valued for his academic focus and character.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/paul.jpeg" alt="Paul Ocen">
+                <div class="card-content">
+                    <h3>Paul Ocen</h3>
+                    <p>A focused and determined student aiming for success in his chosen field of study.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/peter.jpeg" alt="Peter Opiyo">
+                <div class="card-content">
+                    <h3>Peter Opiyo</h3>
+                    <p>A hardworking and disciplined learner, dedicated to academic and personal excellence.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="images/betty.jpeg" alt="Mawa Betty">
+                <div class="card-content">
+                    <h3>Mawa Betty</h3>
+                    <p>A bright and ambitious student making steady progress toward a successful career.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div style="margin-bottom:20px;">
+        <strong style="color:var(--primary); font-size: 1.2rem;">Reach Me</strong>
+    </div>
+
+    <div style="margin-bottom:10px;">
+        📞 WhatsApp:
+        <a href="https://wa.me/250793904683" target="_blank">Chat with Moses</a>
+    </div>
+
+    <div style="margin-bottom:10px;">
+        📧 Email:
+        <a href="mailto:mosesmondaymalith50@gmail.com">mosesmondaymalith50@gmail.com</a>
+    </div>
+
+    <hr style="border:0; border-top: 1px solid rgba(255,255,255,0.1); margin: 30px auto; max-width: 500px;">
+
+    <p style="font-size: 13px; opacity: 0.7;">
+        © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+        Developed with ❤️ by Moses Monday MALITH
+    </p>
+</footer>
+
+<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="35" alt="WhatsApp">
+</a>
+
+<script>
+    function searchFunction() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementById('alumniGrid').getElementsByClassName('card');
+        
+        for (let i = 0; i < cards.length; i++) {
+            let name = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+            if (name.includes(input)) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
