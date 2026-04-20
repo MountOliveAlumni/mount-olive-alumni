@@ -44,6 +44,7 @@ nav {
 .logo h3 { color: var(--primary); margin: 0; font-size: 1.1rem; letter-spacing: 1px; }
 
 nav ul { list-style: none; display: flex; gap: 5px; margin: 0; padding: 0; }
+nav li { display: inline-block; }
 nav a { 
   text-decoration: none; 
   color: white; 
@@ -141,13 +142,6 @@ nav a:hover, nav a.active { background: var(--primary); color: #000; font-weight
 .card-content h3 { color: var(--primary); margin: 0 0 12px 0; font-size: 1.25rem; letter-spacing: 0.5px; }
 .card-content p { font-size: 14px; color: #cbd5e1; margin: 0; line-height: 1.6; }
 
-/* --- TEACHER STYLE --- */
-.teacher-circle {
-  width: 75px; height: 75px; background: linear-gradient(135deg, var(--primary), #f97316); color: black;
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 15px; font-weight: 800; font-size: 26px; box-shadow: 0 5px 15px rgba(250, 204, 21, 0.3);
-}
-
 /* --- FOOTER --- */
 footer { 
   background: #020617; 
@@ -167,22 +161,40 @@ footer p { margin: 8px 0; font-size: 14px; }
 }
 .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
 
-@media(max-width: 900px) { nav ul { display: none; } }
+/* FIXED MOBILE NAVIGATION */
+@media(max-width: 900px) { 
+  nav {
+    flex-direction: column;
+    padding: 15px 10px;
+  }
+  nav ul { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+  } 
+  nav a {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+  .hero { padding: 60px 20px; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo"><img src="images/logo.jpg"><h3>Mount Olive Alumni</h3></div>
+  <div class="logo"><img src="images/logo.jpg" alt="Logo"><h3>Mount Olive Alumni</h3></div>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="classes.html" class="active">Classes</a></li>
-         <a href="associates.html">Associates</a>
+    <li><a href="associates.html">Associates</a></li>
     <li><a href="executives.html">Executives</a></li>
     <li><a href="news.html">News</a></li>
     <li><a href="contact.html">Contacts</a></li>
-      <li><a href="jobs.html">Jobs</a></li>
+    <li><a href="jobs.html">Jobs</a></li>
   </ul>
 </nav>
 
@@ -245,41 +257,28 @@ footer p { margin: 8px 0; font-size: 14px; }
       <div class="card"><img src="images/brandy.jpeg"> <div class="card-content"><h3>Laker Brandy</h3><p>Known for exceptional communication skills and excellence in English.</p></div></div>
     </div>
   </section>
-
-
+</div>
 
 <footer>
-
   <div style="margin-bottom:10px;">
     <strong>Reach Me</strong>
   </div>
-
   <div style="margin-bottom:10px;">
     📞 WhatsApp:
-    <a href="https://wa.me/250793904683" target="_blank" style="color:#facc15; text-decoration:none;">
-      Chat with Moses
-    </a>
+    <a href="https://wa.me/250793904683" target="_blank">Chat with Moses</a>
   </div>
-
   <div style="margin-bottom:10px;">
     📧 Email:
-    <a href="mailto:mosesmondaymalith50@gmail.com" style="color:#facc15; text-decoration:none;">
-      mosesmondaymalith50@gmail.com
-    </a>
+    <a href="mailto:mosesmondaymalith50@gmail.com">mosesmondaymalith50@gmail.com</a>
   </div>
-
   <hr style="border:1px solid rgba(255,255,255,0.1); margin:10px 0;">
-
   © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
   Developed with ❤️ by Moses Monday MALITH
-
 </footer>
 
-
 <a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30">
+  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30" alt="WhatsApp">
 </a>
-
 
 </body>
 </html>
