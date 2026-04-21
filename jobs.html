@@ -173,7 +173,7 @@ footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
 <header class="hero">
   <h1>Career Hub</h1>
   <p>Connecting Mount Olive talent with global opportunities across South Sudan, Uganda, and beyond.</p>
-  <a href="https://wa.me/250793904683" class="btn-post">Post a Role +</a>
+  <button onclick="document.getElementById('postJobModal').style.display='block'" class="btn-post">Post a Role +</button>
 </header>
 
 <div class="container">
@@ -221,14 +221,22 @@ footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
   </div>
 </div>
 
-<div id="jobModal" class="modal">
+<div id="postJobModal" class="modal">
   <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <h2 id="modalTitle">Job Title</h2>
-    <p id="modalCompany" style="color:var(--accent); font-weight:700; margin-bottom: 20px;">Company Name</p>
-    <div id="modalDesc" style="font-size:14px; line-height:1.7; color: #cbd5e1;">Description goes here...</div>
-    <p style="font-size:13px; margin-top:25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">Posted by: <strong id="modalPoster" style="color:var(--primary)">Name</strong></p>
-    <a id="applyLink" href="#" class="btn-post" style="display:block; text-align:center; margin-top:25px;">Contact to Apply</a>
+    <span class="close-btn" onclick="closePostModal()">&times;</span>
+    <h2>Post a New Role</h2>
+    <form id="jobForm" style="display: flex; flex-direction: column; gap: 10px;">
+      <input type="text" id="newTitle" placeholder="Job Title (e.g. Accountant)" required style="padding: 10px; border-radius: 8px; border: none;">
+      <input type="text" id="newCompany" placeholder="Company Name" required style="padding: 10px; border-radius: 8px; border: none;">
+      <select id="newType" style="padding: 10px; border-radius: 8px; border: none;">
+        <option value="job">Full-Time Job</option>
+        <option value="intern">Internship</option>
+      </select>
+      <input type="text" id="newLocation" placeholder="Location (e.g. Juba)" required style="padding: 10px; border-radius: 8px; border: none;">
+      <textarea id="newDesc" placeholder="Brief Description" rows="4" style="padding: 10px; border-radius: 8px; border: none;"></textarea>
+      <input type="text" id="newPoster" placeholder="Your Name" required style="padding: 10px; border-radius: 8px; border: none;">
+      <button type="submit" class="btn-post" style="border: none; cursor: pointer;">Submit Listing</button>
+    </form>
   </div>
 </div>
 
@@ -253,13 +261,80 @@ footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
   <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30" alt="WhatsApp">
 </a>
 
+
 <script>
+// 1. YOUR SETTINGS
+const API_URL = "https://sheetdb.io/api/v1/2fclqi9gnczs0e_id"; // REPLACE THIS with your SheetDB URL
+
+// 2. LOAD JOBS AUTOMATICALLY WHEN PAGE OPENS
+window.onload = function() {
+  fetch(API_URL)
+    .then(response => response.json())
+    .then(jobs => {
+      // Optional: Uncomment the line below to clear the manual "placeholder" jobs first
+      // document.getElementById('jobGrid').innerHTML = ''; 
+      jobs.forEach(job => renderJobCard(job));
+    })
+    .catch(err => console.error("Could not load jobs:", err));
+};
+
+// 3. THE POST JOB FUNCTION (Handling the Form)
+document.getElementById('jobForm').onsubmit = function(e) {
+  e.preventDefault();
+  
+  const submitBtn = this.querySelector('button');
+  submitBtn.innerText = "Posting...";
+  submitBtn.disabled = true;
+
+  const newJob = {
+    title: document.getElementById('newTitle').value,
+    company: document.getElementById('newCompany').value,
+    type: document.getElementById('newType').value,
+    location: document.getElementById('newLocation').value,
+    desc: document.getElementById('newDesc').value,
+    poster: document.getElementById('newPoster').value
+  };
+
+  fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: [newJob] })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert("Success! Your job listing is live.");
+    location.reload(); // Refresh to show the new card
+  })
+  .catch(error => {
+    alert("Error saving job.");
+    submitBtn.innerText = "Submit Listing";
+    submitBtn.disabled = false;
+  });
+};
+
+// 4. HELPER: CREATE THE HTML CARD
+function renderJobCard(job) {
+  const grid = document.getElementById('jobGrid');
+  const badgeClass = job.type === 'job' ? 'badge-job' : 'badge-intern';
+  const badgeText = job.type === 'job' ? 'Full-Time' : 'Internship';
+
+  const cardHtml = `
+    <div class="job-card" data-type="${job.type}">
+      <span class="badge ${badgeClass}">${badgeText}</span>
+      <h3>${job.title}</h3>
+      <span class="company">${job.company}</span>
+      <p style="font-size:13px; color:#94a3b8"><i class="icon">📍</i> ${job.location}</p>
+      <button class="btn-apply" onclick="openJob('${job.title}', '${job.company}', \`${job.desc}\`, '${job.poster}')">View Details</button>
+    </div>
+  `;
+  grid.insertAdjacentHTML('afterbegin', cardHtml);
+}
+
+// 5. EXISTING FUNCTIONS (Filter & Modals)
 function filterJobs(category) {
   const cards = document.querySelectorAll('.job-card');
   const buttons = document.querySelectorAll('.filter-btn');
   buttons.forEach(btn => btn.classList.remove('active'));
-  
-  // Update button state
   event.target.classList.add('active');
 
   cards.forEach(card => {
@@ -274,9 +349,6 @@ function openJob(title, company, desc, poster) {
   document.getElementById('modalCompany').innerText = company;
   document.getElementById('modalDesc').innerText = desc;
   document.getElementById('modalPoster').innerText = poster;
-  
-  const waLink = `https://wa.me/250793904683?text=Hello, I am interested in the ${title} position at ${company}.`;
-  document.getElementById('applyLink').href = waLink;
   document.getElementById('jobModal').style.display = "block";
 }
 
@@ -284,10 +356,16 @@ function closeModal() {
   document.getElementById('jobModal').style.display = "none";
 }
 
+function closePostModal() {
+  document.getElementById('postJobModal').style.display = "none";
+}
+
 window.onclick = function(event) {
   if (event.target == document.getElementById('jobModal')) closeModal();
+  if (event.target == document.getElementById('postJobModal')) closePostModal();
 }
 </script>
+
 
 </body>
 </html>
