@@ -259,7 +259,18 @@ footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
     </form>
   </div>
 </div>
-
+<div id="jobModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle">Job Title</h2>
+    <p id="modalCompany" style="color:var(--accent); font-weight:700; margin-bottom: 20px;">Company Name</p>
+    <div id="modalDesc" style="font-size:14px; line-height:1.7; color: #cbd5e1;">Description goes here...</div>
+    <p style="font-size:13px; margin-top:25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+        Posted by: <strong id="modalPoster" style="color:var(--primary)">Name</strong>
+    </p>
+    <a id="applyLink" href="#" target="_blank" class="btn-post" style="display:block; text-align:center; margin-top:25px; text-decoration:none;">Contact to Apply</a>
+  </div>
+</div>
 <footer>
   <div style="margin-bottom:20px;">
     <strong>Need Help?</strong>
