@@ -95,15 +95,35 @@ nav ul li a:hover { color: var(--primary); }
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
+}.job-card:hover { 
+  border-color: var(--primary); 
+  transform: translateY(-5px); 
+  background: rgba(255,255,255,0.1); 
 }
-.job-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255,255,255,0.1); }
 
 .badge {
-  position: absolute; top: 20px; right: 20px; font-size: 10px;
-  font-weight: 800; padding: 4px 12px; border-radius: 50px; text-transform: uppercase;
+  position: absolute; 
+  top: 20px; 
+  right: 20px; 
+  font-size: 10px;
+  font-weight: 800; 
+  padding: 4px 12px; 
+  border-radius: 50px; 
+  text-transform: uppercase;
 }
-.badge-job { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
-.badge-intern { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+
+/* Force colors for automated cards */
+.badge-job { 
+  background: rgba(59, 130, 246, 0.2) !important; 
+  color: #60a5fa !important; 
+  border: 1px solid rgba(59, 130, 246, 0.3) !important; 
+}
+
+.badge-intern { 
+  background: rgba(34, 197, 94, 0.2) !important; 
+  color: #4ade80 !important; 
+  border: 1px solid rgba(34, 197, 94, 0.3) !important; 
+}
 
 .job-card h3 { color: var(--primary); margin: 0 0 5px 0; font-size: 1.25rem; padding-right: 60px; }
 .company { color: #94a3b8; font-size: 14px; margin-bottom: 15px; font-weight: 600; display: block; }
@@ -260,25 +280,25 @@ footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
 <a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
   <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30" alt="WhatsApp">
 </a>
-
-
 <script>
-// 1. YOUR SETTINGS
-const API_URL = "https://sheetdb.io/api/v1/2fclqi9gnczs0e_id"; // REPLACE THIS with your SheetDB URL
+// 1. SETTINGS - This connects to your Google Sheet
+const API_URL = "https://sheetdb.io/api/v1/2fclqi9gnczs0"; 
 
 // 2. LOAD JOBS AUTOMATICALLY WHEN PAGE OPENS
 window.onload = function() {
   fetch(API_URL)
     .then(response => response.json())
     .then(jobs => {
-      // Optional: Uncomment the line below to clear the manual "placeholder" jobs first
+      // Clear the grid if you don't want the hardcoded examples to stay
       // document.getElementById('jobGrid').innerHTML = ''; 
+      
+      // Loops through each row in Google Sheets and creates a card
       jobs.forEach(job => renderJobCard(job));
     })
-    .catch(err => console.error("Could not load jobs:", err));
+    .catch(err => console.error("Could not load jobs from Google Sheets:", err));
 };
 
-// 3. THE POST JOB FUNCTION (Handling the Form)
+// 3. THE POST JOB FUNCTION (Handling the Form submission)
 document.getElementById('jobForm').onsubmit = function(e) {
   e.preventDefault();
   
@@ -295,6 +315,7 @@ document.getElementById('jobForm').onsubmit = function(e) {
     poster: document.getElementById('newPoster').value
   };
 
+  // Sends the form data to SheetDB
   fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -303,7 +324,7 @@ document.getElementById('jobForm').onsubmit = function(e) {
   .then(response => response.json())
   .then(data => {
     alert("Success! Your job listing is live.");
-    location.reload(); // Refresh to show the new card
+    location.reload(); // Refresh to show the new card immediately
   })
   .catch(error => {
     alert("Error saving job.");
@@ -315,25 +336,39 @@ document.getElementById('jobForm').onsubmit = function(e) {
 // 4. HELPER: CREATE THE HTML CARD
 function renderJobCard(job) {
   const grid = document.getElementById('jobGrid');
-  const badgeClass = job.type === 'job' ? 'badge-job' : 'badge-intern';
-  const badgeText = job.type === 'job' ? 'Full-Time' : 'Internship';
+  
+  // Clean the data (Removes spaces and handles Capital letters from the sheet)
+  const rawType = job.type ? job.type.toString().toLowerCase().trim() : "";
+  
+  let badgeClass = 'badge-job';
+  let badgeText = 'Full-Time';
+  let dataAttr = 'job';
+
+  if (rawType === 'intern' || rawType === 'internship') {
+    badgeClass = 'badge-intern';
+    badgeText = 'Internship';
+    dataAttr = 'intern';
+  }
 
   const cardHtml = `
-    <div class="job-card" data-type="${job.type}">
+    <div class="job-card" data-type="${dataAttr}">
       <span class="badge ${badgeClass}">${badgeText}</span>
-      <h3>${job.title}</h3>
-      <span class="company">${job.company}</span>
-      <p style="font-size:13px; color:#94a3b8"><i class="icon">📍</i> ${job.location}</p>
-      <button class="btn-apply" onclick="openJob('${job.title}', '${job.company}', \`${job.desc}\`, '${job.poster}')">View Details</button>
+      <h3>${job.title || "Untitled Role"}</h3>
+      <span class="company">${job.company || "Unknown Company"}</span>
+      <p style="font-size:13px; color:#94a3b8"><i class="icon">📍</i> ${job.location || "N/A"}</p>
+      <button class="btn-apply" onclick="openJob(\`${job.title}\`, \`${job.company}\`, \`${job.desc}\`, \`${job.poster}\`)">View Details</button>
     </div>
   `;
+  
   grid.insertAdjacentHTML('afterbegin', cardHtml);
 }
 
-// 5. EXISTING FUNCTIONS (Filter & Modals)
+// 5. FILTERING LOGIC
 function filterJobs(category) {
   const cards = document.querySelectorAll('.job-card');
   const buttons = document.querySelectorAll('.filter-btn');
+  
+  // Update button active state
   buttons.forEach(btn => btn.classList.remove('active'));
   event.target.classList.add('active');
 
@@ -344,11 +379,17 @@ function filterJobs(category) {
   });
 }
 
+// 6. MODAL CONTROL (Open/Close)
 function openJob(title, company, desc, poster) {
   document.getElementById('modalTitle').innerText = title;
   document.getElementById('modalCompany').innerText = company;
   document.getElementById('modalDesc').innerText = desc;
   document.getElementById('modalPoster').innerText = poster;
+  
+  // Create WhatsApp application link
+  const waLink = `https://wa.me/250793904683?text=Hello, I am interested in the ${title} position at ${company}.`;
+  document.getElementById('applyLink').href = waLink;
+  
   document.getElementById('jobModal').style.display = "block";
 }
 
@@ -360,12 +401,12 @@ function closePostModal() {
   document.getElementById('postJobModal').style.display = "none";
 }
 
+// Close modals if clicking outside the box
 window.onclick = function(event) {
   if (event.target == document.getElementById('jobModal')) closeModal();
   if (event.target == document.getElementById('postJobModal')) closePostModal();
 }
 </script>
-
 
 </body>
 </html>
