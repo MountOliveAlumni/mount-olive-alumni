@@ -43,12 +43,35 @@ nav ul { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; flex
 nav ul li a { text-decoration: none; color: white; font-size: 13px; font-weight: 600; transition: 0.3s; padding: 5px 8px; }
 nav ul li a:hover { color: var(--primary); }
 
-/* --- HERO --- */
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  background: rgba(0,0,0,0.2);
+/* --- TICKER --- */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--primary);
+  padding: 10px 0;
 }
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  animation: ticker 25s linear infinite;
+}
+.ticker-item {
+  display: inline-block;
+  padding: 0 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+}
+.ticker-item span { color: white; font-weight: 300; margin-right: 10px; }
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* --- HERO --- */
+.hero { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.2); }
 .hero h1 { font-size: clamp(2rem, 8vw, 3rem); color: var(--primary); margin: 0; }
 .hero p { color: #cbd5e1; max-width: 600px; margin: 10px auto; font-size: 0.95rem; }
 
@@ -63,113 +86,66 @@ nav ul li a:hover { color: var(--primary); }
   font-weight: 700;
   transition: 0.3s;
   border: none;
+  cursor: pointer;
 }
 .btn-post:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3); }
 
-/* --- FILTERS --- */
+/* --- FILTERS & CARDS --- */
 .container { max-width: 1200px; margin: auto; padding: 20px; }
 .filters { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
-
 .filter-btn {
   background: rgba(255,255,255,0.1);
   border: 1px solid rgba(255,255,255,0.1);
-  color: white;
-  padding: 8px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 14px;
+  color: white; padding: 8px 20px; border-radius: 25px;
+  cursor: pointer; transition: 0.3s; font-size: 14px;
 }
 .filter-btn.active { background: var(--primary); color: #000; font-weight: 700; }
 
-/* --- JOB CARDS --- */
 .job-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
 
 .job-card {
-  background: var(--card-bg);
-  border-radius: 20px;
-  padding: 25px;
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: 0.3s;
-  position: relative;
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-}.job-card:hover { 
-  border-color: var(--primary); 
-  transform: translateY(-5px); 
-  background: rgba(255,255,255,0.1); 
+  background: var(--card-bg); border-radius: 20px; padding: 25px;
+  border: 1px solid rgba(255,255,255,0.08); transition: 0.3s;
+  position: relative; backdrop-filter: blur(10px); display: flex; flex-direction: column;
 }
+.job-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255,255,255,0.1); }
 
 .badge {
-  position: absolute; 
-  top: 20px; 
-  right: 20px; 
-  font-size: 10px;
-  font-weight: 800; 
-  padding: 4px 12px; 
-  border-radius: 50px; 
-  text-transform: uppercase;
+  position: absolute; top: 20px; right: 20px; font-size: 10px;
+  font-weight: 800; padding: 4px 12px; border-radius: 50px; text-transform: uppercase;
 }
-
-/* Force colors for automated cards */
-.badge-job { 
-  background: rgba(59, 130, 246, 0.2) !important; 
-  color: #60a5fa !important; 
-  border: 1px solid rgba(59, 130, 246, 0.3) !important; 
-}
-
-.badge-intern { 
-  background: rgba(34, 197, 94, 0.2) !important; 
-  color: #4ade80 !important; 
-  border: 1px solid rgba(34, 197, 94, 0.3) !important; 
-}
+.badge-job { background: rgba(59, 130, 246, 0.2) !important; color: #60a5fa !important; border: 1px solid rgba(59, 130, 246, 0.3) !important; }
+.badge-intern { background: rgba(34, 197, 94, 0.2) !important; color: #4ade80 !important; border: 1px solid rgba(34, 197, 94, 0.3) !important; }
 
 .job-card h3 { color: var(--primary); margin: 0 0 5px 0; font-size: 1.25rem; padding-right: 60px; }
 .company { color: #94a3b8; font-size: 14px; margin-bottom: 15px; font-weight: 600; display: block; }
 
 .btn-apply {
-  margin-top: auto;
-  background: transparent;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-  padding: 10px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 700;
-  transition: 0.3s;
+  margin-top: auto; background: transparent; border: 1px solid var(--accent);
+  color: var(--accent); padding: 10px; border-radius: 12px;
+  cursor: pointer; font-weight: 700; transition: 0.3s;
 }
 .btn-apply:hover { background: var(--accent); color: #000; }
 
-/* --- MODAL --- */
+/* --- MODALS --- */
 .modal {
   display: none; position: fixed; z-index: 2000; 
   left: 0; top: 0; width: 100%; height: 100%; 
   background-color: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
 }
 .modal-content {
-  background: #1e293b; margin: 15vh auto; padding: 30px;
+  background: #1e293b; margin: 5vh auto; padding: 30px;
   border: 1px solid var(--primary); border-radius: 24px;
   width: 90%; max-width: 450px; color: white; position: relative;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: var(--primary); }
 
-/* --- WHATSAPP FLOAT --- */
-.whatsapp-float {
-  position: fixed; bottom: 25px; right: 25px;
-  width: 60px; height: 60px; background: #25D366;
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  z-index: 1000; box-shadow: 0 6px 20px rgba(0,0,0,0.4); transition: 0.3s;
-}
-.whatsapp-float:hover { transform: scale(1.1); }
-
 footer { text-align: center; padding: 60px 20px; background: rgba(0,0,0,0.8); margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.1); }
 footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
 
 @media(max-width: 600px) {
   nav { flex-direction: column; padding: 15px 10px; }
-  nav h2 { margin-bottom: 10px; }
   .job-grid { grid-template-columns: 1fr; }
 }
 </style>
@@ -190,14 +166,21 @@ footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
   </ul>
 </nav>
 
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="ticker-item"><span>NEW:</span> Role listings now auto-update!</div>
+    <div class="ticker-item"><span>TIP:</span> Direct contact now available via WhatsApp!</div>
+    <div class="ticker-item"><span>COMMUNITY:</span> Reach out to fellow alumni for career growth.</div>
+  </div>
+</div>
+
 <header class="hero">
   <h1>Career Hub</h1>
-  <p>Connecting Mount Olive talent with global opportunities across South Sudan, Uganda, and beyond.</p>
+  <p>Connecting Mount Olive talent with global opportunities.</p>
   <button onclick="document.getElementById('postJobModal').style.display='block'" class="btn-post">Post a Role +</button>
 </header>
 
 <div class="container">
-  
   <div class="filters">
     <button class="filter-btn active" onclick="filterJobs('all')">All Opportunities</button>
     <button class="filter-btn" onclick="filterJobs('job')">Jobs</button>
@@ -205,219 +188,128 @@ footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
   </div>
 
   <div class="job-grid" id="jobGrid">
-
-    <div class="job-card" data-type="job">
-      <span class="badge badge-job">Full-Time</span>
-      <h3>Legal Research Assistant</h3>
-      <span class="company">Opiyo Emmy and Advocates</span>
-      <p style="font-size:13px; color:#94a3b8"><i class="icon">📍</i> Juba / Gulu</p>
-      <button class="btn-apply" onclick="openJob('Legal Research Assistant', 'Opiyo Emmy and Advocates', 'Seeking a dedicated LLB student or graduate to assist with legal documentation, case research, and court filings. Strong leadership potential is a must.', 'Opiyo Emmy')">View Details</button>
     </div>
-
-    <div class="job-card" data-type="job">
-      <span class="badge badge-job">Full-Time</span>
-      <h3>Full-Stack Web Developer</h3>
-      <span class="company">Mondays Tech Ltd</span>
-      <p style="font-size:13px; color:#94a3b8"><i class="icon">📍</i> Remote / International</p>
-      <button class="btn-apply" onclick="openJob('Full-Stack Web Developer', 'Mondays Tech Ltd', 'Looking for an innovative developer to build modern alumni solutions. Proficiency in HTML, CSS, and JS is required. Come help us build the future of tech!', 'Moses Monday')">View Details</button>
-    </div>
-
-    <div class="job-card" data-type="intern">
-      <span class="badge badge-intern">Internship</span>
-      <h3>Medical Assistant Intern</h3>
-      <span class="company">Gulu Health Center</span>
-      <p style="font-size:13px; color:#94a3b8"><i class="icon">📍</i> Gulu, Uganda</p>
-      <button class="btn-apply" onclick="openJob('Medical Assistant Intern', 'Gulu Health Center', 'Perfect for medical or nursing students looking for clinical experience. Under the guidance of our clinical officers.', 'Peter Maker')">View Details</button>
-    </div>
-
-    <div class="job-card" data-type="job">
-      <span class="badge badge-job">Part-Time</span>
-      <h3>Supply Chain Coordinator</h3>
-      <span class="company">Nimule Trade Logistics</span>
-      <p style="font-size:13px; color:#94a3b8"><i class="icon">📍</i> Nimule Border</p>
-      <button class="btn-apply" onclick="openJob('Supply Chain Coordinator', 'Nimule Trade Logistics', 'Overseeing clearing and forwarding operations. Ideal for Procurement graduates with strong logistical skills.', 'Agot Maketh')">View Details</button>
-    </div>
-
-  </div>
 </div>
 
 <div id="postJobModal" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closePostModal()">&times;</span>
-    <h2>Post a New Role</h2>
+    <h2 style="color:var(--primary)">Post a New Role</h2>
     <form id="jobForm" style="display: flex; flex-direction: column; gap: 10px;">
-      <input type="text" id="newTitle" placeholder="Job Title (e.g. Accountant)" required style="padding: 10px; border-radius: 8px; border: none;">
+      <input type="text" id="newTitle" placeholder="Job Title" required style="padding: 10px; border-radius: 8px; border: none;">
       <input type="text" id="newCompany" placeholder="Company Name" required style="padding: 10px; border-radius: 8px; border: none;">
       <select id="newType" style="padding: 10px; border-radius: 8px; border: none;">
         <option value="job">Full-Time Job</option>
         <option value="intern">Internship</option>
       </select>
-      <input type="text" id="newLocation" placeholder="Location (e.g. Juba)" required style="padding: 10px; border-radius: 8px; border: none;">
-      <textarea id="newDesc" placeholder="Brief Description" rows="4" style="padding: 10px; border-radius: 8px; border: none;"></textarea>
+      <input type="text" id="newLocation" placeholder="Location" required style="padding: 10px; border-radius: 8px; border: none;">
+      <textarea id="newDesc" placeholder="Description" rows="4" style="padding: 10px; border-radius: 8px; border: none;"></textarea>
       <input type="text" id="newPoster" placeholder="Your Name" required style="padding: 10px; border-radius: 8px; border: none;">
-      <button type="submit" class="btn-post" style="border: none; cursor: pointer;">Submit Listing</button>
+      <input type="text" id="newPhone" placeholder="Your WhatsApp (e.g. 2567...)" required style="padding: 10px; border-radius: 8px; border: none;">
+      <button type="submit" class="btn-post" style="border: none;">Submit Listing</button>
     </form>
   </div>
 </div>
+
 <div id="jobModal" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <h2 id="modalTitle">Job Title</h2>
     <p id="modalCompany" style="color:var(--accent); font-weight:700; margin-bottom: 20px;">Company Name</p>
-    <div id="modalDesc" style="font-size:14px; line-height:1.7; color: #cbd5e1;">Description goes here...</div>
+    <div id="modalDesc" style="font-size:14px; line-height:1.7; color: #cbd5e1; white-space: pre-wrap;">Description...</div>
     <p style="font-size:13px; margin-top:25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
         Posted by: <strong id="modalPoster" style="color:var(--primary)">Name</strong>
     </p>
     <a id="applyLink" href="#" target="_blank" class="btn-post" style="display:block; text-align:center; margin-top:25px; text-decoration:none;">Contact to Apply</a>
   </div>
 </div>
+
 <footer>
-  <div style="margin-bottom:20px;">
-    <strong>Need Help?</strong>
-  </div>
-  <div style="margin-bottom:10px;">
-    📞 WhatsApp: <a href="https://wa.me/250793904683" target="_blank">Chat with Moses</a>
-  </div>
-  <div style="margin-bottom:10px;">
-    📧 Email: <a href="mailto:mosesmondaymalith50@gmail.com">mosesmondaymalith50@gmail.com</a>
-  </div>
-  <hr style="border:0; border-top: 1px solid rgba(255,255,255,0.1); margin:25px auto; width: 60%;">
-  <p style="font-size: 13px; opacity: 0.7;">
-    © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
-    Developed with ❤️ by Moses Monday MALITH
-  </p>
+  📞 Admin WhatsApp: <a href="https://wa.me/250793904683" target="_blank">Chat with Moses</a><br>
+  <p>© 2026 Mount Olive Alumni Portal</p>
 </footer>
 
-<a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" class="whatsapp-float" target="_blank">
-  <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" width="30" alt="WhatsApp">
-</a>
 <script>
-// 1. SETTINGS - This connects to your Google Sheet
 const API_URL = "https://sheetdb.io/api/v1/2fclqi9gnczs0"; 
 
-// 2. LOAD JOBS AUTOMATICALLY WHEN PAGE OPENS
 window.onload = function() {
   fetch(API_URL)
-    .then(response => response.json())
+    .then(res => res.json())
     .then(jobs => {
-      // Clear the grid if you don't want the hardcoded examples to stay
-      // document.getElementById('jobGrid').innerHTML = ''; 
-      
-      // Loops through each row in Google Sheets and creates a card
       jobs.forEach(job => renderJobCard(job));
     })
-    .catch(err => console.error("Could not load jobs from Google Sheets:", err));
+    .catch(err => console.log("Check API link or Sheet data"));
 };
 
-// 3. THE POST JOB FUNCTION (Handling the Form submission)
 document.getElementById('jobForm').onsubmit = function(e) {
   e.preventDefault();
-  
-  const submitBtn = this.querySelector('button');
-  submitBtn.innerText = "Posting...";
-  submitBtn.disabled = true;
+  const btn = this.querySelector('button');
+  btn.innerText = "Posting..."; btn.disabled = true;
 
-  const newJob = {
+  const data = {
     title: document.getElementById('newTitle').value,
     company: document.getElementById('newCompany').value,
     type: document.getElementById('newType').value,
     location: document.getElementById('newLocation').value,
     desc: document.getElementById('newDesc').value,
-    poster: document.getElementById('newPoster').value
+    poster: document.getElementById('newPoster').value,
+    phone: document.getElementById('newPhone').value
   };
 
-  // Sends the form data to SheetDB
   fetch(API_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ data: [newJob] })
+    body: JSON.stringify({ data: [data] })
   })
-  .then(response => response.json())
-  .then(data => {
-    alert("Success! Your job listing is live.");
-    location.reload(); // Refresh to show the new card immediately
-  })
-  .catch(error => {
-    alert("Error saving job.");
-    submitBtn.innerText = "Submit Listing";
-    submitBtn.disabled = false;
-  });
+  .then(() => { alert("Job Posted Successfully!"); location.reload(); })
+  .catch(() => { alert("Error connecting to server"); btn.disabled = false; btn.innerText = "Submit Listing"; });
 };
 
-// 4. HELPER: CREATE THE HTML CARD
 function renderJobCard(job) {
   const grid = document.getElementById('jobGrid');
-  
-  // Clean the data (Removes spaces and handles Capital letters from the sheet)
-  const rawType = job.type ? job.type.toString().toLowerCase().trim() : "";
-  
-  let badgeClass = 'badge-job';
-  let badgeText = 'Full-Time';
-  let dataAttr = 'job';
-
-  if (rawType === 'intern' || rawType === 'internship') {
-    badgeClass = 'badge-intern';
-    badgeText = 'Internship';
-    dataAttr = 'intern';
-  }
+  const type = (job.type || 'job').toLowerCase();
+  const badge = type === 'intern' ? 'badge-intern' : 'badge-job';
+  const label = type === 'intern' ? 'Internship' : 'Full-Time';
 
   const cardHtml = `
-    <div class="job-card" data-type="${dataAttr}">
-      <span class="badge ${badgeClass}">${badgeText}</span>
-      <h3>${job.title || "Untitled Role"}</h3>
-      <span class="company">${job.company || "Unknown Company"}</span>
-      <p style="font-size:13px; color:#94a3b8"><i class="icon">📍</i> ${job.location || "N/A"}</p>
-      <button class="btn-apply" onclick="openJob(\`${job.title}\`, \`${job.company}\`, \`${job.desc}\`, \`${job.poster}\`)">View Details</button>
+    <div class="job-card" data-type="${type}">
+      <span class="badge ${badge}">${label}</span>
+      <h3>${job.title}</h3>
+      <span class="company">${job.company}</span>
+      <p style="font-size:13px; color:#94a3b8">📍 ${job.location}</p>
+      <button class="btn-apply" onclick="openJob(\`${job.title}\`, \`${job.company}\`, \`${job.desc}\`, \`${job.poster}\`, \`${job.phone}\`)">View Details</button>
     </div>
   `;
-  
   grid.insertAdjacentHTML('afterbegin', cardHtml);
 }
 
-// 5. FILTERING LOGIC
-function filterJobs(category) {
-  const cards = document.querySelectorAll('.job-card');
-  const buttons = document.querySelectorAll('.filter-btn');
-  
-  // Update button active state
-  buttons.forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-
-  cards.forEach(card => {
-    if (category === 'all') card.style.display = 'flex';
-    else if (card.getAttribute('data-type') === category) card.style.display = 'flex';
-    else card.style.display = 'none';
-  });
-}
-
-// 6. MODAL CONTROL (Open/Close)
-function openJob(title, company, desc, poster) {
+function openJob(title, company, desc, poster, phone) {
   document.getElementById('modalTitle').innerText = title;
   document.getElementById('modalCompany').innerText = company;
   document.getElementById('modalDesc').innerText = desc;
   document.getElementById('modalPoster').innerText = poster;
   
-  // Create WhatsApp application link
-  const waLink = `https://wa.me/250793904683?text=Hello, I am interested in the ${title} position at ${company}.`;
-  document.getElementById('applyLink').href = waLink;
+  // Use poster's number, fallback to admin number if empty
+  const targetPhone = (phone && phone !== 'undefined') ? phone.replace(/\D/g,'') : "250793904683";
   
+  document.getElementById('applyLink').href = `https://wa.me/${targetPhone}?text=Hello, I am interested in the ${title} position at ${company} seen on Mount Olive Hub.`;
   document.getElementById('jobModal').style.display = "block";
 }
 
-function closeModal() {
-  document.getElementById('jobModal').style.display = "none";
+function closeModal() { document.getElementById('jobModal').style.display = "none"; }
+function closePostModal() { document.getElementById('postJobModal').style.display = "none"; }
+
+function filterJobs(category) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.job-card').forEach(c => {
+    c.style.display = (category === 'all' || c.dataset.type === category) ? 'flex' : 'none';
+  });
 }
 
-function closePostModal() {
-  document.getElementById('postJobModal').style.display = "none";
-}
-
-// Close modals if clicking outside the box
-window.onclick = function(event) {
-  if (event.target == document.getElementById('jobModal')) closeModal();
-  if (event.target == document.getElementById('postJobModal')) closePostModal();
-}
+window.onclick = function(e) {
+  if (e.target.className === 'modal') { closeModal(); closePostModal(); }
+};
 </script>
-
 </body>
 </html>
