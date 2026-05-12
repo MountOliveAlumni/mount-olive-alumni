@@ -2,897 +2,285 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>MOGS Alumni Trivia Challenge</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<title>Mount Olive Alumni</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root {
-  --gold:       #D4A843;
-  --gold-l:     #F0C96A;
-  --gold-d:     #8A6A20;
-  --gold-glow:  rgba(212,168,67,0.25);
-  --navy:       #060C18;
-  --card:       #0D1626;
-  --card2:      #131F35;
-  --border:     #1C2C46;
-  --border2:    #273D5E;
-  --white:      #EEE8D8;
-  --muted:      #7080A0;
-  --green:      #3FC47B;
-  --green-bg:   rgba(63,196,123,0.12);
-  --red:        #E05050;
-  --red-bg:     rgba(224,80,80,0.12);
-  --blue:       #4A90E2;
-  --r:          16px;
-  --rs:         10px;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--navy);
-  color: var(--white);
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  padding: 16px;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  color: white;
   overflow-x: hidden;
 }
 
-/* ── CANVAS BG ── */
-#bg-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-
-/* ── APP WRAPPER ── */
-#app { position: relative; z-index: 1; width: 100%; max-width: 490px; }
-
-/* ── SCREENS ── */
-.screen { display: none; flex-direction: column; align-items: center; width: 100%; }
-.screen.active { display: flex; animation: popIn 0.55s cubic-bezier(.16,1,.3,1) both; }
-@keyframes popIn {
-  from { opacity: 0; transform: translateY(36px) scale(0.95); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+/* NAVIGATION */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #020617;
 }
 
-/* ── CARD ── */
-.card {
-  background: linear-gradient(160deg, #0F1B30 0%, #0A1220 100%);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 30px 24px;
-  width: 100%;
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { width: 40px; border-radius: 50%; }
+.logo h3 { color: #facc15; margin: 0; }
+
+nav ul { list-style: none; display: flex; gap: 10px; padding: 0; }
+nav a { text-decoration: none; color: white; padding: 6px 10px; border-radius: 6px; font-size: 14px; }
+nav a:hover { background: #facc15; color: black; }
+
+/* TICKER */
+.ticker { background: #111827; overflow: hidden; white-space: nowrap; padding: 5px 0; }
+.ticker p { display: inline-block; padding-left: 100%; animation: move 18s linear infinite; color: #facc15; font-weight: 600; margin: 0; }
+@keyframes move { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+/* HERO SECTION */
+.hero {
   position: relative;
+  text-align: center;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #020617;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: slideshow 15s infinite;
   overflow: hidden;
-  box-shadow: 0 50px 100px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.04);
-}
-.card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-d), var(--gold-l), var(--gold-d), transparent);
 }
 
-/* ── BADGE ── */
-.badge-wrap { display: flex; justify-content: center; margin-bottom: 20px; }
-.badge {
-  width: 76px; height: 76px; border-radius: 50%;
-  background: conic-gradient(from 180deg, var(--gold-d) 0%, var(--gold) 35%, var(--gold-l) 50%, var(--gold) 65%, var(--gold-d) 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--navy);
-  box-shadow: 0 0 0 4px rgba(212,168,67,0.15), 0 0 50px rgba(212,168,67,0.4);
-  animation: pulse-gold 3s ease-in-out infinite;
-}
-@keyframes pulse-gold {
-  0%,100% { box-shadow: 0 0 0 4px rgba(212,168,67,0.15), 0 0 50px rgba(212,168,67,0.4); }
-  50%      { box-shadow: 0 0 0 8px rgba(212,168,67,0.08), 0 0 70px rgba(212,168,67,0.6); }
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
 }
 
-h1 {
-  font-family: 'Syne', sans-serif; font-size: clamp(22px,6vw,30px);
-  font-weight: 800; text-align: center;
-  background: linear-gradient(135deg, var(--gold-l) 0%, var(--gold) 50%, var(--gold-l) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  line-height: 1.15;
-}
-.subtitle { text-align: center; color: var(--muted); font-size: 13px; margin-top: 6px; letter-spacing: .3px; }
-
-/* ── FEATURES ── */
-.features { display: flex; flex-direction: column; gap: 7px; margin: 18px 0; }
-.feat-row {
-  display: flex; align-items: center; gap: 12px; padding: 10px 13px;
-  background: rgba(255,255,255,0.025); border: 1px solid var(--border);
-  border-radius: var(--rs); font-size: 12.5px; color: var(--muted);
-}
-.feat-row b { color: var(--white); font-weight: 500; }
-.feat-icon { font-size: 16px; flex-shrink: 0; }
-
-/* ── INPUTS ── */
-input[type="text"] {
-  width: 100%; padding: 13px 15px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid var(--border); border-radius: var(--rs);
-  color: var(--white); font-size: 15px; outline: none;
-  font-family: 'DM Sans', sans-serif;
-  transition: border-color .2s, box-shadow .2s;
-  margin-bottom: 14px;
-}
-input[type="text"]:focus { border-color: var(--gold-d); box-shadow: 0 0 0 3px var(--gold-glow); }
-input[type="text"]::placeholder { color: var(--muted); }
-
-.form-label { font-size: 10px; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 6px; display: block; }
-
-/* ── AVATAR ── */
-.avatar-row { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 16px; }
-.av-btn {
-  width: 44px; height: 44px; border-radius: 50%;
-  border: 2px solid var(--border); background: var(--card2);
-  font-size: 20px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .2s; position: relative;
-}
-.av-btn.selected {
-  border-color: var(--gold);
-  box-shadow: 0 0 16px rgba(212,168,67,0.5);
-  transform: scale(1.1);
-}
-
-/* ── DIFFICULTY ── */
-.diff-row { display: flex; gap: 7px; margin-bottom: 18px; }
-.diff-btn {
-  flex: 1; padding: 10px 4px; border: 1px solid var(--border); border-radius: var(--rs);
-  background: var(--card2); color: var(--muted); cursor: pointer; font-size: 12px;
-  font-family: 'DM Sans', sans-serif; transition: all .2s;
-}
-.diff-btn:hover { border-color: var(--border2); color: var(--white); }
-.diff-btn.selected { border-color: var(--gold-d); color: var(--gold-l); background: rgba(212,168,67,0.07); }
-
-/* ── BUTTONS ── */
-.btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  width: 100%; padding: 15px; border: none; border-radius: var(--rs);
-  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
-  cursor: pointer; transition: all .2s; letter-spacing: .3px;
-}
-.btn-primary {
-  background: linear-gradient(135deg, var(--gold-d), var(--gold), var(--gold-l));
-  color: var(--navy);
-  box-shadow: 0 4px 30px rgba(212,168,67,0.4);
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(212,168,67,0.5); }
-.btn-primary:active { transform: translateY(0); }
-.btn-wa { background: #25D366; color: #fff; margin-top: 10px; }
-.btn-wa:hover { background: #1ebe5d; }
-.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); margin-top: 8px; }
-.btn-ghost:hover { color: var(--white); border-color: var(--border2); }
-
-/* ── HUD ── */
-.hud { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.hud-left { display: flex; flex-direction: column; gap: 4px; }
-.hud-label { font-size: 9px; letter-spacing: 1.5px; color: var(--muted); }
-.hud-score { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--gold-l); line-height: 1; transition: transform .1s; }
-.hud-score.bump { transform: scale(1.2); }
-.hud-q { font-size: 11px; color: var(--muted); }
-
-.timer-wrap { position: relative; width: 58px; height: 58px; }
-.timer-wrap svg { transform: rotate(-90deg); }
-.t-bg  { fill: none; stroke: var(--border); stroke-width: 4; }
-.t-ring{ fill: none; stroke: var(--gold); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 138.2; transition: stroke-dashoffset 1s linear, stroke .5s; }
-.t-num { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: var(--gold-l); transition: color .5s; }
-.t-ring.urgent { stroke: var(--red); }
-.t-num.urgent  { color: var(--red); }
-
-/* ── PROGRESS ── */
-.prog-bar { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 13px; }
-.prog-fill { height: 100%; background: linear-gradient(90deg, var(--gold-d), var(--gold-l)); width: 0%; transition: width .5s cubic-bezier(.16,1,.3,1); border-radius: 3px; }
-
-/* ── STREAK ── */
-.streak-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
-.streak-flames { display: flex; gap: 2px; }
-.flame { font-size: 14px; opacity: 0.2; transition: opacity .3s, transform .3s; }
-.flame.lit { opacity: 1; transform: scale(1.2); }
-.streak-text { font-size: 11px; color: var(--muted); }
-
-/* ── POWERUPS ── */
-.powerup-row { display: flex; gap: 7px; margin-bottom: 13px; }
-.pu-btn {
-  flex: 1; padding: 9px 4px; border: 1px solid var(--border); border-radius: var(--rs);
-  background: var(--card2); color: var(--white); cursor: pointer; font-size: 11px;
-  transition: all .2s; font-family: 'DM Sans', sans-serif;
-  position: relative; overflow: hidden;
-}
-.pu-btn:hover:not(.used):not(:disabled) { border-color: var(--border2); background: rgba(255,255,255,0.04); }
-.pu-btn.used { opacity: 0.25; pointer-events: none; }
-.pu-tooltip { font-size: 9px; color: var(--muted); margin-top: 2px; }
-
-/* ── QUESTION ── */
-.q-category { font-size: 10px; letter-spacing: 1.5px; color: var(--gold-d); margin-bottom: 8px; }
-.q-text {
-  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700;
-  line-height: 1.45; margin-bottom: 16px; min-height: 55px;
-  color: var(--white);
-}
-
-/* ── OPTIONS ── */
-.options { display: flex; flex-direction: column; gap: 7px; }
-.opt-btn {
-  display: flex; align-items: center; gap: 12px; padding: 13px 14px;
-  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-  border-radius: var(--rs); color: var(--white); cursor: pointer; text-align: left;
-  font-family: 'DM Sans', sans-serif; font-size: 14px;
-  transition: all .2s; position: relative; overflow: hidden;
-}
-.opt-btn::before { content: ''; position: absolute; inset: 0; background: transparent; transition: background .2s; }
-.opt-btn:hover:not([disabled]) { border-color: var(--border2); background: rgba(255,255,255,0.06); transform: translateX(3px); }
-.opt-label {
-  width: 26px; height: 26px; border-radius: 6px;
-  background: var(--border); display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 700; flex-shrink: 0; transition: all .2s;
-  font-family: 'Syne', sans-serif;
-}
-.opt-btn.correct { border-color: var(--green); background: var(--green-bg); }
-.opt-btn.correct .opt-label { background: var(--green); color: var(--navy); }
-.opt-btn.wrong   { border-color: var(--red); background: var(--red-bg); }
-.opt-btn.wrong   .opt-label { background: var(--red); color: #fff; }
-.opt-btn.eliminated { opacity: 0.15; pointer-events: none; }
-.opt-btn[disabled]  { pointer-events: none; }
-
-/* ── FEEDBACK FLASH ── */
-.feedback-flash {
-  position: absolute; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
-  pointer-events: none; opacity: 0; transition: opacity .2s;
-  font-size: 48px;
-}
-.feedback-flash.show { opacity: 1; }
-
-/* ── EXPLAIN BOX ── */
-.explain-box {
-  margin-top: 10px; padding: 10px 13px;
-  background: rgba(212,168,67,0.07); border: 1px solid var(--gold-d);
-  border-radius: var(--rs); font-size: 12px; color: var(--muted);
-  animation: popIn 0.3s ease both;
-  display: none;
-}
-.explain-box.show { display: block; }
-.explain-box b { color: var(--gold-l); }
-
-/* ── COMBO TOAST ── */
-#combo-toast {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0);
-  background: linear-gradient(135deg, var(--gold-d), var(--gold));
-  color: var(--navy); padding: 10px 22px; border-radius: 30px;
-  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
-  z-index: 20; pointer-events: none; white-space: nowrap;
-  transition: transform .3s cubic-bezier(.16,1,.3,1), opacity .3s;
-  opacity: 0;
-}
-#combo-toast.show { transform: translate(-50%,-50%) scale(1); opacity: 1; }
-
-/* ── END SCREEN ── */
-.grade-badge {
-  width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 16px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  font-family: 'Syne', sans-serif; font-weight: 800;
+.hero h1 {
+  font-size: 36px;
+  color: #facc15;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  margin-bottom: 10px;
   position: relative;
+  z-index: 2;
 }
-.grade-letter { font-size: 36px; line-height: 1; }
-.grade-label  { font-size: 10px; letter-spacing: 1px; }
 
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0; }
-.stat-box {
-  background: var(--card2); border: 1px solid var(--border); border-radius: var(--rs);
-  padding: 12px 6px; text-align: center;
+.hero p {
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: 1px 1px 5px rgba(0,0,0,1);
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+  position: relative;
+  z-index: 2;
 }
-.stat-val { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--gold-l); }
-.stat-lbl { font-size: 9px; color: var(--muted); letter-spacing: 1px; margin-top: 3px; }
 
-.review-section { margin-bottom: 16px; }
-.review-title { font-size: 10px; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 8px; }
-.review-list { display: flex; flex-direction: column; gap: 5px; max-height: 180px; overflow-y: auto; }
-.review-list::-webkit-scrollbar { width: 3px; }
-.review-list::-webkit-scrollbar-track { background: transparent; }
-.review-list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-.rev-row {
-  display: flex; align-items: flex-start; gap: 8px;
-  font-size: 12px; padding: 8px 10px; border-radius: var(--rs);
-  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-  color: var(--muted); line-height: 1.4;
+@keyframes slideshow {
+  0%, 25% { background-image: url('images/school1.jpeg'); }
+  26%, 50% { background-image: url('images/school2.jpeg'); }
+  51%, 75% { background-image: url('images/school3.jpeg'); }
+  76%, 100% { background-image: url('images/school4.jpeg'); }
 }
-.rev-row span:first-child { flex-shrink: 0; margin-top: 1px; }
 
-/* ── GLOBAL TOAST ── */
-#toast {
-  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(10px);
-  background: var(--gold); color: var(--navy); padding: 9px 18px; border-radius: 24px;
-  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
-  opacity: 0; transition: all .3s; z-index: 200; white-space: nowrap;
-  box-shadow: 0 8px 30px rgba(212,168,67,0.4);
+/* CARDS & GRIDS */
+.section { padding: 40px 20px; text-align: center; }
+.section h2 { color: #facc15; margin-bottom: 25px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 15px; max-width: 1100px; margin: auto; }
+.card { background: #1e293b; padding: 15px; border-radius: 12px; transition: transform 0.3s; }
+.card:hover { transform: translateY(-5px); }
+
+/* PHOTO FIX: Ensures faces are visible */
+.card img { 
+  width: 100%; 
+  height: 260px; 
+  object-fit: cover; 
+  object-position: top; /* Crucial: prioritize showing the head/face */
+  border-radius: 10px; 
 }
-#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* ── LEADERBOARD ── */
-.lb-row {
-  display: flex; align-items: center; gap: 10px; padding: 9px 12px;
-  background: var(--card2); border: 1px solid var(--border); border-radius: var(--rs);
-  margin-bottom: 5px; font-size: 13px;
+/* EXPLORE LINKS */
+.link-card {
+  background: #1e293b;
+  color: #facc15;
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  display: block;
 }
-.lb-rank { font-family: 'Syne', sans-serif; font-weight: 800; color: var(--gold); width: 22px; }
-.lb-name { flex: 1; }
-.lb-score { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--gold-l); }
-.lb-row.you { border-color: var(--gold-d); background: rgba(212,168,67,0.06); }
+.link-card:hover { background: #facc15; color: black; }
 
-/* ── DIVIDER ── */
-.divider { height: 1px; background: var(--border); margin: 16px 0; }
+/* QUICK BUTTONS */
+.quick { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 10px; padding: 20px; }
+.quick a { background: #1e293b; padding: 15px; border-radius: 10px; color: white; text-decoration: none; font-weight: 600; text-align: center; }
+.quick a:hover { background: #facc15; color: black; }
 
-/* ── CONFETTI ── */
-.confetti-piece {
-  position: fixed; pointer-events: none; z-index: 150;
-  width: 8px; height: 8px; border-radius: 2px;
-  animation: confetti-fall linear forwards;
+/* GALLERY */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 10px; }
+.gallery img { width: 100%; height: 140px; object-fit: cover; border-radius: 10px; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #facc15;
+  color: black;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
 }
-@keyframes confetti-fall {
-  0%   { transform: translate(0, -10px) rotate(0deg); opacity: 1; }
-  100% { transform: translate(var(--dx), 100vh) rotate(720deg); opacity: 0; }
+
+footer { text-align: center; padding: 40px 20px; background: #020617; margin-top: 40px; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+footer a { color: #facc15; text-decoration: none; }
+
+@media(max-width: 600px){
+  .hero h1 { font-size: 26px; }
 }
 </style>
 </head>
 <body>
 
-<canvas id="bg-canvas"></canvas>
-<div id="toast"></div>
+<nav>
+  <div class="logo"><img src="images/logo.jpg"><h3>Mount Olive Alumni</h3></div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <a href="associates.html">Associates</a>
+    <li><a href="executives.html">Executives</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="contact.html">Contacts</a></li>
+     <li><a href="jobs.html">Jobs</a></li>
+  </ul>
+</nav>
 
-<div id="app">
+<div class="ticker"><p>🎓 Mount Olive Alumni • Unity • Growth • Leadership • Excellence • 2013–2019</p></div>
 
-<!-- ════ START SCREEN ════ -->
-<div id="s-start" class="screen active">
-  <div class="card">
-    <div class="badge-wrap"><div class="badge">M</div></div>
-    <h1>MOGS Alumni<br>Trivia Challenge</h1>
-    <p class="subtitle">Join the legacy. Prove your knowledge.</p>
+<div class="hero">
+  <h1>Mount Olive Alumni</h1>
+  <p>Connecting Students. Preserving Legacy. Building Future Leaders.</p>
+  <a href="classes.html" class="btn">Explore Classes</a>
+</div>
 
-    <div class="features">
-      <div class="feat-row"><span class="feat-icon">⚡</span> <span><b>Speed Bonus</b> — faster answers score higher</span></div>
-      <div class="feat-row"><span class="feat-icon">🔥</span> <span><b>Streak Multiplier</b> — chain correct answers</span></div>
-      <div class="feat-row"><span class="feat-icon">🛡️</span> <span><b>3 Power-Ups</b> — 50/50, Extra Time, Shield</span></div>
-      <div class="feat-row"><span class="feat-icon">📖</span> <span><b>Explanations</b> — learn after every answer</span></div>
-    </div>
+<div class="section" style="background: #1e293b; margin: 30px 20px; border-radius: 15px;">
+  <h2>Welcome Home, Alumni!</h2>
+  <p>Welcome to the official Mount Olive Alumni portal. Connect, share, and grow with us.</p>
+</div>
 
-    <input type="text" id="pname" placeholder="Your name…" maxlength="15" autocomplete="off">
-
-    <label class="form-label">PICK YOUR AVATAR</label>
-    <div class="avatar-row" id="avatar-row"></div>
-
-    <label class="form-label">DIFFICULTY</label>
-    <div class="diff-row">
-      <button class="diff-btn selected" data-diff="easy">⭐ Easy<br><span style="font-size:9px;color:var(--muted)">20s / Q</span></button>
-      <button class="diff-btn" data-diff="normal">⚡ Normal<br><span style="font-size:9px;color:var(--muted)">15s / Q</span></button>
-      <button class="diff-btn" data-diff="hard">🔥 Hard<br><span style="font-size:9px;color:var(--muted)">10s / Q</span></button>
-    </div>
-
-    <button class="btn btn-primary" id="btn-start">Begin the Challenge →</button>
+<div class="section">
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+    <a href="classes.html" class="link-card">Explore Classes →</a>
+    <a href="about.html" class="link-card">About Our Legacy →</a>
   </div>
 </div>
 
-<!-- ════ QUIZ SCREEN ════ -->
-<div id="s-quiz" class="screen">
-  <div class="card" style="position:relative">
-    <div id="combo-toast"></div>
+<div class="quick">
+  <a href="classes.html">📚 Classes</a>
+  <a href="executives.html">👔 Executives</a>
+  <a href="news.html">📰 News</a>
+  <a href="about.html">ℹ️ About</a>
+  <a href="contact.html">📞 Contacts</a>
+</div>
 
-    <!-- HUD -->
-    <div class="hud">
-      <div class="hud-left">
-        <div class="hud-label">SCORE</div>
-        <div class="hud-score" id="hud-score">0</div>
-        <div class="hud-q" id="hud-q">Q 1 of 10</div>
-      </div>
-      <div class="timer-wrap">
-        <svg width="58" height="58">
-          <circle class="t-bg" cx="29" cy="29" r="22"/>
-          <circle id="t-ring" class="t-ring" cx="29" cy="29" r="22"/>
-        </svg>
-        <div class="t-num" id="t-num">20</div>
-      </div>
+<div class="section">
+  <h2>Our Mentors & Leadership — "The Generals"</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/anyam.jpeg">
+      <h3>Tr. Charles</h3>
+      <p style="color: #facc15; font-weight: 700; margin-bottom: 5px;">Former Head Master</p>
+      <p style="font-size: 14px;">Science Teacher</p>
     </div>
 
-    <!-- Progress -->
-    <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
-
-    <!-- Streak -->
-    <div class="streak-bar">
-      <div class="streak-flames" id="streak-flames">
-        <span class="flame" id="f0">🔥</span>
-        <span class="flame" id="f1">🔥</span>
-        <span class="flame" id="f2">🔥</span>
-        <span class="flame" id="f3">🔥</span>
-        <span class="flame" id="f4">🔥</span>
-      </div>
-      <span class="streak-text" id="streak-text">Start a streak!</span>
+    <div class="card">
+      <img src="images/luap.jpeg">
+      <h3>Tr. Paul</h3>
+      <p style="color: #facc15; font-weight: 700; margin-bottom: 5px;">Former Director of Studies (DOS)</p>
+      <p style="font-size: 14px;">Mathematics & MDD</p>
     </div>
 
-    <!-- Power-Ups -->
-    <div class="powerup-row">
-      <button class="pu-btn" id="pu-5050">🎯 50/50<div class="pu-tooltip">Removes 2 wrong</div></button>
-      <button class="pu-btn" id="pu-time">⏱️ +8 Sec<div class="pu-tooltip">Extra time</div></button>
-      <button class="pu-btn" id="pu-skip">⏭️ Skip<div class="pu-tooltip">Skip this Q</div></button>
-      <button class="pu-btn" id="pu-2nd">🛡️ Shield<div class="pu-tooltip">1 free miss</div></button>
+    <div class="card">
+      <img src="images/anthony.jpeg">
+      <h3>Tr. Anthony</h3>
+      <p style="font-size: 14px; margin-top: 10px;">Former English Teacher</p>
     </div>
 
-    <!-- Question -->
-    <div class="q-category" id="q-cat">HISTORY</div>
-    <div class="q-text" id="q-text">Loading…</div>
-    <div class="options" id="options"></div>
-    <div class="explain-box" id="explain-box"><b>💡 Did you know?</b> <span id="explain-text"></span></div>
+    <div class="card">
+      <img src="images/robert.jpeg">
+      <h3>Tr. Robert</h3>
+      <p style="font-size: 14px; margin-top: 10px;">Former SST Teacher</p>
+    </div>
+  </div>
+  <p style="text-align:center; color:#facc15; font-weight:600; margin-top: 20px;">
+    They were famously called <b>"The Generals"</b> because of their unity, discipline, and strong influence on students.
+  </p>
+</div>
+
+<div class="section" style="background: #1e293b; margin: 40px 20px; border-radius: 15px;">
+  <h2 style="color: #facc15;">Get In Touch</h2>
+  <p style="color: #cbd5e1; margin-bottom: 35px;">Stay connected to the Mount Olive legacy for these great reasons:</p>
+
+  <div class="grid" style="margin-bottom: 40px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(250,204,21,0.2);">
+      <h4 style="color: #facc15; margin: 0 0 5px 0;">🚀 Networking</h4>
+      <p style="font-size: 13px; color: #94a3b8; margin: 0;">Connect with alumni for job leads and career growth.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(250,204,21,0.2);">
+      <h4 style="color: #facc15; margin: 0 0 5px 0;">🎉 Success</h4>
+      <p style="font-size: 13px; color: #94a3b8; margin: 0;">Share your milestones to be featured in our News.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(250,204,21,0.2);">
+      <h4 style="color: #facc15; margin: 0 0 5px 0;">🤝 Mentorship</h4>
+      <p style="font-size: 13px; color: #94a3b8; margin: 0;">Give back by guiding the next generation.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(250,204,21,0.2);">
+      <h4 style="color: #facc15; margin: 0 0 5px 0;">📂 Records</h4>
+      <p style="font-size: 13px; color: #94a3b8; margin: 0;">Get help with certificate verification and docs.</p>
+    </div>
+  </div>
+
+  <div class="grid" style="max-width: 900px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+    <div class="card" style="background: rgba(37, 211, 102, 0.1); border: 2px solid #25D366;">
+      <h3 style="color: #25D366; margin-top: 0;">👨‍👩‍👧‍👦 Join Alumni Group</h3>
+      <a href="https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd" target="_blank" class="btn" style="background: #25D366; color: white;">Enter Group Chat</a>
+    </div>
+    <div class="card" style="background: rgba(250, 204, 21, 0.05); border: 1px solid #facc15;">
+      <h3 style="color: #facc15; margin-top: 0;">👤 Admin Support</h3>
+      <a href="https://wa.me/250793904683" target="_blank" class="btn">Message Moses</a>
+    </div>
   </div>
 </div>
 
-<!-- ════ END SCREEN ════ -->
-<div id="s-over" class="screen">
-  <div class="card">
-    <div class="grade-badge" id="grade-badge"></div>
-    <h1 id="grade-text" style="margin-bottom:4px">Amazing!</h1>
-    <p class="subtitle" id="grade-sub">You're a true MOGS legend</p>
-
-    <div class="stats-grid">
-      <div class="stat-box">
-        <div class="stat-val" id="st-score">0</div>
-        <div class="stat-lbl">SCORE</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-val" id="st-acc">0/10</div>
-        <div class="stat-lbl">CORRECT</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-val" id="st-streak">0</div>
-        <div class="stat-lbl">BEST STREAK</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-val" id="st-time">0s</div>
-        <div class="stat-lbl">AVG TIME</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-val" id="st-bonus">0</div>
-        <div class="stat-lbl">SPEED PTS</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-val" id="st-rank">--</div>
-        <div class="stat-lbl">RANK</div>
-      </div>
-    </div>
-
-    <div class="review-section">
-      <div class="review-title">QUESTION REVIEW</div>
-      <div class="review-list" id="review-list"></div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Leaderboard -->
-    <div class="review-title" style="margin-bottom:8px">🏆 SESSION LEADERBOARD</div>
-    <div id="lb-list"></div>
-
-    <div class="divider"></div>
-
-    <button class="btn btn-wa" id="btn-share">📲 Share to WhatsApp Group</button>
-    <button class="btn btn-ghost" onclick="location.reload()">🔄 Play Again</button>
+<div class="section">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="images/school1.jpeg">
+    <img src="images/school2.jpeg">
+    <img src="images/school3.jpeg">
+    <img src="images/school4.jpeg">
   </div>
 </div>
 
-</div><!-- /app -->
+<footer>
+  <div style="margin-bottom:10px;"><strong>Reach Out</strong></div>
+  <div style="margin-bottom:10px;">
+    📧 Email: <a href="mailto:mosesmondaymalith50@gmail.com">mosesmondaymalith50@gmail.com</a>
+  </div>
+  <div style="margin-top: 20px; opacity: 0.6;">
+    © 2026 Mount Olive Alumni Portal — All Rights Reserved <br>
+    Developed with ❤️ by Moses Monday MALITH
+  </div>
+</footer>
 
-<script>
-/* ═══════════════════════════════════════════
-   QUESTIONS BANK — 20 Questions
-═══════════════════════════════════════════ */
-const ALL_QUESTIONS = [
-  { q:"In which year was the school officially founded?", opts:["1978","1983","2007","1995"], ans:2, cat:"HISTORY", explain:"MOGS opened its doors in 2007, beginning its legacy of academic excellence." },
-  { q:"Who holds the record for the longest-serving Head Teacher in MOGS history?", opts:["Mr. Robert","Mr. Odoch","Mr. Charles","Mrs. Teddy"], ans:2, cat:"STAFF", explain:"Mr. Charles served the longest, overseeing the growth of many graduating classes." },
-  { q:"In what year did Tr. Paul introduce dancing to be performed during Graduations?", opts:["2011","2013","2014","2016"], ans:2, cat:"TRADITIONS", explain:"2014 was the year Tr. Paul changed the graduation tradition forever by introducing dancing." },
-  { q:"Which class marked the end of the legendary 'Generals' era?", opts:["2015","2017","2019","2020"], ans:1, cat:"LEGENDS", explain:"The 'Generals' left the school after the 2017 class finished — an era never forgotten." },
-  { q:"In which year did candidates first use the school's own UNEB Center Number?", opts:["2014","2015","2016","2017"], ans:3, cat:"MILESTONES", explain:"2017 was a milestone year as the school finally earned and used its very own center number." },
-  { q:"Who is remembered as the toughest Head Prefect the school ever had?", opts:["Kur Deng James","Kur MARIAL","Monday","Wek"], ans:2, cat:"LEGENDS", explain:"Monday is still remembered for his strict and firm leadership that kept students in line." },
-  { q:"Who was voted the most loved boy in the Class of 2016?", opts:["Akol Joseph","Watmond","Waneno","Opiyo Emmy"], ans:0, cat:"CLASS OF 2016", explain:"Akol Joseph won the hearts of the entire 2016 class and remains fondly remembered." },
-  { q:"Which two consecutive years are famous for having the 'most beautiful girls'?", opts:["2012 & 2013","2014 & 2015","2016 & 2017","2017 & 2018"], ans:1, cat:"SCHOOL LORE", explain:"The legend lives on — the 2014 and 2015 classes are considered the most beautiful in school history." },
-  { q:"Which student became a school legend by scoring Aggregate 16?", opts:["Jameson","Akol Joseph","Fortunate","Sherifa"], ans:0, cat:"ACADEMICS", explain:"Jameson's Aggregate 16 remains a towering academic achievement in MOGS history." },
-  { q:"How many total alumni are currently in the official MOGS network?", opts:["85","123","250","310"], ans:1, cat:"ALUMNI", explain:"The network currently consists of exactly 123 verified and active alumni." },
-  { q:"Which student became famous for excelling in Mathematics contests organized by the Uganda Mathematics Society?",
-opts:["Kica","Jameson","Brian","Moses"],
-ans:0,
-cat:"ACADEMICS",
-explain:"Kica became well known for performing excellently in Mathematics contests organized by the Uganda Mathematics Society."},
-  { q:"Which years classes are known for producing the most alumni in professional careers?", opts:["2013&2016","2013&2014","2016","2018","2014"], ans:2, cat:"ALUMNI", explain:"The Class of 2013&2014 produced the highest number of alumni currently in professional careers." },
-  { q:"What was the nickname given to the very first graduating class?", opts:["The Pioneers","The Generals","The Legends","The Originals"], ans:0, cat:"HISTORY", explain:"The very first class was dubbed 'The Pioneers' for blazing the trail at MOGS." },
-  { q:"Which teacher is most remembered for extra tough Mathematics lessons?", opts:["Tr. Paul","Tr. Robert","Tr. Charles","Tr. Agnes"], ans:2, cat:"STAFF", explain:"Tr. Paul was legendary for exhausting maths sessions that students still talk about." },
-  { q:"What colors are mainly associated with the MOGS school uniform?",
-opts:["Navy Blue & White","Green & Yellow","White with Blue Lines & Dark Blue shorts and skirts","Khaki & Sky Blue"],
-ans:2,
-cat:"SCHOOL LIFE",
-explain:"The MOGS uniform is mainly known for its white shirt with blue lines and dark blue shorts or trousers." },
-  { q:"Which year saw the biggest intake of new students in school history?", opts:["2012","2014","2016","2019"], ans:1, cat:"HISTORY", explain:"2014 saw the largest single intake of new students, straining classrooms but building community." },
-  { q:"Which alumnus is credited with establishing the first MOGS alumni WhatsApp group?", opts:["Akol Joseph","Jameson","Moses Akera","Fortunate"], ans:2, cat:"ALUMNI", explain:"Moses Akera took the initiative to connect alumni digitally by founding the first WhatsApp group." },
-  { q:"What is the correct meaning of the MOGS school motto 'Fear the Lord for Knowledge'?",
-opts:["Victory Always","Excellence in Unity","Knowledge comes from fearing the Lord","Serve and Lead"],
-ans:2,
-cat:"SCHOOL LIFE",
-explain:"The motto 'Fear the Lord for Knowledge' emphasizes that true knowledge and wisdom begin with reverence for God." },
-  {q:"Which class became famous for memorable tours to Jinja and Amuru Hot Springs?",
-opts:["2015 Alumni","2016 Alumni","2017 Alumni","2018 Alumni"],
-ans:1,
-cat:"ALUMNI",
-explain:"The Class of 2016 became well known for their memorable tours to Jinja and Amuru Hot Springs."},
-  { q:"What achievement made MOGS famous in 2016?",
-opts:["Winning National Music Festival","Outperforming schools in Gulu Municipal Mock Exams","Building a New Library","Starting a Football Academy"],
-ans:1,
-cat:"MILESTONES",
-explain:"In 2016, MOGS gained recognition after outperforming many schools in the Gulu Municipal Mock Exams." }
-];
-
-const AVATARS = ['🦁','🦅','🎓','⭐','🔥','💎','🏆','🌟'];
-const DIFF = { easy: 20, normal: 15, hard: 10 };
-const CIRC = 138.2;
-const LABELS = ['A','B','C','D'];
-const TOTAL_Q = 10;
-
-let playerName = "Alumnus", playerAv = '🦁', difficulty = 'easy';
-let curQ = 0, score = 0, correctCnt = 0, streak = 0, maxStreak = 0;
-let timeLeft, timerInt, qSet, answered = false, shieldActive = false;
-let sessionLog = [], totalTimeUsed = 0, totalSpeedBonus = 0;
-let puUsed = { '5050': false, time: false, skip: false, shield: false };
-
-const $ = id => document.getElementById(id);
-
-// ── LEADERBOARD (session-based) ──
-let leaderboard = JSON.parse(localStorage.getItem('mogs_lb') || '[]');
-
-// ── INIT AVATARS ──
-AVATARS.forEach(av => {
-  const b = document.createElement('button');
-  b.className = 'av-btn' + (av === '🦁' ? ' selected' : '');
-  b.innerText = av;
-  b.onclick = () => {
-    document.querySelectorAll('.av-btn').forEach(x => x.classList.remove('selected'));
-    b.classList.add('selected'); playerAv = av;
-  };
-  $('avatar-row').appendChild(b);
-});
-
-// ── DIFFICULTY ──
-document.querySelectorAll('.diff-btn').forEach(b => {
-  b.onclick = () => {
-    document.querySelectorAll('.diff-btn').forEach(x => x.classList.remove('selected'));
-    b.classList.add('selected'); difficulty = b.dataset.diff;
-  };
-});
-
-// ── START ──
-$('btn-start').onclick = () => {
-  const n = $('pname').value.trim();
-  if (n) playerName = n;
-  qSet = shuffle([...ALL_QUESTIONS]).slice(0, TOTAL_Q);
-  switchScreen('s-quiz');
-  loadQuestion();
-};
-
-function loadQuestion() {
-  if (curQ >= TOTAL_Q) return endGame();
-  answered = false; shieldActive = puUsed.shield ? shieldActive : false;
-  timeLeft = DIFF[difficulty];
-  updateHUD();
-  const q = qSet[curQ];
-  $('q-cat').innerText = q.cat || 'TRIVIA';
-  $('q-text').innerText = q.q;
-  $('explain-box').classList.remove('show');
-  $('explain-text').innerText = '';
-
-  const optC = $('options');
-  optC.innerHTML = '';
-  q.opts.forEach((opt, i) => {
-    const b = document.createElement('button');
-    b.className = 'opt-btn';
-    b.innerHTML = `<span class="opt-label">${LABELS[i]}</span> ${opt}`;
-    b.onclick = () => handleAnswer(i, b);
-    optC.appendChild(b);
-  });
-
-  updateStreak();
-  resetTimer();
-  startTimer();
-}
-
-function startTimer() {
-  clearInterval(timerInt);
-  const max = DIFF[difficulty];
-  $('t-ring').style.strokeDashoffset = 0;
-  $('t-ring').classList.remove('urgent');
-  $('t-num').classList.remove('urgent');
-  timerInt = setInterval(() => {
-    timeLeft--;
-    $('t-num').innerText = timeLeft;
-    $('t-ring').style.strokeDashoffset = CIRC - (timeLeft / max) * CIRC;
-    if (timeLeft <= 5) {
-      $('t-ring').classList.add('urgent');
-      $('t-num').classList.add('urgent');
-    }
-    if (timeLeft <= 0) { clearInterval(timerInt); handleAnswer(-1); }
-  }, 1000);
-}
-
-function resetTimer() {
-  const max = DIFF[difficulty];
-  $('t-num').innerText = max;
-  $('t-ring').style.strokeDashoffset = 0;
-}
-
-function handleAnswer(idx, btn) {
-  if (answered) return;
-  const q = qSet[curQ];
-  const timeUsed = DIFF[difficulty] - timeLeft;
-  totalTimeUsed += timeUsed;
-
-  if (idx !== -1 && idx !== q.ans && shieldActive) {
-    shieldActive = false;
-    showToast("🛡️ Shield absorbed it! Try again.");
-    if (btn) { btn.style.opacity = '0.2'; btn.disabled = true; }
-    return;
-  }
-
-  answered = true;
-  clearInterval(timerInt);
-  disableOptions();
-
-  const isCorrect = (idx === q.ans);
-  const speedBonus = isCorrect ? Math.max(0, timeLeft) * 5 : 0;
-  totalSpeedBonus += speedBonus;
-
-  if (isCorrect) {
-    score += 100 + speedBonus + (streak * 20);
-    correctCnt++; streak++;
-    if (streak > maxStreak) maxStreak = streak;
-    if (btn) btn.classList.add('correct');
-    if (streak >= 3) showCombo(`🔥 ×${streak} COMBO!`);
-    else if (speedBonus > 60) showCombo(`⚡ FAST! +${speedBonus}`);
-    flashScore();
-  } else {
-    streak = 0;
-    if (btn) btn.classList.add('wrong');
-    if (idx !== -1) {/* wrong btn already styled */}
-    const opts = document.querySelectorAll('.opt-btn');
-    if (opts[q.ans]) opts[q.ans].classList.add('correct');
-    showToast(idx === -1 ? '⏰ Time\'s up!' : '❌ Wrong!');
-  }
-
-  // Show explanation
-  $('explain-text').innerText = q.explain || '';
-  $('explain-box').classList.add('show');
-  updateStreak();
-  sessionLog.push({ q: q.q, ok: isCorrect, speedBonus });
-
-  setTimeout(() => { curQ++; loadQuestion(); }, 2200);
-}
-
-function disableOptions() {
-  document.querySelectorAll('.opt-btn').forEach(b => { b.disabled = true; });
-}
-
-// ── POWER-UPS ──
-$('pu-5050').onclick = function() {
-  if (answered || puUsed['5050']) return;
-  puUsed['5050'] = true; this.classList.add('used');
-  const q = qSet[curQ]; let hidden = 0;
-  document.querySelectorAll('.opt-btn').forEach((b, i) => {
-    if (i !== q.ans && hidden < 2) { b.classList.add('eliminated'); hidden++; }
-  });
-  showToast('🎯 Two wrong answers removed!');
-};
-
-$('pu-time').onclick = function() {
-  if (answered || puUsed.time) return;
-  puUsed.time = true; this.classList.add('used');
-  timeLeft += 8;
-  $('t-num').innerText = timeLeft;
-  showToast('⏱️ +8 seconds added!');
-};
-
-$('pu-skip').onclick = function() {
-  if (answered || puUsed.skip) return;
-  puUsed.skip = true; this.classList.add('used');
-  clearInterval(timerInt);
-  sessionLog.push({ q: qSet[curQ].q, ok: false, speedBonus: 0 });
-  streak = 0;
-  updateStreak();
-  curQ++;
-  loadQuestion();
-  showToast('⏭️ Question skipped!');
-};
-
-$('pu-2nd').onclick = function() {
-  if (answered || puUsed.shield) return;
-  puUsed.shield = true; this.classList.add('used');
-  shieldActive = true;
-  showToast('🛡️ Shield activated!');
-};
-
-// ── END GAME ──
-function endGame() {
-  const pct = (correctCnt / TOTAL_Q) * 100;
-  const grade = pct >= 90 ? { l:'A+', color:'#3FC47B', txt:'🏆 Absolute Legend!', sub:'Unmatched MOGS knowledge!' }
-              : pct >= 70 ? { l:'A',  color:'#D4A843', txt:'⭐ Outstanding!',      sub:'You know your school well.' }
-              : pct >= 50 ? { l:'B',  color:'#4A90E2', txt:'👍 Solid Effort!',     sub:'A true alumnus at heart.' }
-              : pct >= 30 ? { l:'C',  color:'#8B5CF6', txt:'📚 Keep Learning!',    sub:'The school spirit is there.' }
-              :             { l:'D',  color:'#E05050', txt:'😅 Need More Study!',  sub:'Time to revisit the alumni archives.' };
-
-  $('grade-badge').innerHTML = `<div class="grade-letter">${grade.l}</div><div class="grade-label" style="color:${grade.color}">GRADE</div>`;
-  $('grade-badge').style.background = `${grade.color}22`;
-  $('grade-badge').style.border = `3px solid ${grade.color}`;
-  $('grade-text').innerText = grade.txt;
-  $('grade-sub').innerText = grade.sub;
-
-  $('st-score').innerText = score;
-  $('st-acc').innerText = `${correctCnt}/${TOTAL_Q}`;
-  $('st-streak').innerText = maxStreak;
-  $('st-time').innerText = sessionLog.length ? Math.round(totalTimeUsed / sessionLog.length) + 's' : '0s';
-  $('st-bonus').innerText = totalSpeedBonus;
-
-  // Review
-  const rev = $('review-list');
-  rev.innerHTML = '';
-  sessionLog.forEach(item => {
-    rev.innerHTML += `<div class="rev-row"><span>${item.ok ? '✅' : '❌'}</span><span>${item.q}</span></div>`;
-  });
-
-  // Leaderboard
-  leaderboard.push({ name: playerName, av: playerAv, score, correct: correctCnt });
-  leaderboard.sort((a, b) => b.score - a.score);
-  leaderboard = leaderboard.slice(0, 10);
-  localStorage.setItem('mogs_lb', JSON.stringify(leaderboard));
-
-  const myRank = leaderboard.findIndex(e => e.name === playerName && e.score === score) + 1;
-  $('st-rank').innerText = '#' + myRank;
-
-  const lbList = $('lb-list');
-  lbList.innerHTML = '';
-  const medals = ['🥇','🥈','🥉'];
-  leaderboard.slice(0, 5).forEach((e, i) => {
-    const isMe = e.name === playerName && e.score === score;
-    lbList.innerHTML += `
-      <div class="lb-row${isMe ? ' you' : ''}">
-        <div class="lb-rank">${medals[i] || (i+1)}</div>
-        <div>${e.av} ${e.name}</div>
-        <div class="lb-score">${e.score}</div>
-      </div>`;
-  });
-
-  switchScreen('s-over');
-
-  if (pct >= 70) launchConfetti();
-}
-
-// ── SHARE ──
-$('btn-share').onclick = () => {
-  const groupLink = "https://chat.whatsapp.com/Ku2wJOhBszwDtUXxmfcXOd";
-  const pct = Math.round((correctCnt / TOTAL_Q) * 100);
-  const stars = '⭐'.repeat(Math.round(pct / 20));
-  const msg = `🎓 *MOGS ALUMNI TRIVIA* 🎓\n\n${playerAv} *${playerName}* just finished!\n\n🏆 Score: *${score}*\n🎯 Accuracy: *${correctCnt}/${TOTAL_Q}* (${pct}%)\n🔥 Best Streak: *${maxStreak}*\n⭐ Rating: ${stars}\n\n Can you beat me? Play here:\n${groupLink}`;
-  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
-};
-
-// ── HELPERS ──
-function updateHUD() {
-  $('hud-score').innerText = score;
-  $('hud-q').innerText = `Q ${curQ + 1} of ${TOTAL_Q}`;
-  $('prog-fill').style.width = (curQ / TOTAL_Q * 100) + '%';
-}
-
-function flashScore() {
-  const el = $('hud-score');
-  el.innerText = score;
-  el.classList.add('bump');
-  setTimeout(() => el.classList.remove('bump'), 150);
-}
-
-function updateStreak() {
-  for (let i = 0; i < 5; i++) {
-    const f = document.getElementById('f' + i);
-    if (f) f.classList.toggle('lit', i < streak);
-  }
-  const t = $('streak-text');
-  if (streak === 0) t.innerText = 'Start a streak!';
-  else if (streak === 1) t.innerText = '1 in a row!';
-  else if (streak < 5) t.innerText = `${streak} in a row! Keep going!`;
-  else t.innerText = `🔥 ${streak} STREAK! UNSTOPPABLE!`;
-}
-
-function showCombo(msg) {
-  const t = $('combo-toast');
-  t.innerText = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 1200);
-}
-
-function showToast(msg) {
-  const t = $('toast');
-  t.innerText = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2000);
-}
-
-function switchScreen(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  $(id).classList.add('active');
-}
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
-function launchConfetti() {
-  const colors = ['#D4A843','#F0C96A','#3FC47B','#4A90E2','#E05050','#fff'];
-  for (let i = 0; i < 60; i++) {
-    setTimeout(() => {
-      const el = document.createElement('div');
-      el.className = 'confetti-piece';
-      el.style.cssText = `
-        left: ${Math.random() * 100}vw;
-        top: 0;
-        background: ${colors[Math.floor(Math.random() * colors.length)]};
-        --dx: ${(Math.random() - 0.5) * 200}px;
-        animation-duration: ${1.5 + Math.random() * 2}s;
-        animation-delay: ${Math.random() * 0.5}s;
-        transform: rotate(${Math.random() * 360}deg);
-        border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
-        width: ${6 + Math.random() * 8}px;
-        height: ${6 + Math.random() * 8}px;
-      `;
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 4000);
-    }, i * 30);
-  }
-}
-
-// ── PARTICLE BACKGROUND ──
-const canvas = $('bg-canvas');
-const ctx = canvas.getContext('2d');
-let dots = [];
-function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-window.addEventListener('resize', resizeCanvas); resizeCanvas();
-for (let i = 0; i < 50; i++) {
-  dots.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.5 + 0.3,
-    vx: (Math.random() - 0.5) * 0.4,
-    vy: (Math.random() - 0.5) * 0.4,
-    o: Math.random() * 0.4 + 0.1
-  });
-}
-function animBg() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  dots.forEach(d => {
-    d.x += d.vx; d.y += d.vy;
-    if (d.x < 0 || d.x > canvas.width)  d.vx *= -1;
-    if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
-    ctx.beginPath();
-    ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(212,168,67,${d.o})`;
-    ctx.fill();
-  });
-  // Subtle connecting lines
-  for (let i = 0; i < dots.length; i++) {
-    for (let j = i + 1; j < dots.length; j++) {
-      const dx = dots[i].x - dots[j].x, dy = dots[i].y - dots[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 80) {
-        ctx.beginPath();
-        ctx.moveTo(dots[i].x, dots[i].y);
-        ctx.lineTo(dots[j].x, dots[j].y);
-        ctx.strokeStyle = `rgba(212,168,67,${0.06 * (1 - dist / 80)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
-  }
-  requestAnimationFrame(animBg);
-}
-animBg();
-</script>
 </body>
 </html>
